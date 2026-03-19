@@ -1,0 +1,22 @@
+{
+  "name": "Syncro-Link",
+  "short_name": "SyncroLink",
+  "description": "The world wide index for people of the light to unite, collaborate and anchor the gamma frequencies of the new earth energy en masse.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a1a",
+  "theme_color": "#0a0a1a",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icons/icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/icons/icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}
