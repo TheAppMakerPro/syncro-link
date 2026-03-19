@@ -63,74 +63,73 @@ export default function RightLightPage() {
   };
 
   return (
-    <div className="min-h-screen px-4 py-8 sm:px-6">
-      <div className="text-center mb-8">
-        <h1
-          className="text-4xl sm:text-5xl font-bold tracking-wider mb-3 text-[#1a1200]"
-          style={{
-            fontFamily: "var(--font-space)",
-            textShadow: "0 0 30px rgba(138,109,0,0.2)",
-          }}
-        >
-          The Right Light
-        </h1>
-        <p className="text-[#4a3d00]/70 max-w-xl mx-auto">
-          All posts set in the right light — scroll for variety, search by
-          username, or browse by hashtag.
-        </p>
-      </div>
+    <div className="px-4 sm:px-6 py-8">
+      <div className="content-panel max-w-4xl mx-auto">
+        <div className="text-center mb-8">
+          <h1
+            className="text-4xl sm:text-5xl font-bold tracking-wider mb-3 text-[#1a1200]"
+            style={{ fontFamily: "var(--font-space)" }}
+          >
+            The Right Light
+          </h1>
+          <p className="text-[#4a3d00] max-w-xl mx-auto">
+            All posts set in the right light — scroll for variety, search by
+            username, or browse by hashtag.
+          </p>
+        </div>
 
-      <div className="max-w-3xl mx-auto space-y-6">
-        {hasSession && (
-          <PostComposer onPostCreated={() => fetchPosts("", 1)} />
-        )}
+        <div className="space-y-6">
+          {hasSession && (
+            <PostComposer onPostCreated={() => fetchPosts("", 1)} />
+          )}
 
-        <div className="grid md:grid-cols-[1fr_280px] gap-6">
-          <div className="space-y-6">
-            <SearchBar
-              value={search}
-              onChange={setSearch}
-              placeholder="Search by Syncro-Link username..."
-            />
+          <div className="grid md:grid-cols-[1fr_280px] gap-6">
+            <div className="space-y-6">
+              <SearchBar
+                value={search}
+                onChange={setSearch}
+                placeholder="Search by Syncro-Link username..."
+              />
 
-            {loading && posts.length === 0 ? (
-              <LoadingSpinner />
-            ) : posts.length === 0 ? (
-              <div className="text-center py-12 text-[#8a7a40]">
-                <p className="text-lg mb-2">No posts yet</p>
-                <p className="text-sm">Be the first to share your light!</p>
-              </div>
-            ) : (
-              <>
-                {posts.map((post) => (
-                  <PostCard key={post.id} post={post} />
-                ))}
-                {page < totalPages && (
-                  <motion.div className="text-center">
-                    <button
-                      onClick={loadMore}
-                      disabled={loading}
-                      className="px-6 py-2 rounded-full border border-[#8a6d00]/30 text-[#6b4f00] hover:bg-[#8a6d00]/10 transition-colors"
-                    >
-                      {loading ? "Loading..." : "Load More Light"}
-                    </button>
-                  </motion.div>
-                )}
-              </>
-            )}
-          </div>
+              {loading && posts.length === 0 ? (
+                <LoadingSpinner />
+              ) : posts.length === 0 ? (
+                <div className="text-center py-12 text-[#8a7a40]">
+                  <p className="text-lg mb-2">No posts yet</p>
+                  <p className="text-sm">Be the first to share your light!</p>
+                </div>
+              ) : (
+                <>
+                  {posts.map((post) => (
+                    <PostCard key={post.id} post={post} />
+                  ))}
+                  {page < totalPages && (
+                    <motion.div className="text-center">
+                      <button
+                        onClick={loadMore}
+                        disabled={loading}
+                        className="px-6 py-2 rounded-full border border-[#8a6d00]/30 text-[#6b4f00] hover:bg-[#8a6d00]/10 transition-colors"
+                      >
+                        {loading ? "Loading..." : "Load More Light"}
+                      </button>
+                    </motion.div>
+                  )}
+                </>
+              )}
+            </div>
 
-          <div className="hidden md:block">
-            <div className="sticky top-24">
-              <HashtagDirectory />
+            <div className="hidden md:block">
+              <div className="sticky top-24">
+                <HashtagDirectory />
 
-              <div className="mt-6 gold-card p-6">
-                <h3 className="text-[#6b4f00] font-semibold mb-3 text-sm">Remember</h3>
-                <ul className="space-y-2 text-xs text-[#8a7a40]">
-                  <li>No capitalism whatsoever</li>
-                  <li>Be nice — no bad actors</li>
-                  <li>Unite and enlight — no doom and gloom</li>
-                </ul>
+                <div className="mt-6 gold-card p-6">
+                  <h3 className="text-[#6b4f00] font-semibold mb-3 text-sm">Remember</h3>
+                  <ul className="space-y-2 text-xs text-[#6b5c1a]">
+                    <li>No capitalism whatsoever</li>
+                    <li>Be nice — no bad actors</li>
+                    <li>Unite and enlight — no doom and gloom</li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>

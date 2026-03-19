@@ -13,25 +13,24 @@ const WorldMap = dynamic(() => import("@/components/map/WorldMap"), {
 
 export default function WorldGridPage() {
   return (
-    <div className="min-h-screen px-4 py-8 sm:px-6">
-      <div className="text-center mb-8">
-        <h1
-          className="text-4xl sm:text-5xl font-bold tracking-wider mb-3 text-[#1a1200]"
-          style={{
-            fontFamily: "var(--font-space)",
-            textShadow: "0 0 30px rgba(138,109,0,0.2)",
-          }}
-        >
-          World Grid Map
-        </h1>
-        <p className="text-[#4a3d00]/70 max-w-xl mx-auto">
-          This is the Syncro-Link index world grid map. Click on any point of
-          light to view their mini bio and contact info. This is your contact
-          platform. Go ahead and click on your own light and see how you shine.
-        </p>
-      </div>
-      <div className="h-[calc(100vh-220px)] min-h-[500px] max-w-7xl mx-auto">
-        <WorldMap />
+    <div className="px-4 sm:px-6 py-8">
+      <div className="content-panel max-w-6xl mx-auto">
+        <div className="text-center mb-8">
+          <h1
+            className="text-4xl sm:text-5xl font-bold tracking-wider mb-3 text-[#1a1200]"
+            style={{ fontFamily: "var(--font-space)" }}
+          >
+            World Grid Map
+          </h1>
+          <p className="text-[#4a3d00] max-w-xl mx-auto">
+            This is the Syncro-Link index world grid map. Click on any point of
+            light to view their mini bio and contact info. Go ahead and click on
+            your own light and see how you shine.
+          </p>
+        </div>
+        <div className="h-[calc(100vh-300px)] min-h-[500px]">
+          <WorldMap />
+        </div>
       </div>
     </div>
   );

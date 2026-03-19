@@ -25,7 +25,7 @@ function RevealSection({ children, className = "", highlight = false }: SectionP
 
 export default function ManifestoText() {
   return (
-    <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 py-16 space-y-8">
+    <div className="relative z-10 max-w-3xl mx-auto py-8 space-y-8">
       <RevealSection>
         <p className="text-sm uppercase tracking-[0.3em] text-[#8a6d00] text-center mb-8">
           Message to All
