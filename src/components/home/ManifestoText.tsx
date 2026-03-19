@@ -16,7 +16,7 @@ function RevealSection({ children, className = "", highlight = false }: SectionP
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className={`${highlight ? "text-[#5a4200]" : "text-[#3d3200]/80"} ${className}`}
+      className={`${highlight ? "text-black" : "text-black"} ${className}`}
     >
       {children}
     </motion.div>
@@ -27,7 +27,7 @@ export default function ManifestoText() {
   return (
     <div className="relative z-10 max-w-3xl mx-auto py-8 space-y-8">
       <RevealSection>
-        <p className="text-sm uppercase tracking-[0.3em] text-[#8a6d00] text-center mb-8">
+        <p className="text-sm uppercase tracking-[0.3em] text-black text-center mb-8">
           Message to All
         </p>
         <p className="text-lg leading-relaxed">
@@ -35,7 +35,7 @@ export default function ManifestoText() {
           understand that purpose I ask all of you to actually read what little
           content I have provided for it — essential to the task at hand. This content
           is not for entertainment purposes.{" "}
-          <span className="text-[#1a1200] font-semibold">It is the instruction set.</span> And so we begin...
+          <span className="text-black font-semibold">It is the instruction set.</span> And so we begin...
         </p>
       </RevealSection>
 
@@ -51,7 +51,7 @@ export default function ManifestoText() {
           Healers, and all the good people of Earth who feel they are here for
           a greater purpose — may we all find each other right now.
         </p>
-        <p className="text-2xl sm:text-3xl text-center mt-6 font-semibold tracking-wider text-[#1a1200]" style={{ textShadow: "0 0 30px rgba(138,109,0,0.2)" }}>
+        <p className="text-2xl sm:text-3xl text-center mt-6 font-semibold tracking-wider text-black" style={{ textShadow: "0 0 30px rgba(138,109,0,0.2)" }}>
           Let us all unite and enlight.
         </p>
       </RevealSection>
@@ -90,7 +90,7 @@ export default function ManifestoText() {
         <p className="text-lg leading-relaxed">
           The ultimate goal of Syncro-Link is that one day we all stand up
           together and{" "}
-          <span className="text-[#1a1200] font-semibold">
+          <span className="text-black font-semibold">
             weave a tapestry of light all around the planet as one unified voice in real time.
           </span>{" "}
           As the index grows that unified intent will present itself.
@@ -148,7 +148,7 @@ export default function ManifestoText() {
       </RevealSection>
 
       <RevealSection highlight>
-        <p className="text-2xl text-center font-semibold tracking-wide text-[#1a1200]" style={{ textShadow: "0 0 30px rgba(138,109,0,0.2)" }}>
+        <p className="text-2xl text-center font-semibold tracking-wide text-black" style={{ textShadow: "0 0 30px rgba(138,109,0,0.2)" }}>
           That&apos;s it. Register. Check your spot on the Global map. And Unite!
         </p>
       </RevealSection>
@@ -164,7 +164,7 @@ export default function ManifestoText() {
 
       {/* The Right Light intro */}
       <RevealSection>
-        <h2 className="text-3xl font-bold text-center text-[#6b4f00] tracking-wider mb-6" style={{ textShadow: "0 0 30px rgba(138,109,0,0.2)" }}>
+        <h2 className="text-3xl font-bold text-center text-black tracking-wider mb-6" style={{ textShadow: "0 0 30px rgba(138,109,0,0.2)" }}>
           THE RIGHT LIGHT
         </h2>
         <p className="text-lg leading-relaxed">
@@ -182,7 +182,7 @@ export default function ManifestoText() {
           collective whole, plus any new forms of real transparency, healing,
           outpourings of love and all points in between. Just good stuff. No
           negative conspiracy news.{" "}
-          <span className="text-[#1a1200] font-semibold">
+          <span className="text-black font-semibold">
             Only authentic high vibration news concerning the creation of 5D earth.
           </span>{" "}
           All set in the right light.
@@ -193,13 +193,13 @@ export default function ManifestoText() {
 
       {/* The 3 Rules */}
       <RevealSection>
-        <h2 className="text-2xl font-bold text-center text-[#1a1200] tracking-wider mb-8">
+        <h2 className="text-2xl font-bold text-center text-black tracking-wider mb-8">
           The 3 Rules of the Network
         </h2>
         <div className="space-y-6">
           <div className="rounded-2xl border border-purple-700/30 bg-purple-900/10 p-6">
             <p className="text-purple-800 font-semibold mb-2">1. No Capitalism Whatsoever</p>
-            <p className="text-[#3d3200]/80 leading-relaxed">
+            <p className="text-black leading-relaxed">
               Not even the faintest glimmer of monetizing spirituality or anything
               else. No selling, no pitching, no scheduling, no hocking of thyne
               wares in any form. Any advice, product, or idea you have to share
@@ -209,17 +209,17 @@ export default function ManifestoText() {
           </div>
           <div className="rounded-2xl border border-indigo-600/30 bg-indigo-900/10 p-6">
             <p className="text-indigo-800 font-semibold mb-2">2. Be Nice</p>
-            <p className="text-[#3d3200]/80 leading-relaxed">No bad actors.</p>
+            <p className="text-black leading-relaxed">No bad actors.</p>
           </div>
           <div className="rounded-2xl border border-emerald-600/30 bg-emerald-900/10 p-6">
             <p className="text-emerald-800 font-semibold mb-2">3. Unite and Enlight</p>
-            <p className="text-[#3d3200]/80 leading-relaxed">No doom and gloom.</p>
+            <p className="text-black leading-relaxed">No doom and gloom.</p>
           </div>
         </div>
       </RevealSection>
 
       <RevealSection>
-        <p className="text-xs text-[#8a7a40] leading-relaxed text-center">
+        <p className="text-xs text-black leading-relaxed text-center">
           * Any offer using the name or branding of &apos;Syncro-Link&apos; is
           explicitly NOT condoned by the network. The incessant scarcity driven
           greed grab has no footing here. There is no Syncro-Link.com.
@@ -233,7 +233,7 @@ export default function ManifestoText() {
       {/* Closing */}
       <RevealSection>
         <div className="text-center space-y-6">
-          <p className="text-lg leading-relaxed text-[#3d3200]/80">
+          <p className="text-lg leading-relaxed text-black">
             Bless you all! You are the light of the new world. Literally. I
             thank all of you from the very center of my heart on this most
             wonderful and glorious day. Syncro-Link has been a dream of mine
@@ -241,15 +241,15 @@ export default function ManifestoText() {
             of consciousness to emerge... thresholds we are all flying past
             right now at this very moment. Congratulations to all of you.
           </p>
-          <p className="text-lg leading-relaxed text-[#3d3200]/80">
+          <p className="text-lg leading-relaxed text-black">
             So, now that we have all woken up in our own miraculous ways, let us
             show the world the power of heart centered group coherence and
             unified mass intent.
           </p>
-          <p className="text-xl text-[#6b4f00] font-light" style={{ textShadow: "0 0 20px rgba(138,109,0,0.2)" }}>
+          <p className="text-xl text-black font-light" style={{ textShadow: "0 0 20px rgba(138,109,0,0.2)" }}>
             Love, light, peace and ringing ears for All! Let &apos;em ring!
           </p>
-          <p className="text-[#8a7a40] italic">— Chris</p>
+          <p className="text-black italic">— Chris</p>
         </div>
       </RevealSection>
 

@@ -8,7 +8,7 @@ export default function GlowInput({ label, className = "", ...props }: GlowInput
   return (
     <div className="space-y-2">
       {label && (
-        <label className="block text-sm font-medium text-[#4a3d00]">{label}</label>
+        <label className="block text-sm font-medium text-black">{label}</label>
       )}
       <input
         {...props}
@@ -26,7 +26,7 @@ export function GlowTextarea({
   return (
     <div className="space-y-2">
       {label && (
-        <label className="block text-sm font-medium text-[#4a3d00]">{label}</label>
+        <label className="block text-sm font-medium text-black">{label}</label>
       )}
       <textarea
         {...props}

@@ -15,10 +15,21 @@
 }
 
 body {
-  color: #1a1000;
+  color: #000000;
   font-family: "Inter", system-ui, sans-serif;
+  font-weight: 700;
   min-height: 100vh;
   line-height: 1.6;
+}
+
+/* Ensure all text is bold black */
+p, span, li, a, h1, h2, h3, h4, h5, h6, label, div {
+  color: inherit;
+}
+
+/* Content panel with full white background for max readability */
+.content-panel {
+  background: rgba(255, 255, 255, 0.95);
 }
 
 /* 360° radial gradient background — purple edges → indigo → sapphire → cobalt → emerald → gold center */
@@ -48,9 +59,8 @@ body {
   padding: 0 1rem;
 }
 
-/* Content backdrop — readable panel over the gradient */
+/* Content backdrop — readable panel over the gradient (base defined above, overrides here) */
 .content-panel {
-  background: rgba(255, 252, 240, 0.92);
   backdrop-filter: blur(12px);
   border-radius: 1.5rem;
   padding: 2.5rem 2rem;

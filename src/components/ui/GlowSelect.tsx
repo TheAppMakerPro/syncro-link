@@ -10,7 +10,7 @@ export default function GlowSelect({ label, options, placeholder, className = ""
   return (
     <div className="space-y-2">
       {label && (
-        <label className="block text-sm font-medium text-[#4a3d00]">{label}</label>
+        <label className="block text-sm font-medium text-black">{label}</label>
       )}
       <select
         {...props}

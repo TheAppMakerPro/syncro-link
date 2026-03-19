@@ -31,17 +31,17 @@ export default function PostCard({ post }: { post: PostWithUser }) {
             className="w-10 h-10 rounded-full object-cover border border-[#8a6d00]/20"
           />
         ) : (
-          <div className="w-10 h-10 rounded-full bg-[#8a6d00]/15 flex items-center justify-center text-[#6b4f00] font-bold">
+          <div className="w-10 h-10 rounded-full bg-[#8a6d00]/15 flex items-center justify-center text-black font-bold">
             {post.user.displayName[0]?.toUpperCase()}
           </div>
         )}
         <div>
-          <p className="font-medium text-[#1a1200]">{post.user.displayName}</p>
-          <p className="text-xs text-[#8a7a40]">{timeAgo(post.createdAt)}</p>
+          <p className="font-medium text-black">{post.user.displayName}</p>
+          <p className="text-xs text-black">{timeAgo(post.createdAt)}</p>
         </div>
       </div>
 
-      <div className="text-[#3d3200] leading-relaxed whitespace-pre-wrap mb-4">
+      <div className="text-black leading-relaxed whitespace-pre-wrap mb-4">
         {post.content}
       </div>
 
@@ -73,7 +73,7 @@ export default function PostCard({ post }: { post: PostWithUser }) {
             <Link
               key={hashtag.id}
               href={`/right-light/${encodeURIComponent(hashtag.name)}`}
-              className="text-xs px-3 py-1 rounded-full bg-[#8a6d00]/10 text-[#6b4f00] hover:bg-[#8a6d00]/20 transition-colors"
+              className="text-xs px-3 py-1 rounded-full bg-[#8a6d00]/10 text-black hover:bg-[#8a6d00]/20 transition-colors"
             >
               #{hashtag.name}
             </Link>

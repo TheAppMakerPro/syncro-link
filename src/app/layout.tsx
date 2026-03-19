@@ -38,7 +38,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
-      <body className="min-h-screen gradient-bg text-[#1a1200] font-[var(--font-inter)] antialiased">
+      <body className="min-h-screen gradient-bg text-black font-[var(--font-inter)] antialiased">
         <CosmicBackground />
         <Navbar />
         <main className="relative z-10 pt-16">{children}</main>

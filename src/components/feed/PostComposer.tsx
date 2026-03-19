@@ -37,7 +37,7 @@ export default function PostComposer({ onPostCreated }: PostComposerProps) {
 
   return (
     <div className="gold-card p-6">
-      <h3 className="text-[#6b4f00] font-semibold mb-3">Share Your Light</h3>
+      <h3 className="text-black font-semibold mb-3">Share Your Light</h3>
       {error && (
         <p className="text-red-600 text-sm mb-3">{error}</p>
       )}

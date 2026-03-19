@@ -96,7 +96,7 @@ export default function RegistrationForm() {
                   ? "bg-purple-700 text-white shadow-[0_0_20px_rgba(126,34,206,0.3)]"
                   : i < step
                   ? "bg-purple-700/30 text-purple-800 cursor-pointer"
-                  : "bg-[#8a6d00]/10 text-[#8a7a40]"
+                  : "bg-[#8a6d00]/10 text-black"
               }`}
             >
               {i + 1}
@@ -112,7 +112,7 @@ export default function RegistrationForm() {
         ))}
       </div>
 
-      <p className="text-center text-sm text-[#8a7a40] mb-6">{steps[step]}</p>
+      <p className="text-center text-sm text-black mb-6">{steps[step]}</p>
 
       {error && (
         <div className="mb-6 rounded-xl border border-red-600/30 bg-red-100/50 px-4 py-3 text-red-700 text-sm">
@@ -131,7 +131,7 @@ export default function RegistrationForm() {
         >
           {step === 0 && (
             <>
-              <p className="text-[#4a3d00]/70 text-sm leading-relaxed">
+              <p className="text-black text-sm leading-relaxed">
                 We only ask four things of you. We don&apos;t particularly need or want
                 your actual legal name or physical address. If you want to give that,
                 fine. But we&apos;re not asking for it.
@@ -179,7 +179,7 @@ export default function RegistrationForm() {
                   onChange={(e) => update("longitude", e.target.value)}
                 />
               </div>
-              <p className="text-xs text-[#8a7a40]">
+              <p className="text-xs text-black">
                 Go to Google Earth and figure out your exact latitude and longitude
                 to show up precisely on the World Grid map.
               </p>
@@ -201,7 +201,7 @@ export default function RegistrationForm() {
                 onChange={(e) => update("bio", e.target.value)}
                 className="min-h-[180px]"
               />
-              <p className="text-xs text-[#8a7a40]">
+              <p className="text-xs text-black">
                 Everything goes but capitalism. Please always respect the three
                 sovereign rules of Syncro-Link. No Capitalism. No Bad Actors. No
                 Doom and Gloom.
@@ -211,7 +211,7 @@ export default function RegistrationForm() {
 
           {step === 2 && (
             <>
-              <p className="text-[#4a3d00]/70 text-sm">
+              <p className="text-black text-sm">
                 Upload a profile image that represents your light. This is optional
                 but helps others connect with you.
               </p>
@@ -236,10 +236,10 @@ export default function RegistrationForm() {
                 ) : (
                   <label className="cursor-pointer flex flex-col items-center gap-3 rounded-2xl border-2 border-dashed border-white/20 p-10 hover:border-[#8a6d00]/40 transition-colors w-full max-w-sm">
                     <div className="w-20 h-20 rounded-full bg-[#8a6d00]/10 flex items-center justify-center">
-                      <Sparkles className="w-8 h-8 text-[#6b4f00]" />
+                      <Sparkles className="w-8 h-8 text-black" />
                     </div>
-                    <span className="text-[#4a3d00]/70 text-sm">Click to upload image</span>
-                    <span className="text-[#8a7a40] text-xs">JPG, PNG, WebP, GIF — up to 10MB</span>
+                    <span className="text-black text-sm">Click to upload image</span>
+                    <span className="text-black text-xs">JPG, PNG, WebP, GIF — up to 10MB</span>
                     <input
                       type="file"
                       accept="image/*"
@@ -255,7 +255,7 @@ export default function RegistrationForm() {
           {step === 3 && (
             <>
               <div className="rounded-2xl border border-[#8a6d00]/20 bg-[#8a6d00]/5 p-4 mb-4">
-                <p className="text-[#6b4f00] text-sm leading-relaxed">
+                <p className="text-black text-sm leading-relaxed">
                   You must make at least one positive post to the RIGHT LIGHT in
                   order to show up on the Syncro-Link index world grid map. NO
                   MATTER HOW SIMPLE OR ELABORATE.
@@ -268,7 +268,7 @@ export default function RegistrationForm() {
                 onChange={(e) => update("firstPostContent", e.target.value)}
                 className="min-h-[200px]"
               />
-              <p className="text-xs text-[#8a7a40]">
+              <p className="text-xs text-black">
                 Use #hashtags so others can find your post by topic. Keep it light
                 filled and joyful!
               </p>
@@ -282,7 +282,7 @@ export default function RegistrationForm() {
         <button
           onClick={() => setStep((s) => s - 1)}
           disabled={step === 0}
-          className="flex items-center gap-2 px-6 py-2 rounded-full text-[#4a3d00]/70 hover:text-[#1a1200] transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+          className="flex items-center gap-2 px-6 py-2 rounded-full text-black hover:text-black transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
         >
           <ChevronLeft className="w-4 h-4" /> Back
         </button>
@@ -291,7 +291,7 @@ export default function RegistrationForm() {
           <button
             onClick={() => setStep((s) => s + 1)}
             disabled={!canProceed()}
-            className="flex items-center gap-2 px-6 py-2 rounded-full bg-[#8a6d00]/10 text-[#1a1200] hover:bg-[#8a6d00]/20 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+            className="flex items-center gap-2 px-6 py-2 rounded-full bg-[#8a6d00]/10 text-black hover:bg-[#8a6d00]/20 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
           >
             Next <ChevronRight className="w-4 h-4" />
           </button>

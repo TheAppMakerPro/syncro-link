@@ -17,12 +17,12 @@ export default function WorldGridPage() {
       <div className="content-panel max-w-6xl mx-auto">
         <div className="text-center mb-8">
           <h1
-            className="text-4xl sm:text-5xl font-bold tracking-wider mb-3 text-[#1a1200]"
+            className="text-4xl sm:text-5xl font-bold tracking-wider mb-3 text-black"
             style={{ fontFamily: "var(--font-space)" }}
           >
             World Grid Map
           </h1>
-          <p className="text-[#4a3d00] max-w-xl mx-auto">
+          <p className="text-black max-w-xl mx-auto">
             This is the Syncro-Link index world grid map. Click on any point of
             light to view their mini bio and contact info. Go ahead and click on
             your own light and see how you shine.

@@ -19,7 +19,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="text-5xl sm:text-7xl md:text-8xl font-bold tracking-[0.3em] text-[#1a1200] mb-6"
+          className="text-5xl sm:text-7xl md:text-8xl font-bold tracking-[0.3em] text-black mb-6"
           style={{
             textShadow: "0 0 40px rgba(212,168,67,0.3), 0 0 80px rgba(212,168,67,0.15)",
           }}
@@ -31,7 +31,7 @@ export default function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.5 }}
-          className="text-lg sm:text-xl text-[#6b4f00] font-light tracking-widest mb-4"
+          className="text-lg sm:text-xl text-black font-light tracking-widest mb-4"
         >
           The World Wide Index
         </motion.p>
@@ -40,7 +40,7 @@ export default function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.8 }}
-          className="text-[#4a3d00]/70 text-base sm:text-lg max-w-2xl mx-auto mb-12 leading-relaxed"
+          className="text-black text-base sm:text-lg max-w-2xl mx-auto mb-12 leading-relaxed"
         >
           For people of the light to unite, collaborate and anchor the gamma
           frequencies of the new earth energy en masse.
