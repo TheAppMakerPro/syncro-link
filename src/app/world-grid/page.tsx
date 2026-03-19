@@ -5,8 +5,8 @@ import dynamic from "next/dynamic";
 const WorldMap = dynamic(() => import("@/components/map/WorldMap"), {
   ssr: false,
   loading: () => (
-    <div className="w-full h-full flex items-center justify-center bg-[#0a0a1a] rounded-2xl">
-      <div className="text-amber-400 animate-pulse">Connecting to the Grid...</div>
+    <div className="w-full h-full flex items-center justify-center bg-white/50 rounded-2xl">
+      <div className="text-black animate-pulse">Connecting to the Grid...</div>
     </div>
   ),
 });
