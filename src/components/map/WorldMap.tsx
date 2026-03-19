@@ -31,8 +31,8 @@ export default function WorldMap() {
   return (
     <div className="relative w-full h-full rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_40px_rgba(255,215,0,0.05)]">
       {loading && (
-        <div className="absolute inset-0 z-[1000] flex items-center justify-center bg-white/70">
-          <div className="text-black animate-pulse">Loading the Grid...</div>
+        <div className="absolute inset-0 z-[1000] flex items-center justify-center bg-[#0a0a1a]/80">
+          <div className="text-amber-400 animate-pulse">Loading the Grid...</div>
         </div>
       )}
       <MapContainer
@@ -42,12 +42,12 @@ export default function WorldMap() {
         maxZoom={18}
         zoomControl={false}
         className="w-full h-full"
-        style={{ background: "#b8d4e3" }}
+        style={{ background: "#0a0a1a" }}
       >
         <ZoomControl position="bottomright" />
         <TileLayer
           attribution='&copy; <a href="https://carto.com/">CARTO</a>'
-          url="https://{s}.basemaps.cartocdn.com/voyager/{z}/{x}/{y}{r}.png"
+          url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
         />
         {points.map((point) => (
           <Marker
@@ -98,9 +98,9 @@ export default function WorldMap() {
       </MapContainer>
 
       {/* Point count overlay */}
-      <div className="absolute top-4 left-4 z-[1000] bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 text-sm shadow-md">
-        <span className="text-black font-semibold">{points.length}</span>
-        <span className="text-black/70 ml-1">
+      <div className="absolute top-4 left-4 z-[1000] bg-black/60 backdrop-blur-sm rounded-full px-4 py-2 text-sm">
+        <span className="text-amber-400 font-semibold">{points.length}</span>
+        <span className="text-white/80 ml-1">
           {points.length === 1 ? "point of light" : "points of light"}
         </span>
       </div>
