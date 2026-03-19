@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0a0a1a",
+  themeColor: "#4a044e",
   width: "device-width",
   initialScale: 1,
 };
@@ -38,7 +38,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
-      <body className="min-h-screen bg-[#0a0a1a] text-[#f0f0ff] font-[var(--font-inter)] antialiased">
+      <body className="min-h-screen gradient-bg text-[#1a1200] font-[var(--font-inter)] antialiased">
         <CosmicBackground />
         <Navbar />
         <main className="relative z-10 pt-16">{children}</main>

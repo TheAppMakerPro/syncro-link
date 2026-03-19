@@ -36,10 +36,10 @@ export default function PostComposer({ onPostCreated }: PostComposerProps) {
   };
 
   return (
-    <div className="rounded-2xl border border-white/10 bg-[#0d0d2b]/70 backdrop-blur-xl p-6">
-      <h3 className="text-amber-400 font-semibold mb-3">Share Your Light</h3>
+    <div className="gold-card p-6">
+      <h3 className="text-[#6b4f00] font-semibold mb-3">Share Your Light</h3>
       {error && (
-        <p className="text-red-400 text-sm mb-3">{error}</p>
+        <p className="text-red-600 text-sm mb-3">{error}</p>
       )}
       <GlowTextarea
         placeholder="Post something positive to the RIGHT LIGHT... use #hashtags to categorize."
@@ -51,7 +51,7 @@ export default function PostComposer({ onPostCreated }: PostComposerProps) {
         <button
           onClick={handleSubmit}
           disabled={loading || !content.trim()}
-          className="flex items-center gap-2 px-5 py-2 rounded-full bg-amber-500 text-black font-semibold hover:bg-amber-400 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+          className="flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-purple-700 to-indigo-600 text-white font-semibold hover:from-purple-600 hover:to-indigo-500 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
         >
           <Send className="w-4 h-4" />
           {loading ? "Posting..." : "Post"}

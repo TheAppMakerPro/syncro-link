@@ -33,7 +33,7 @@ export default function WorldMap() {
     <div className="relative w-full h-full rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_40px_rgba(255,215,0,0.05)]">
       {loading && (
         <div className="absolute inset-0 z-[1000] flex items-center justify-center bg-[#0a0a1a]/80">
-          <div className="text-amber-400 animate-pulse">Loading the Grid...</div>
+          <div className="text-[#6b4f00] animate-pulse">Loading the Grid...</div>
         </div>
       )}
       <MapContainer
@@ -63,31 +63,31 @@ export default function WorldMap() {
                     <img
                       src={point.avatarUrl}
                       alt={point.displayName}
-                      className="w-12 h-12 rounded-full object-cover border border-amber-500/30"
+                      className="w-12 h-12 rounded-full object-cover border border-[#8a6d00]/30"
                     />
                   ) : (
-                    <div className="w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-400 text-lg font-bold">
+                    <div className="w-12 h-12 rounded-full bg-[#8a6d00]/15 flex items-center justify-center text-[#6b4f00] text-lg font-bold">
                       {point.displayName[0]?.toUpperCase()}
                     </div>
                   )}
                   <div>
-                    <h3 className="font-semibold text-[#f0f0ff] text-base">
+                    <h3 className="font-semibold text-[#1a1200] text-base">
                       {point.displayName}
                     </h3>
-                    <p className="text-[#8888aa] text-xs">
+                    <p className="text-[#8a7a40] text-xs">
                       {[point.city, point.country].filter(Boolean).join(", ")}
                     </p>
                   </div>
                 </div>
                 {point.bio && (
-                  <p className="text-[#f0f0ff]/70 text-sm leading-relaxed mb-2">
+                  <p className="text-[#1a1200]/70 text-sm leading-relaxed mb-2">
                     {point.bio}
                   </p>
                 )}
                 {point.contactInfo && (
                   <div className="border-t border-white/10 pt-2 mt-2">
-                    <p className="text-xs text-amber-400/80">Contact:</p>
-                    <p className="text-xs text-[#f0f0ff]/60 whitespace-pre-wrap">
+                    <p className="text-xs text-[#6b4f00]/80">Contact:</p>
+                    <p className="text-xs text-[#1a1200]/60 whitespace-pre-wrap">
                       {point.contactInfo}
                     </p>
                   </div>
@@ -100,8 +100,8 @@ export default function WorldMap() {
 
       {/* Point count overlay */}
       <div className="absolute top-4 left-4 z-[1000] bg-black/60 backdrop-blur-sm rounded-full px-4 py-2 text-sm">
-        <span className="text-amber-400 font-semibold">{points.length}</span>
-        <span className="text-[#f0f0ff]/60 ml-1">
+        <span className="text-[#6b4f00] font-semibold">{points.length}</span>
+        <span className="text-[#1a1200]/60 ml-1">
           {points.length === 1 ? "point of light" : "points of light"}
         </span>
       </div>

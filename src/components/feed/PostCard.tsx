@@ -21,27 +21,27 @@ export default function PostCard({ post }: { post: PostWithUser }) {
     <motion.article
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="rounded-2xl border border-white/10 bg-[#0d0d2b]/70 backdrop-blur-xl p-6 transition-all hover:border-amber-500/20"
+      className="gold-card p-6"
     >
       <div className="flex items-center gap-3 mb-4">
         {post.user.avatarUrl ? (
           <img
             src={post.user.avatarUrl}
             alt={post.user.displayName}
-            className="w-10 h-10 rounded-full object-cover border border-amber-500/20"
+            className="w-10 h-10 rounded-full object-cover border border-[#8a6d00]/20"
           />
         ) : (
-          <div className="w-10 h-10 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-400 font-bold">
+          <div className="w-10 h-10 rounded-full bg-[#8a6d00]/15 flex items-center justify-center text-[#6b4f00] font-bold">
             {post.user.displayName[0]?.toUpperCase()}
           </div>
         )}
         <div>
-          <p className="font-medium text-[#f0f0ff]">{post.user.displayName}</p>
-          <p className="text-xs text-[#8888aa]">{timeAgo(post.createdAt)}</p>
+          <p className="font-medium text-[#1a1200]">{post.user.displayName}</p>
+          <p className="text-xs text-[#8a7a40]">{timeAgo(post.createdAt)}</p>
         </div>
       </div>
 
-      <div className="text-[#f0f0ff]/80 leading-relaxed whitespace-pre-wrap mb-4">
+      <div className="text-[#3d3200] leading-relaxed whitespace-pre-wrap mb-4">
         {post.content}
       </div>
 
@@ -53,14 +53,14 @@ export default function PostCard({ post }: { post: PostWithUser }) {
                 key={m.id}
                 src={m.url}
                 alt=""
-                className="rounded-xl w-full object-cover max-h-64 border border-white/5"
+                className="rounded-xl w-full object-cover max-h-64 border border-[#8a6d00]/10"
               />
             ) : (
               <video
                 key={m.id}
                 src={m.url}
                 controls
-                className="rounded-xl w-full max-h-64 border border-white/5"
+                className="rounded-xl w-full max-h-64 border border-[#8a6d00]/10"
               />
             )
           )}
@@ -73,7 +73,7 @@ export default function PostCard({ post }: { post: PostWithUser }) {
             <Link
               key={hashtag.id}
               href={`/right-light/${encodeURIComponent(hashtag.name)}`}
-              className="text-xs px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 hover:bg-amber-500/20 transition-colors"
+              className="text-xs px-3 py-1 rounded-full bg-[#8a6d00]/10 text-[#6b4f00] hover:bg-[#8a6d00]/20 transition-colors"
             >
               #{hashtag.name}
             </Link>

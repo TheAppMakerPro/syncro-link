@@ -18,11 +18,11 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-black/30 backdrop-blur-xl">
+    <nav className="fixed top-0 left-0 right-0 z-50 glass-nav">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6">
         <Link href="/" className="flex items-center gap-2 group">
-          <Sparkles className="h-6 w-6 text-amber-400 transition-transform group-hover:rotate-12" />
-          <span className="text-xl font-bold tracking-[0.2em] text-[#f0f0ff] [text-shadow:0_0_20px_rgba(255,215,0,0.4)]">
+          <Sparkles className="h-6 w-6 text-amber-300 transition-transform group-hover:rotate-12" />
+          <span className="text-xl font-bold tracking-[0.2em] text-white [text-shadow:0_0_20px_rgba(255,215,0,0.4)]">
             SYNCRO-LINK
           </span>
         </Link>
@@ -37,14 +37,14 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={`relative px-4 py-2 text-sm font-medium transition-colors ${
-                  active ? "text-amber-400" : "text-[#f0f0ff]/70 hover:text-[#f0f0ff]"
+                  active ? "text-amber-300" : "text-white/70 hover:text-white"
                 }`}
               >
                 {link.label}
                 {active && (
                   <motion.div
                     layoutId="nav-underline"
-                    className="absolute bottom-0 left-2 right-2 h-0.5 bg-amber-400 shadow-[0_0_10px_rgba(255,215,0,0.5)]"
+                    className="absolute bottom-0 left-2 right-2 h-0.5 bg-amber-300 shadow-[0_0_10px_rgba(255,215,0,0.5)]"
                     transition={{ type: "spring", stiffness: 350, damping: 30 }}
                   />
                 )}
@@ -56,7 +56,7 @@ export default function Navbar() {
         {/* Mobile toggle */}
         <button
           onClick={() => setOpen(!open)}
-          className="md:hidden text-[#f0f0ff] p-2"
+          className="md:hidden text-white p-2"
           aria-label="Toggle menu"
         >
           {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -71,7 +71,7 @@ export default function Navbar() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden overflow-hidden border-t border-white/5 bg-black/50 backdrop-blur-xl"
+            className="md:hidden overflow-hidden border-t border-white/10 bg-purple-950/80 backdrop-blur-xl"
           >
             <div className="flex flex-col p-4 gap-2">
               {links.map((link) => {
@@ -84,8 +84,8 @@ export default function Navbar() {
                     onClick={() => setOpen(false)}
                     className={`px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
                       active
-                        ? "bg-amber-500/10 text-amber-400"
-                        : "text-[#f0f0ff]/70 hover:bg-white/5 hover:text-[#f0f0ff]"
+                        ? "bg-amber-400/20 text-amber-300"
+                        : "text-white/70 hover:bg-white/5 hover:text-white"
                     }`}
                   >
                     {link.label}

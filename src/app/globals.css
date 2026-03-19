@@ -1,41 +1,97 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-cosmic-black: #0a0a1a;
-  --color-cosmic-deep: #0d0d2b;
-  --color-cosmic-mid: #1a1a3e;
-  --color-glow-gold: #ffd700;
-  --color-glow-violet: #8b5cf6;
-  --color-glow-cyan: #06b6d4;
-  --color-star-white: #f0f0ff;
-  --color-star-dim: #8888aa;
+  --color-gold-center: #c8a000;
+  --color-gold-light: #f5e6a3;
+  --color-gold-dark: #8a6d00;
+  --color-text-primary: #1a1200;
+  --color-text-secondary: #4a3d00;
+  --color-text-muted: #6b5c1a;
 }
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgba(255, 215, 0, 0.2) transparent;
+  scrollbar-color: rgba(138, 109, 0, 0.4) transparent;
 }
 
 body {
-  background: #0a0a1a;
-  color: #f0f0ff;
+  color: #1a1200;
   font-family: "Inter", system-ui, sans-serif;
   min-height: 100vh;
 }
 
-/* Glow utilities */
+/* 360° radial gradient background — purple edges → indigo → sapphire → cobalt → emerald → gold center */
+.gradient-bg {
+  background:
+    radial-gradient(
+      ellipse at center,
+      #d4a843 0%,
+      #c9a030 15%,
+      #b8912a 25%,
+      #7ab648 35%,
+      #10b981 42%,
+      #0077b6 50%,
+      #0052a3 57%,
+      #1e3a8a 64%,
+      #312e81 72%,
+      #4c1d95 82%,
+      #581c87 90%,
+      #4a044e 100%
+    );
+  background-attachment: fixed;
+}
+
+/* Content zone — sits in the gold center */
+.content-zone {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Card styles on gold background */
+.gold-card {
+  background: rgba(255, 248, 220, 0.65);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(138, 109, 0, 0.2);
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+}
+
+.gold-card:hover {
+  border-color: rgba(138, 109, 0, 0.4);
+  box-shadow: 0 0 20px rgba(138, 109, 0, 0.1);
+}
+
+/* Input styles on gold */
+.gold-input {
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(138, 109, 0, 0.25);
+  border-radius: 0.75rem;
+  color: #1a1200;
+  transition: all 0.3s ease;
+}
+
+.gold-input::placeholder {
+  color: #8a7a40;
+}
+
+.gold-input:focus {
+  outline: none;
+  border-color: rgba(138, 109, 0, 0.5);
+  box-shadow: 0 0 15px rgba(138, 109, 0, 0.15);
+  background: rgba(255, 255, 255, 0.7);
+}
+
+/* Glow text for headings */
 .glow-text {
-  text-shadow: 0 0 20px rgba(255, 215, 0, 0.5), 0 0 40px rgba(255, 215, 0, 0.2);
+  text-shadow: 0 0 20px rgba(138, 109, 0, 0.4), 0 0 40px rgba(138, 109, 0, 0.2);
 }
 
-.glow-border {
-  box-shadow: 0 0 15px rgba(255, 215, 0, 0.2), inset 0 0 15px rgba(255, 215, 0, 0.05);
-}
-
-.glass {
-  background: rgba(13, 13, 43, 0.7);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+/* Glass for navbar over gradient */
+.glass-nav {
+  background: rgba(74, 4, 78, 0.6);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Leaflet custom styles */
@@ -60,36 +116,36 @@ body {
 
 /* Dark leaflet popup */
 .dark-popup .leaflet-popup-content-wrapper {
-  background: rgba(13, 13, 43, 0.95) !important;
-  color: #f0f0ff !important;
+  background: rgba(255, 248, 220, 0.95) !important;
+  color: #1a1200 !important;
   border-radius: 16px !important;
-  border: 1px solid rgba(255, 215, 0, 0.15) !important;
-  box-shadow: 0 0 30px rgba(255, 215, 0, 0.1) !important;
+  border: 1px solid rgba(138, 109, 0, 0.2) !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15) !important;
 }
 
 .dark-popup .leaflet-popup-tip {
-  background: rgba(13, 13, 43, 0.95) !important;
+  background: rgba(255, 248, 220, 0.95) !important;
   border: none !important;
 }
 
 .dark-popup .leaflet-popup-close-button {
-  color: #8888aa !important;
+  color: #8a6d00 !important;
 }
 
 .dark-popup .leaflet-popup-close-button:hover {
-  color: #ffd700 !important;
+  color: #1a1200 !important;
 }
 
 /* Leaflet zoom controls */
 .leaflet-control-zoom a {
-  background: rgba(13, 13, 43, 0.8) !important;
-  color: #f0f0ff !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  background: rgba(255, 248, 220, 0.9) !important;
+  color: #1a1200 !important;
+  border: 1px solid rgba(138, 109, 0, 0.2) !important;
 }
 
 .leaflet-control-zoom a:hover {
-  background: rgba(13, 13, 43, 0.95) !important;
-  color: #ffd700 !important;
+  background: rgba(255, 248, 220, 1) !important;
+  color: #8a6d00 !important;
 }
 
 /* Spinner animation */

@@ -20,12 +20,12 @@ export default function CosmicBackground() {
       background: { color: { value: "transparent" } },
       fpsLimit: 60,
       particles: {
-        color: { value: ["#ffd700", "#ffffff", "#8b5cf6"] },
+        color: { value: ["#ffd700", "#ffffff", "#c084fc", "#60a5fa"] },
         links: {
           color: "#ffd700",
           distance: 150,
           enable: true,
-          opacity: 0.08,
+          opacity: 0.06,
           width: 1,
         },
         move: {
@@ -37,15 +37,15 @@ export default function CosmicBackground() {
           outModes: { default: "bounce" as const },
         },
         number: {
-          value: typeof window !== "undefined" && window.innerWidth < 768 ? 20 : 40,
+          value: typeof window !== "undefined" && window.innerWidth < 768 ? 15 : 30,
           density: { enable: true },
         },
         opacity: {
-          value: { min: 0.2, max: 0.7 },
+          value: { min: 0.15, max: 0.5 },
           animation: { enable: true, speed: 0.5, sync: false },
         },
         size: {
-          value: { min: 1, max: 3 },
+          value: { min: 1, max: 2.5 },
         },
       },
       interactivity: {
@@ -53,7 +53,7 @@ export default function CosmicBackground() {
           onHover: { enable: true, mode: "grab" },
         },
         modes: {
-          grab: { distance: 140, links: { opacity: 0.2 } },
+          grab: { distance: 140, links: { opacity: 0.15 } },
         },
       },
       detectRetina: true,

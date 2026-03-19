@@ -43,7 +43,6 @@ export default function RightLightPage() {
 
   useEffect(() => {
     fetchPosts();
-    // Check if user has session
     fetch("/api/users")
       .then(() => setHasSession(true))
       .catch(() => {});
@@ -67,15 +66,15 @@ export default function RightLightPage() {
     <div className="min-h-screen px-4 py-8 sm:px-6">
       <div className="text-center mb-8">
         <h1
-          className="text-4xl sm:text-5xl font-bold tracking-wider mb-3"
+          className="text-4xl sm:text-5xl font-bold tracking-wider mb-3 text-[#1a1200]"
           style={{
             fontFamily: "var(--font-space)",
-            textShadow: "0 0 30px rgba(255,215,0,0.3)",
+            textShadow: "0 0 30px rgba(138,109,0,0.2)",
           }}
         >
           The Right Light
         </h1>
-        <p className="text-[#f0f0ff]/60 max-w-xl mx-auto">
+        <p className="text-[#4a3d00]/70 max-w-xl mx-auto">
           All posts set in the right light — scroll for variety, search by
           username, or browse by hashtag.
         </p>
@@ -97,7 +96,7 @@ export default function RightLightPage() {
             {loading && posts.length === 0 ? (
               <LoadingSpinner />
             ) : posts.length === 0 ? (
-              <div className="text-center py-12 text-[#8888aa]">
+              <div className="text-center py-12 text-[#8a7a40]">
                 <p className="text-lg mb-2">No posts yet</p>
                 <p className="text-sm">Be the first to share your light!</p>
               </div>
@@ -111,7 +110,7 @@ export default function RightLightPage() {
                     <button
                       onClick={loadMore}
                       disabled={loading}
-                      className="px-6 py-2 rounded-full border border-amber-500/30 text-amber-400 hover:bg-amber-500/10 transition-colors"
+                      className="px-6 py-2 rounded-full border border-[#8a6d00]/30 text-[#6b4f00] hover:bg-[#8a6d00]/10 transition-colors"
                     >
                       {loading ? "Loading..." : "Load More Light"}
                     </button>
@@ -125,9 +124,9 @@ export default function RightLightPage() {
             <div className="sticky top-24">
               <HashtagDirectory />
 
-              <div className="mt-6 rounded-2xl border border-white/10 bg-[#0d0d2b]/70 backdrop-blur-xl p-6">
-                <h3 className="text-amber-400 font-semibold mb-3 text-sm">Remember</h3>
-                <ul className="space-y-2 text-xs text-[#8888aa]">
+              <div className="mt-6 gold-card p-6">
+                <h3 className="text-[#6b4f00] font-semibold mb-3 text-sm">Remember</h3>
+                <ul className="space-y-2 text-xs text-[#8a7a40]">
                   <li>No capitalism whatsoever</li>
                   <li>Be nice — no bad actors</li>
                   <li>Unite and enlight — no doom and gloom</li>
