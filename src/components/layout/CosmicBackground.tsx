@@ -18,34 +18,34 @@ export default function CosmicBackground() {
     () => ({
       fullScreen: { enable: false },
       background: { color: { value: "transparent" } },
-      fpsLimit: 60,
+      fpsLimit: 30,
       particles: {
-        color: { value: ["#ffd700", "#ffffff", "#c084fc", "#60a5fa"] },
+        color: { value: ["#ffffff", "#ffd700"] },
         links: {
-          color: "#ffd700",
-          distance: 150,
+          color: "#ffffff",
+          distance: 200,
           enable: true,
-          opacity: 0.06,
+          opacity: 0.04,
           width: 1,
         },
         move: {
           enable: true,
-          speed: 0.3,
+          speed: 0.15,
           direction: "none" as const,
           random: true,
           straight: false,
           outModes: { default: "bounce" as const },
         },
         number: {
-          value: typeof window !== "undefined" && window.innerWidth < 768 ? 15 : 30,
+          value: typeof window !== "undefined" && window.innerWidth < 768 ? 8 : 18,
           density: { enable: true },
         },
         opacity: {
-          value: { min: 0.15, max: 0.5 },
-          animation: { enable: true, speed: 0.5, sync: false },
+          value: { min: 0.1, max: 0.35 },
+          animation: { enable: true, speed: 0.3, sync: false },
         },
         size: {
-          value: { min: 1, max: 2.5 },
+          value: { min: 1, max: 2 },
         },
       },
       interactivity: {
@@ -53,7 +53,7 @@ export default function CosmicBackground() {
           onHover: { enable: true, mode: "grab" },
         },
         modes: {
-          grab: { distance: 140, links: { opacity: 0.15 } },
+          grab: { distance: 120, links: { opacity: 0.08 } },
         },
       },
       detectRetina: true,

@@ -7,7 +7,7 @@ export default function LoadingSpinner() {
         {[...Array(8)].map((_, i) => (
           <div
             key={i}
-            className="absolute left-1/2 top-0 h-3 w-3 -translate-x-1/2 rounded-full bg-[#8a6d00]"
+            className="absolute left-1/2 top-0 h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-purple-700"
             style={{
               transform: `rotate(${i * 45}deg) translateY(16px)`,
               opacity: 1 - i * 0.1,

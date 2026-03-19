@@ -62,31 +62,31 @@ export default function WorldMap() {
                     <img
                       src={point.avatarUrl}
                       alt={point.displayName}
-                      className="w-12 h-12 rounded-full object-cover border border-[#8a6d00]/30"
+                      className="w-11 h-11 rounded-full object-cover border border-black/10"
                     />
                   ) : (
-                    <div className="w-12 h-12 rounded-full bg-[#8a6d00]/15 flex items-center justify-center text-black text-lg font-bold">
+                    <div className="w-11 h-11 rounded-full bg-purple-100 flex items-center justify-center text-purple-700 font-bold">
                       {point.displayName[0]?.toUpperCase()}
                     </div>
                   )}
                   <div>
-                    <h3 className="font-semibold text-black text-base">
+                    <h3 className="font-bold text-sm">
                       {point.displayName}
                     </h3>
-                    <p className="text-black text-xs">
+                    <p className="text-xs text-black/50">
                       {[point.city, point.country].filter(Boolean).join(", ")}
                     </p>
                   </div>
                 </div>
                 {point.bio && (
-                  <p className="text-black/70 text-sm leading-relaxed mb-2">
+                  <p className="text-sm leading-relaxed mb-2">
                     {point.bio}
                   </p>
                 )}
                 {point.contactInfo && (
-                  <div className="border-t border-white/10 pt-2 mt-2">
-                    <p className="text-xs text-black/80">Contact:</p>
-                    <p className="text-xs text-black/60 whitespace-pre-wrap">
+                  <div className="border-t border-black/8 pt-2 mt-2">
+                    <p className="text-xs font-semibold text-black/50 mb-0.5">Contact</p>
+                    <p className="text-xs whitespace-pre-wrap">
                       {point.contactInfo}
                     </p>
                   </div>

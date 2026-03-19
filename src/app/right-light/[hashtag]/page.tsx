@@ -32,27 +32,26 @@ export default function HashtagPage({
       <div className="content-panel max-w-4xl mx-auto">
         <Link
           href="/right-light"
-          className="inline-flex items-center gap-2 text-black hover:text-black transition-colors mb-6"
+          className="inline-flex items-center gap-2 text-purple-700 hover:text-purple-900 font-medium text-sm transition-colors mb-6"
         >
           <ArrowLeft className="w-4 h-4" /> Back to all posts
         </Link>
 
         <h1
-          className="text-3xl sm:text-4xl font-bold tracking-wider mb-2 text-black"
+          className="text-3xl sm:text-4xl font-bold tracking-wider mb-1"
           style={{ fontFamily: "var(--font-space)" }}
         >
           #{decodedHashtag}
         </h1>
-        <p className="text-black mb-8">
-          {posts.length} {posts.length === 1 ? "post" : "posts"} in the right
-          light
+        <p className="text-black/50 text-sm mb-8">
+          {posts.length} {posts.length === 1 ? "post" : "posts"} in the right light
         </p>
 
-        <div className="space-y-6">
+        <div className="space-y-5">
           {loading ? (
             <LoadingSpinner />
           ) : posts.length === 0 ? (
-            <p className="text-center text-black py-12">
+            <p className="text-center text-black/40 py-12">
               No posts with this hashtag yet.
             </p>
           ) : (

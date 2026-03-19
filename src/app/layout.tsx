@@ -3,6 +3,7 @@ import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import CosmicBackground from "@/components/layout/CosmicBackground";
+import Footer from "@/components/layout/Footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -38,10 +39,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
-      <body className="min-h-screen gradient-bg text-black font-[var(--font-inter)] antialiased">
+      <body className="min-h-screen gradient-bg font-[var(--font-inter)] antialiased">
         <CosmicBackground />
         <Navbar />
         <main className="relative z-10 pt-16">{children}</main>
+        <Footer />
       </body>
     </html>
   );

@@ -28,20 +28,20 @@ export default function PostCard({ post }: { post: PostWithUser }) {
           <img
             src={post.user.avatarUrl}
             alt={post.user.displayName}
-            className="w-10 h-10 rounded-full object-cover border border-[#8a6d00]/20"
+            className="w-10 h-10 rounded-full object-cover border border-black/10"
           />
         ) : (
-          <div className="w-10 h-10 rounded-full bg-[#8a6d00]/15 flex items-center justify-center text-black font-bold">
+          <div className="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center text-purple-700 font-bold text-sm">
             {post.user.displayName[0]?.toUpperCase()}
           </div>
         )}
         <div>
-          <p className="font-medium text-black">{post.user.displayName}</p>
-          <p className="text-xs text-black">{timeAgo(post.createdAt)}</p>
+          <p className="font-semibold text-sm">{post.user.displayName}</p>
+          <p className="text-xs text-black/40">{timeAgo(post.createdAt)}</p>
         </div>
       </div>
 
-      <div className="text-black leading-relaxed whitespace-pre-wrap mb-4">
+      <div className="leading-relaxed whitespace-pre-wrap mb-4">
         {post.content}
       </div>
 
@@ -53,14 +53,14 @@ export default function PostCard({ post }: { post: PostWithUser }) {
                 key={m.id}
                 src={m.url}
                 alt=""
-                className="rounded-xl w-full object-cover max-h-64 border border-[#8a6d00]/10"
+                className="rounded-lg w-full object-cover max-h-64 border border-black/5"
               />
             ) : (
               <video
                 key={m.id}
                 src={m.url}
                 controls
-                className="rounded-xl w-full max-h-64 border border-[#8a6d00]/10"
+                className="rounded-lg w-full max-h-64 border border-black/5"
               />
             )
           )}
@@ -68,12 +68,12 @@ export default function PostCard({ post }: { post: PostWithUser }) {
       )}
 
       {post.hashtags.length > 0 && (
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 pt-1">
           {post.hashtags.map(({ hashtag }) => (
             <Link
               key={hashtag.id}
               href={`/right-light/${encodeURIComponent(hashtag.name)}`}
-              className="text-xs px-3 py-1 rounded-full bg-[#8a6d00]/10 text-black hover:bg-[#8a6d00]/20 transition-colors"
+              className="text-xs px-3 py-1 rounded-full bg-purple-100 text-purple-700 font-medium hover:bg-purple-200 transition-colors"
             >
               #{hashtag.name}
             </Link>

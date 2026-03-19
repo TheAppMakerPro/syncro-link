@@ -86,25 +86,25 @@ export default function RegistrationForm() {
   return (
     <div className="max-w-2xl mx-auto">
       {/* Step indicator */}
-      <div className="flex items-center justify-center gap-2 mb-10">
+      <div className="flex items-center justify-center gap-3 mb-8">
         {steps.map((label, i) => (
-          <div key={label} className="flex items-center gap-2">
+          <div key={label} className="flex items-center gap-3">
             <button
               onClick={() => i < step && setStep(i)}
-              className={`flex items-center justify-center w-8 h-8 rounded-full text-sm font-semibold transition-all ${
+              className={`flex items-center justify-center w-10 h-10 rounded-full text-sm font-bold transition-all ${
                 i === step
-                  ? "bg-purple-700 text-white shadow-[0_0_20px_rgba(126,34,206,0.3)]"
+                  ? "bg-purple-700 text-white shadow-lg shadow-purple-700/30"
                   : i < step
-                  ? "bg-purple-700/30 text-purple-800 cursor-pointer"
-                  : "bg-[#8a6d00]/10 text-black"
+                  ? "bg-purple-200 text-purple-800 cursor-pointer hover:bg-purple-300"
+                  : "bg-black/5 text-black/30"
               }`}
             >
               {i + 1}
             </button>
             {i < steps.length - 1 && (
               <div
-                className={`hidden sm:block w-12 h-0.5 ${
-                  i < step ? "bg-amber-500/30" : "bg-white/10"
+                className={`hidden sm:block w-10 h-0.5 rounded-full ${
+                  i < step ? "bg-purple-400" : "bg-black/10"
                 }`}
               />
             )}
@@ -112,10 +112,10 @@ export default function RegistrationForm() {
         ))}
       </div>
 
-      <p className="text-center text-sm text-black mb-6">{steps[step]}</p>
+      <p className="text-center text-sm font-semibold text-black/60 mb-6">{steps[step]}</p>
 
       {error && (
-        <div className="mb-6 rounded-xl border border-red-600/30 bg-red-100/50 px-4 py-3 text-red-700 text-sm">
+        <div className="mb-6 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-red-700 text-sm font-medium">
           {error}
         </div>
       )}
@@ -234,8 +234,8 @@ export default function RegistrationForm() {
                     </button>
                   </div>
                 ) : (
-                  <label className="cursor-pointer flex flex-col items-center gap-3 rounded-2xl border-2 border-dashed border-white/20 p-10 hover:border-[#8a6d00]/40 transition-colors w-full max-w-sm">
-                    <div className="w-20 h-20 rounded-full bg-[#8a6d00]/10 flex items-center justify-center">
+                  <label className="cursor-pointer flex flex-col items-center gap-3 rounded-2xl border-2 border-dashed border-black/15 p-10 hover:border-purple-500/40 hover:bg-purple-50/30 transition-colors w-full max-w-sm">
+                    <div className="w-20 h-20 rounded-full bg-purple-100 flex items-center justify-center">
                       <Sparkles className="w-8 h-8 text-black" />
                     </div>
                     <span className="text-black text-sm">Click to upload image</span>
@@ -254,7 +254,7 @@ export default function RegistrationForm() {
 
           {step === 3 && (
             <>
-              <div className="rounded-2xl border border-[#8a6d00]/20 bg-[#8a6d00]/5 p-4 mb-4">
+              <div className="rounded-xl border border-purple-200 bg-purple-50/50 p-4 mb-4">
                 <p className="text-black text-sm leading-relaxed">
                   You must make at least one positive post to the RIGHT LIGHT in
                   order to show up on the Syncro-Link index world grid map. NO
@@ -282,7 +282,7 @@ export default function RegistrationForm() {
         <button
           onClick={() => setStep((s) => s - 1)}
           disabled={step === 0}
-          className="flex items-center gap-2 px-6 py-2 rounded-full text-black hover:text-black transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+          className="flex items-center gap-2 px-6 py-2.5 rounded-full text-black/60 hover:text-black transition-colors disabled:opacity-20 disabled:cursor-not-allowed font-medium"
         >
           <ChevronLeft className="w-4 h-4" /> Back
         </button>
@@ -291,7 +291,7 @@ export default function RegistrationForm() {
           <button
             onClick={() => setStep((s) => s + 1)}
             disabled={!canProceed()}
-            className="flex items-center gap-2 px-6 py-2 rounded-full bg-[#8a6d00]/10 text-black hover:bg-[#8a6d00]/20 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+            className="flex items-center gap-2 px-6 py-2.5 rounded-full bg-purple-700 text-white font-semibold hover:bg-purple-600 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
           >
             Next <ChevronRight className="w-4 h-4" />
           </button>

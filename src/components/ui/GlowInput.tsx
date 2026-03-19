@@ -6,9 +6,9 @@ interface GlowInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 
 export default function GlowInput({ label, className = "", ...props }: GlowInputProps) {
   return (
-    <div className="space-y-2">
+    <div className="space-y-1.5">
       {label && (
-        <label className="block text-sm font-medium text-black">{label}</label>
+        <label className="block text-sm font-semibold">{label}</label>
       )}
       <input
         {...props}
@@ -24,9 +24,9 @@ export function GlowTextarea({
   ...props
 }: { label?: string } & React.TextareaHTMLAttributes<HTMLTextAreaElement>) {
   return (
-    <div className="space-y-2">
+    <div className="space-y-1.5">
       {label && (
-        <label className="block text-sm font-medium text-black">{label}</label>
+        <label className="block text-sm font-semibold">{label}</label>
       )}
       <textarea
         {...props}
