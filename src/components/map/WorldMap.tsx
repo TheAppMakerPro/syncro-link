@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup, ZoomControl } from "react-leaflet";
 import L from "leaflet";
 import type { MapPoint } from "@/types";
-import "leaflet/dist/leaflet.css";
 
 function createGlowIcon() {
   return L.divIcon({
