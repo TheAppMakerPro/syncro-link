@@ -1,4 +1,6 @@
-import { put } from "@vercel/blob";
+import { writeFile, mkdir } from "fs/promises";
+import path from "path";
+import crypto from "crypto";
 
 const ALLOWED_IMAGE_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif"];
 const ALLOWED_VIDEO_TYPES = ["video/mp4", "video/webm"];
@@ -8,7 +10,7 @@ const MAX_VIDEO_SIZE = 50 * 1024 * 1024; // 50MB
 export async function saveUploadedFile(
   file: File,
   subdir: "avatars" | "posts"
-): Promise<{ url: string; type: "image" | "video" }> {
+): Promise<{ url: string; type: "image" | "video" } | null> {
   const isImage = ALLOWED_IMAGE_TYPES.includes(file.type);
   const isVideo = ALLOWED_VIDEO_TYPES.includes(file.type);
 
@@ -25,15 +27,34 @@ export async function saveUploadedFile(
   }
 
   const ext = file.name.split(".").pop() || (isImage ? "jpg" : "mp4");
-  const filename = `${subdir}/${crypto.randomUUID()}.${ext}`;
+  const filename = `${crypto.randomUUID()}.${ext}`;
 
-  const blob = await put(filename, file, {
-    access: "public",
-    addRandomSuffix: false,
-  });
+  // Use Vercel Blob when token is available
+  if (process.env.BLOB_READ_WRITE_TOKEN) {
+    const { put } = await import("@vercel/blob");
+    const blobPath = `${subdir}/${filename}`;
+    const blob = await put(blobPath, file, {
+      access: "public",
+      addRandomSuffix: false,
+    });
+    return { url: blob.url, type: isImage ? "image" : "video" };
+  }
 
-  return {
-    url: blob.url,
-    type: isImage ? "image" : "video",
-  };
+  // Local filesystem (dev only — Vercel is read-only)
+  try {
+    const uploadDir = path.join(process.cwd(), "public", "uploads", subdir);
+    await mkdir(uploadDir, { recursive: true });
+
+    const buffer = Buffer.from(await file.arrayBuffer());
+    const filePath = path.join(uploadDir, filename);
+    await writeFile(filePath, buffer);
+
+    return {
+      url: `/uploads/${subdir}/${filename}`,
+      type: isImage ? "image" : "video",
+    };
+  } catch {
+    // On Vercel without Blob token, filesystem is read-only — skip upload
+    return null;
+  }
 }

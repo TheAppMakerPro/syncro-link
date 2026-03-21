@@ -2,8 +2,9 @@ import "dotenv/config";
 import path from "node:path";
 import { defineConfig } from "prisma/config";
 
-// Prisma migrate needs https:// not libsql://
-const dbUrl = process.env["TURSO_DATABASE_URL"]?.replace("libsql://", "https://");
+const dbUrl = process.env["TURSO_DATABASE_URL"]!;
+// Prisma's datasource validator needs file: for SQLite; the adapter handles the real connection at runtime
+const datasourceUrl = dbUrl.startsWith("libsql://") ? "file:placeholder.db" : dbUrl;
 
 export default defineConfig({
   schema: path.join("prisma", "schema.prisma"),
@@ -11,6 +12,6 @@ export default defineConfig({
     path: path.join("prisma", "migrations"),
   },
   datasource: {
-    url: dbUrl,
+    url: datasourceUrl,
   },
 });

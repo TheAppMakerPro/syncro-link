@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { extractHashtags } from "@/lib/hashtags";
 import { saveUploadedFile } from "@/lib/upload";
-import { createSession } from "@/lib/auth";
+import { createSessionToken, setSessionCookie } from "@/lib/auth";
 
 export async function POST(request: NextRequest) {
   try {
@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
     let avatarUrl: string | null = null;
     if (avatar && avatar.size > 0) {
       const result = await saveUploadedFile(avatar, "avatars");
-      avatarUrl = result.url;
+      if (result) avatarUrl = result.url;
     }
 
     // Create user
@@ -77,19 +77,23 @@ export async function POST(request: NextRequest) {
     for (const file of mediaFiles) {
       if (file.size > 0) {
         const result = await saveUploadedFile(file, "posts");
-        await prisma.media.create({
-          data: { url: result.url, type: result.type, postId: post.id, userId: user.id },
-        });
+        if (result) {
+          await prisma.media.create({
+            data: { url: result.url, type: result.type, postId: post.id, userId: user.id },
+          });
+        }
       }
     }
 
-    await createSession(user.id);
-
-    return NextResponse.json({ user, post }, { status: 201 });
+    const token = await createSessionToken(user.id);
+    const response = NextResponse.json({ user, post }, { status: 201 });
+    setSessionCookie(response, token);
+    return response;
   } catch (error) {
     console.error("Registration error:", error);
+    const message = error instanceof Error ? error.message : "Unknown error";
     return NextResponse.json(
-      { error: "Registration failed" },
+      { error: `Registration failed: ${message}` },
       { status: 500 }
     );
   }

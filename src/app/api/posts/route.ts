@@ -97,9 +97,11 @@ export async function POST(request: NextRequest) {
     for (const file of mediaFiles) {
       if (file.size > 0) {
         const result = await saveUploadedFile(file, "posts");
-        await prisma.media.create({
-          data: { url: result.url, type: result.type, postId: post.id, userId: sessionUserId },
-        });
+        if (result) {
+          await prisma.media.create({
+            data: { url: result.url, type: result.type, postId: post.id, userId: sessionUserId },
+          });
+        }
       }
     }
 

@@ -11,6 +11,9 @@ export async function POST(request: NextRequest) {
     }
 
     const result = await saveUploadedFile(file, "posts");
+    if (!result) {
+      return NextResponse.json({ error: "File storage not configured" }, { status: 503 });
+    }
     return NextResponse.json(result, { status: 201 });
   } catch (error) {
     const message = error instanceof Error ? error.message : "Upload failed";

@@ -14,6 +14,116 @@ function createGlowIcon() {
   });
 }
 
+/**
+ * Turn emails, phone numbers, and URLs in text into clickable links.
+ */
+function linkify(text: string) {
+  // Match emails, phone numbers (various formats), and URLs
+  const pattern = /(https?:\/\/[^\s]+)|([a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,})|(\+?1?[\s.-]?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4})/g;
+
+  const parts: (string | { type: "email" | "phone" | "url"; value: string })[] = [];
+  let lastIndex = 0;
+  let match;
+
+  while ((match = pattern.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      parts.push(text.slice(lastIndex, match.index));
+    }
+    if (match[1]) {
+      parts.push({ type: "url", value: match[1] });
+    } else if (match[2]) {
+      parts.push({ type: "email", value: match[2] });
+    } else if (match[3]) {
+      parts.push({ type: "phone", value: match[3] });
+    }
+    lastIndex = match.index + match[0].length;
+  }
+
+  if (lastIndex < text.length) {
+    parts.push(text.slice(lastIndex));
+  }
+
+  return parts.map((part, i) => {
+    if (typeof part === "string") return part;
+    if (part.type === "email") {
+      return (
+        <a key={i} href={`mailto:${part.value}`} className="text-purple-600 underline hover:text-purple-800">
+          {part.value}
+        </a>
+      );
+    }
+    if (part.type === "phone") {
+      const digits = part.value.replace(/\D/g, "");
+      return (
+        <a key={i} href={`sms:${digits}`} className="text-purple-600 underline hover:text-purple-800">
+          {part.value}
+        </a>
+      );
+    }
+    // url
+    return (
+      <a key={i} href={part.value} target="_blank" rel="noopener noreferrer" className="text-purple-600 underline hover:text-purple-800">
+        {part.value}
+      </a>
+    );
+  });
+}
+
+const BIO_PREVIEW_LENGTH = 150;
+
+function PointPopup({ point }: { point: MapPoint }) {
+  const [expanded, setExpanded] = useState(false);
+  const bioIsLong = point.bio.length > BIO_PREVIEW_LENGTH;
+  const displayBio = expanded || !bioIsLong
+    ? point.bio
+    : point.bio.slice(0, BIO_PREVIEW_LENGTH) + "...";
+
+  return (
+    <div className="p-1">
+      <div className="flex items-center gap-3 mb-3">
+        {point.avatarUrl ? (
+          <img
+            src={point.avatarUrl}
+            alt={point.displayName}
+            className="w-11 h-11 rounded-full object-cover border border-black/10"
+          />
+        ) : (
+          <div className="w-11 h-11 rounded-full bg-purple-100 flex items-center justify-center text-purple-700 font-bold">
+            {point.displayName[0]?.toUpperCase()}
+          </div>
+        )}
+        <div>
+          <h3 className="font-bold text-sm">{point.displayName}</h3>
+          <p className="text-xs text-black/50">
+            {[point.city, point.country].filter(Boolean).join(", ")}
+          </p>
+        </div>
+      </div>
+      {point.bio && (
+        <div className="text-sm leading-relaxed mb-2">
+          <span className="whitespace-pre-wrap">{linkify(displayBio)}</span>
+          {bioIsLong && (
+            <button
+              onClick={() => setExpanded(!expanded)}
+              className="ml-1 text-purple-600 hover:text-purple-800 font-medium text-xs"
+            >
+              {expanded ? "show less" : "read more"}
+            </button>
+          )}
+        </div>
+      )}
+      {point.contactInfo && (
+        <div className="border-t border-black/8 pt-2 mt-2">
+          <p className="text-xs font-semibold text-black/50 mb-0.5">Contact</p>
+          <p className="text-xs whitespace-pre-wrap">
+            {linkify(point.contactInfo)}
+          </p>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function WorldMap() {
   const [points, setPoints] = useState<MapPoint[]>([]);
   const [loading, setLoading] = useState(true);
@@ -56,42 +166,7 @@ export default function WorldMap() {
             icon={createGlowIcon()}
           >
             <Popup className="dark-popup" maxWidth={320}>
-              <div className="p-1">
-                <div className="flex items-center gap-3 mb-3">
-                  {point.avatarUrl ? (
-                    <img
-                      src={point.avatarUrl}
-                      alt={point.displayName}
-                      className="w-11 h-11 rounded-full object-cover border border-black/10"
-                    />
-                  ) : (
-                    <div className="w-11 h-11 rounded-full bg-purple-100 flex items-center justify-center text-purple-700 font-bold">
-                      {point.displayName[0]?.toUpperCase()}
-                    </div>
-                  )}
-                  <div>
-                    <h3 className="font-bold text-sm">
-                      {point.displayName}
-                    </h3>
-                    <p className="text-xs text-black/50">
-                      {[point.city, point.country].filter(Boolean).join(", ")}
-                    </p>
-                  </div>
-                </div>
-                {point.bio && (
-                  <p className="text-sm leading-relaxed mb-2">
-                    {point.bio}
-                  </p>
-                )}
-                {point.contactInfo && (
-                  <div className="border-t border-black/8 pt-2 mt-2">
-                    <p className="text-xs font-semibold text-black/50 mb-0.5">Contact</p>
-                    <p className="text-xs whitespace-pre-wrap">
-                      {point.contactInfo}
-                    </p>
-                  </div>
-                )}
-              </div>
+              <PointPopup point={point} />
             </Popup>
           </Marker>
         ))}
