@@ -146,6 +146,7 @@ export default function WorldMap() {
   const [loading, setLoading] = useState(true);
   const [selectedPoint, setSelectedPoint] = useState<MapPoint | null>(null);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const [searchQuery, setSearchQuery] = useState("");
   const containerRef = useRef<HTMLDivElement>(null);
   const globeRef = useRef<GlobeMethods | undefined>(undefined);
 
@@ -240,6 +241,29 @@ export default function WorldMap() {
     }
   }, []);
 
+  const flyToPoint = useCallback((point: MapPoint) => {
+    setSelectedPoint(point);
+    const globe = globeRef.current;
+    if (globe) {
+      globe.pointOfView({ lat: point.latitude, lng: point.longitude, altitude: 1.8 }, 800);
+      const controls = globe.controls();
+      if (controls) controls.autoRotate = false;
+    }
+    // Scroll the globe into view
+    containerRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+  }, []);
+
+  const filteredPoints = useMemo(() => {
+    if (!searchQuery.trim()) return points;
+    const q = searchQuery.toLowerCase();
+    return points.filter(
+      (p) =>
+        p.displayName.toLowerCase().includes(q) ||
+        p.city.toLowerCase().includes(q) ||
+        p.country.toLowerCase().includes(q)
+    );
+  }, [points, searchQuery]);
+
   const pointLabel = useCallback(
     (d: object) => {
       const p = d as MapPoint;
@@ -264,56 +288,118 @@ export default function WorldMap() {
   const bumpImageUrl = "https://unpkg.com/three-globe/example/img/earth-topology.png";
 
   return (
-    <div
-      ref={containerRef}
-      className="relative w-full h-full rounded-2xl border border-white/10 shadow-[0_0_40px_rgba(100,100,255,0.08)]"
-      style={{ background: "radial-gradient(ellipse at center, #0a0a2e 0%, #000000 100%)" }}
-    >
-      {loading && (
-        <div className="absolute inset-0 z-[1000] flex items-center justify-center">
-          <div className="text-white/60 animate-pulse font-bold">
-            Loading the Grid...
+    <>
+      {/* Globe */}
+      <div
+        ref={containerRef}
+        className="relative w-full rounded-2xl border border-white/10 shadow-[0_0_40px_rgba(100,100,255,0.08)]"
+        style={{ background: "radial-gradient(ellipse at center, #0a0a2e 0%, #000000 100%)", height: "calc(100vh - 300px)", minHeight: "500px" }}
+      >
+        {loading && (
+          <div className="absolute inset-0 z-[1000] flex items-center justify-center">
+            <div className="text-white/60 animate-pulse font-bold">
+              Loading the Grid...
+            </div>
           </div>
+        )}
+
+        {dimensions.width > 0 && (
+          <Globe
+            ref={globeRef as React.MutableRefObject<GlobeMethods | undefined>}
+            width={dimensions.width}
+            height={dimensions.height}
+            globeImageUrl={globeImageUrl}
+            bumpImageUrl={bumpImageUrl}
+            backgroundColor="rgba(0,0,0,0)"
+            atmosphereColor="#6366f1"
+            atmosphereAltitude={0.25}
+            pointsData={points}
+            pointLat={pointLat}
+            pointLng={pointLng}
+            pointColor={pointColor}
+            pointAltitude={pointAltitude}
+            pointRadius={pointRadius}
+            pointLabel={pointLabel}
+            onPointClick={handlePointClick}
+            animateIn={true}
+          />
+        )}
+
+        {/* Point count overlay */}
+        <div className="absolute top-4 left-4 z-[1000] bg-black/60 backdrop-blur-sm rounded-full px-4 py-2 text-sm border border-white/10">
+          <span className="text-white font-bold">{points.length}</span>
+          <span className="text-white/60 ml-1">
+            {points.length === 1 ? "point of light" : "points of light"}
+          </span>
         </div>
-      )}
 
-      {dimensions.width > 0 && (
-        <Globe
-          ref={globeRef as React.MutableRefObject<GlobeMethods | undefined>}
-          width={dimensions.width}
-          height={dimensions.height}
-          globeImageUrl={globeImageUrl}
-          bumpImageUrl={bumpImageUrl}
-          backgroundColor="rgba(0,0,0,0)"
-          atmosphereColor="#6366f1"
-          atmosphereAltitude={0.25}
-          pointsData={points}
-          pointLat={pointLat}
-          pointLng={pointLng}
-          pointColor={pointColor}
-          pointAltitude={pointAltitude}
-          pointRadius={pointRadius}
-          pointLabel={pointLabel}
-          onPointClick={handlePointClick}
-          animateIn={true}
-        />
-      )}
-
-      {/* Point count overlay */}
-      <div className="absolute top-4 left-4 z-[1000] bg-black/60 backdrop-blur-sm rounded-full px-4 py-2 text-sm border border-white/10">
-        <span className="text-white font-bold">{points.length}</span>
-        <span className="text-white/60 ml-1">
-          {points.length === 1 ? "point of light" : "points of light"}
-        </span>
+        {/* Selected point detail panel */}
+        {selectedPoint && (
+          <PointPanel
+            point={selectedPoint}
+            onClose={() => setSelectedPoint(null)}
+          />
+        )}
       </div>
 
-      {/* Selected point detail panel */}
-      {selectedPoint && (
-        <PointPanel
-          point={selectedPoint}
-          onClose={() => setSelectedPoint(null)}
-        />
+      {/* Directory list */}
+      {points.length > 0 && (
+        <div className="mt-6">
+          <div className="flex items-center justify-between mb-4 gap-4">
+            <h2 className="text-lg font-bold text-white tracking-wide" style={{ fontFamily: "var(--font-space)" }}>
+              Directory
+            </h2>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search by name or location..."
+              className="bg-white/5 border border-white/10 rounded-full px-4 py-1.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-white/25 w-full max-w-xs"
+            />
+          </div>
+          <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+            {filteredPoints.map((point) => (
+              <button
+                key={point.id}
+                onClick={() => flyToPoint(point)}
+                className={`flex items-center gap-3 px-4 py-3 rounded-xl text-left transition-all
+                  ${selectedPoint?.id === point.id
+                    ? "bg-white/10 border border-white/20"
+                    : "bg-white/[0.03] border border-white/5 hover:bg-white/[0.07] hover:border-white/15"
+                  }`}
+              >
+                <div
+                  className="w-3 h-3 rounded-full shrink-0 shadow-[0_0_8px_2px]"
+                  style={{
+                    backgroundColor: point.markerColor || "#ff4500",
+                    boxShadow: `0 0 8px 2px ${point.markerColor || "#ff4500"}66`,
+                  }}
+                />
+                {point.avatarUrl ? (
+                  <img
+                    src={point.avatarUrl}
+                    alt=""
+                    className="w-8 h-8 rounded-full object-cover border border-white/10 shrink-0"
+                  />
+                ) : (
+                  <div className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-300 font-bold text-xs shrink-0">
+                    {point.displayName[0]?.toUpperCase()}
+                  </div>
+                )}
+                <div className="min-w-0">
+                  <p className="text-sm font-medium text-white truncate">{point.displayName}</p>
+                  <p className="text-xs text-white/40 truncate">
+                    {[point.city, point.country].filter(Boolean).join(", ")}
+                  </p>
+                </div>
+              </button>
+            ))}
+          </div>
+          {searchQuery && filteredPoints.length === 0 && (
+            <p className="text-center text-white/30 text-sm py-6">No matches found</p>
+          )}
+        </div>
       )}
-    </div>
+    </>
   );
 }

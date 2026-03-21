@@ -27,9 +27,7 @@ export default function WorldGridPage() {
             Go ahead and click on your own light and see how you shine.
           </p>
         </div>
-        <div className="h-[calc(100vh-300px)] min-h-[500px]">
-          <WorldMap />
-        </div>
+        <WorldMap />
       </div>
     </div>
   );
