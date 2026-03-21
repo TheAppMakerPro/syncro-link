@@ -26,7 +26,7 @@ export default function ManifestoText() {
   return (
     <div className="max-w-3xl mx-auto py-8 space-y-8">
       <RevealSection>
-        <p className="text-xs uppercase tracking-[0.3em] text-black/50 text-center mb-6 font-semibold">
+        <p className="text-xs uppercase tracking-[0.3em] text-white/50 text-center mb-6 font-semibold">
           Message to All
         </p>
         <p className="text-lg leading-relaxed">
@@ -196,8 +196,8 @@ export default function ManifestoText() {
           The 3 Rules of the Network
         </h2>
         <div className="space-y-4">
-          <div className="rounded-xl border border-purple-500/25 bg-purple-500/8 p-5">
-            <p className="font-bold text-purple-900 mb-1">1. No Capitalism Whatsoever</p>
+          <div className="rounded-xl border border-purple-400/30 bg-purple-500/15 p-5">
+            <p className="font-bold text-purple-300 mb-1">1. No Capitalism Whatsoever</p>
             <p className="leading-relaxed">
               Not even the faintest glimmer of monetizing spirituality or anything
               else. No selling, no pitching, no scheduling, no hocking of thyne
@@ -206,19 +206,19 @@ export default function ManifestoText() {
               the RIGHT LIGHT section with no strings attached.
             </p>
           </div>
-          <div className="rounded-xl border border-indigo-500/25 bg-indigo-500/8 p-5">
-            <p className="font-bold text-indigo-900 mb-1">2. Be Nice</p>
+          <div className="rounded-xl border border-indigo-400/30 bg-indigo-500/15 p-5">
+            <p className="font-bold text-indigo-300 mb-1">2. Be Nice</p>
             <p className="leading-relaxed">No bad actors.</p>
           </div>
-          <div className="rounded-xl border border-emerald-500/25 bg-emerald-500/8 p-5">
-            <p className="font-bold text-emerald-900 mb-1">3. Unite and Enlight</p>
+          <div className="rounded-xl border border-emerald-400/30 bg-emerald-500/15 p-5">
+            <p className="font-bold text-emerald-300 mb-1">3. Unite and Enlight</p>
             <p className="leading-relaxed">No doom and gloom.</p>
           </div>
         </div>
       </RevealSection>
 
       <RevealSection>
-        <p className="text-xs text-black/40 leading-relaxed text-center">
+        <p className="text-xs text-white/40 leading-relaxed text-center">
           * Any offer using the name or branding of &apos;Syncro-Link&apos; is
           explicitly NOT condoned by the network. The incessant scarcity driven
           greed grab has no footing here. There is no Syncro-Link.com.
@@ -248,7 +248,7 @@ export default function ManifestoText() {
           <p className="text-xl font-medium italic">
             Love, light, peace and ringing ears for All! Let &apos;em ring!
           </p>
-          <p className="text-black/40 text-sm">— Chris</p>
+          <p className="text-white/40 text-sm">— Chris</p>
         </div>
       </RevealSection>
 

@@ -15,7 +15,7 @@ export default function RegistryPage() {
           >
             Syncro-Link Index Registry
           </h1>
-          <p className="text-black/60 max-w-xl mx-auto">
+          <p className="text-white/60 max-w-xl mx-auto">
             Register yourself as a point of light on the world grid. We only ask
             four things of you.
           </p>

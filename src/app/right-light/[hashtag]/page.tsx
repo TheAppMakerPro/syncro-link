@@ -43,7 +43,7 @@ export default function HashtagPage({
         >
           #{decodedHashtag}
         </h1>
-        <p className="text-black/50 text-sm mb-8">
+        <p className="text-white/50 text-sm mb-8">
           {posts.length} {posts.length === 1 ? "post" : "posts"} in the right light
         </p>
 
@@ -51,7 +51,7 @@ export default function HashtagPage({
           {loading ? (
             <LoadingSpinner />
           ) : posts.length === 0 ? (
-            <p className="text-center text-black/40 py-12">
+            <p className="text-center text-white/40 py-12">
               No posts with this hashtag yet.
             </p>
           ) : (

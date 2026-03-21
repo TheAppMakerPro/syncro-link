@@ -72,7 +72,7 @@ export default function RightLightPage() {
           >
             The Right Light
           </h1>
-          <p className="text-black/60 max-w-xl mx-auto">
+          <p className="text-white/60 max-w-xl mx-auto">
             All posts set in the right light — scroll for variety, search by
             username, or browse by hashtag.
           </p>
@@ -94,7 +94,7 @@ export default function RightLightPage() {
               {loading && posts.length === 0 ? (
                 <LoadingSpinner />
               ) : posts.length === 0 ? (
-                <div className="text-center py-12 text-black/40">
+                <div className="text-center py-12 text-white/40">
                   <p className="text-lg font-medium mb-1">No posts yet</p>
                   <p className="text-sm">Be the first to share your light!</p>
                 </div>
@@ -124,7 +124,7 @@ export default function RightLightPage() {
 
                 <div className="gold-card p-5">
                   <h3 className="font-bold text-sm mb-2">The 3 Rules</h3>
-                  <ul className="space-y-1.5 text-xs text-black/60">
+                  <ul className="space-y-1.5 text-xs text-white/60">
                     <li>1. No capitalism whatsoever</li>
                     <li>2. Be nice — no bad actors</li>
                     <li>3. Unite and enlight — no doom and gloom</li>

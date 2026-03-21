@@ -215,7 +215,7 @@ export default function RegistrationForm() {
   if (checking) {
     return (
       <div className="max-w-2xl mx-auto text-center py-12">
-        <div className="text-black/60 animate-pulse font-medium">Loading...</div>
+        <div className="text-white/60 animate-pulse font-medium">Loading...</div>
       </div>
     );
   }
@@ -243,7 +243,7 @@ export default function RegistrationForm() {
                   ? "bg-purple-700 text-white shadow-lg shadow-purple-700/30"
                   : i < step
                   ? "bg-purple-200 text-purple-800 cursor-pointer hover:bg-purple-300"
-                  : "bg-black/5 text-black/30"
+                  : "bg-white/5 text-white/30"
               }`}
             >
               {i + 1}
@@ -259,7 +259,7 @@ export default function RegistrationForm() {
         ))}
       </div>
 
-      <p className="text-center text-sm font-semibold text-black/60 mb-6">{steps[step]}</p>
+      <p className="text-center text-sm font-semibold text-white/60 mb-6">{steps[step]}</p>
 
       {error && (
         <div className="mb-6 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-red-700 text-sm font-medium">
@@ -284,7 +284,7 @@ export default function RegistrationForm() {
         >
           {step === 0 && (
             <>
-              <p className="text-black text-sm leading-relaxed">
+              <p className="text-white/90 text-sm leading-relaxed">
                 {isEditing
                   ? "Update your identity and location details below."
                   : "We only ask four things of you. We don\u0027t particularly need or want your actual legal name or physical address. If you want to give that, fine. But we\u0027re not asking for it."}
@@ -342,7 +342,7 @@ export default function RegistrationForm() {
                     onChange={(e) => update("longitude", e.target.value)}
                   />
                 </div>
-                <p className="text-xs text-black">
+                <p className="text-xs text-white/60">
                   Use the auto-detect button above, or enter coordinates manually
                   from Google Earth to show up precisely on the World Grid map.
                 </p>
@@ -365,7 +365,7 @@ export default function RegistrationForm() {
                 onChange={(e) => update("bio", e.target.value)}
                 className="min-h-[180px]"
               />
-              <p className="text-xs text-black">
+              <p className="text-xs text-white/60">
                 Everything goes but capitalism. Please always respect the three
                 sovereign rules of Syncro-Link. No Capitalism. No Bad Actors. No
                 Doom and Gloom.
@@ -375,7 +375,7 @@ export default function RegistrationForm() {
 
           {step === 2 && (
             <>
-              <p className="text-black text-sm">
+              <p className="text-white/90 text-sm">
                 {isEditing
                   ? "Update your profile image."
                   : "Upload a profile image that represents your light. This is optional but helps others connect with you."}
@@ -400,12 +400,12 @@ export default function RegistrationForm() {
                     </button>
                   </div>
                 ) : (
-                  <label className="cursor-pointer flex flex-col items-center gap-3 rounded-2xl border-2 border-dashed border-black/15 p-10 hover:border-purple-500/40 hover:bg-purple-50/30 transition-colors w-full max-w-sm">
+                  <label className="cursor-pointer flex flex-col items-center gap-3 rounded-2xl border-2 border-dashed border-white/20 p-10 hover:border-purple-500/40 hover:bg-purple-50/30 transition-colors w-full max-w-sm">
                     <div className="w-20 h-20 rounded-full bg-purple-100 flex items-center justify-center">
-                      <Sparkles className="w-8 h-8 text-black" />
+                      <Sparkles className="w-8 h-8 text-white/90" />
                     </div>
-                    <span className="text-black text-sm">Click to upload image</span>
-                    <span className="text-black text-xs">JPG, PNG, WebP, GIF — up to 10MB</span>
+                    <span className="text-white/90 text-sm">Click to upload image</span>
+                    <span className="text-white/90 text-xs">JPG, PNG, WebP, GIF — up to 10MB</span>
                     <input
                       type="file"
                       accept="image/*"
@@ -421,7 +421,7 @@ export default function RegistrationForm() {
           {!isEditing && step === 3 && (
             <>
               <div className="rounded-xl border border-purple-200 bg-purple-50/50 p-4 mb-4">
-                <p className="text-black text-sm leading-relaxed">
+                <p className="text-white/90 text-sm leading-relaxed">
                   You must make at least one positive post to the RIGHT LIGHT in
                   order to show up on the Syncro-Link index world grid map. NO
                   MATTER HOW SIMPLE OR ELABORATE.
@@ -434,7 +434,7 @@ export default function RegistrationForm() {
                 onChange={(e) => update("firstPostContent", e.target.value)}
                 className="min-h-[200px]"
               />
-              <p className="text-xs text-black">
+              <p className="text-xs text-white/60">
                 Use #hashtags so others can find your post by topic. Keep it light
                 filled and joyful!
               </p>
@@ -448,7 +448,7 @@ export default function RegistrationForm() {
         <button
           onClick={() => setStep((s) => s - 1)}
           disabled={step === 0}
-          className="flex items-center gap-2 px-6 py-2.5 rounded-full text-black/60 hover:text-black transition-colors disabled:opacity-20 disabled:cursor-not-allowed font-medium"
+          className="flex items-center gap-2 px-6 py-2.5 rounded-full text-white/60 hover:text-white/90 transition-colors disabled:opacity-20 disabled:cursor-not-allowed font-medium"
         >
           <ChevronLeft className="w-4 h-4" /> Back
         </button>
@@ -509,7 +509,7 @@ export default function RegistrationForm() {
                 <button
                   type="button"
                   onClick={() => setConfirmDelete(false)}
-                  className="px-5 py-2 rounded-full text-sm font-medium text-black/60 hover:text-black transition-colors"
+                  className="px-5 py-2 rounded-full text-sm font-medium text-white/60 hover:text-white/90 transition-colors"
                 >
                   Cancel
                 </button>

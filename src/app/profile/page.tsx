@@ -149,7 +149,7 @@ export default function ProfilePage() {
   if (!profile) {
     return (
       <div className="px-4 sm:px-6 py-8">
-        <div className="content-panel max-w-4xl mx-auto text-center py-12 text-black/40">
+        <div className="content-panel max-w-4xl mx-auto text-center py-12 text-white/40">
           <p className="text-lg font-medium">Could not load profile</p>
         </div>
       </div>
@@ -166,7 +166,7 @@ export default function ProfilePage() {
           >
             My Light
           </h1>
-          <p className="text-black/60 max-w-xl mx-auto">
+          <p className="text-white/60 max-w-xl mx-auto">
             Your presence on the Syncro-Link grid. Edit your profile and see
             your Right Light posts.
           </p>
@@ -205,7 +205,7 @@ export default function ProfilePage() {
               )}
               <div>
                 <h2 className="text-xl font-bold">{profile.displayName}</h2>
-                <p className="text-sm text-black/40">
+                <p className="text-sm text-white/40">
                   Joined {new Date(profile.createdAt).toLocaleDateString()}
                 </p>
               </div>
@@ -221,7 +221,7 @@ export default function ProfilePage() {
             ) : (
               <button
                 onClick={handleCancel}
-                className="px-5 py-2 rounded-full text-black/60 hover:text-black text-sm font-medium transition-colors"
+                className="px-5 py-2 rounded-full text-white/60 hover:text-white/90 text-sm font-medium transition-colors"
               >
                 Cancel
               </button>
@@ -324,7 +324,7 @@ export default function ProfilePage() {
           </h2>
 
           {profile.posts.length === 0 ? (
-            <div className="text-center py-12 text-black/40">
+            <div className="text-center py-12 text-white/40">
               <p className="text-lg font-medium mb-1">No posts yet</p>
               <p className="text-sm">
                 Head to{" "}

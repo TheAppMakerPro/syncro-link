@@ -37,7 +37,7 @@ export default function PostCard({ post }: { post: PostWithUser }) {
         )}
         <div>
           <p className="font-semibold text-sm">{post.user.displayName}</p>
-          <p className="text-xs text-black/40">{timeAgo(post.createdAt)}</p>
+          <p className="text-xs text-white/40">{timeAgo(post.createdAt)}</p>
         </div>
       </div>
 

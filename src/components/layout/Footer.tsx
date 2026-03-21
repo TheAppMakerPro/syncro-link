@@ -16,7 +16,7 @@ export default function Footer() {
           <p className="text-white/70 text-sm max-w-md">
             Unite and Enlight. No capitalism. No bad actors. No doom and gloom.
           </p>
-          <div className="flex gap-6 text-xs text-white/50">
+          <div className="flex gap-6 text-xs text-white/60">
             <span>A network, not a business</span>
             <span>·</span>
             <span>Est. 1996 in spirit</span>

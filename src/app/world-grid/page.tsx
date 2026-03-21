@@ -6,7 +6,7 @@ const WorldMap = dynamic(() => import("@/components/map/WorldMap"), {
   ssr: false,
   loading: () => (
     <div className="w-full h-full flex items-center justify-center bg-gray-100 rounded-2xl">
-      <div className="text-black/50 animate-pulse font-medium">Connecting to the Grid...</div>
+      <div className="text-white/50 animate-pulse font-medium">Connecting to the Grid...</div>
     </div>
   ),
 });
@@ -22,7 +22,7 @@ export default function WorldGridPage() {
           >
             World Grid Map
           </h1>
-          <p className="text-black/60 max-w-xl mx-auto">
+          <p className="text-white/60 max-w-xl mx-auto">
             Click on any point of light to view their mini bio and contact info.
             Go ahead and click on your own light and see how you shine.
           </p>
