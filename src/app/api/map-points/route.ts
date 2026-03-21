@@ -17,6 +17,7 @@ export async function GET() {
       avatarUrl: true,
       bio: true,
       contactInfo: true,
+      markerColor: true,
     },
   });
 

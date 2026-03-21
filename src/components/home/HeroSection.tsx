@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import GlowOrb from "./GlowOrb";
-import GlowButton from "@/components/ui/GlowButton";
+
 
 export default function HeroSection() {
   return (
@@ -41,19 +41,6 @@ export default function HeroSection() {
           frequencies of the new earth energy en masse.
         </motion.p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.2 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
-        >
-          <GlowButton href="/registry" variant="gold">
-            Join the Grid
-          </GlowButton>
-          <GlowButton href="/world-grid" variant="violet">
-            View the Map
-          </GlowButton>
-        </motion.div>
       </div>
 
       <motion.div

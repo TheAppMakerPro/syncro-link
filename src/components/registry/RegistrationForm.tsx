@@ -7,6 +7,7 @@ import { ChevronLeft, ChevronRight, Sparkles, MapPin, Pencil, Trash2 } from "luc
 import GlowInput, { GlowTextarea } from "@/components/ui/GlowInput";
 import GlowSelect from "@/components/ui/GlowSelect";
 import GlowButton from "@/components/ui/GlowButton";
+import { HexColorPicker } from "react-colorful";
 import { COUNTRIES } from "@/lib/constants";
 
 const registerSteps = [
@@ -33,6 +34,8 @@ export default function RegistrationForm() {
   const [existingAvatarUrl, setExistingAvatarUrl] = useState<string | null>(null);
 
   const [form, setForm] = useState({
+    email: "",
+    password: "",
     displayName: "",
     country: "",
     region: "",
@@ -41,6 +44,7 @@ export default function RegistrationForm() {
     longitude: "",
     contactInfo: "",
     bio: "",
+    markerColor: "#ff4500",
     firstPostContent: "",
   });
   const [avatar, setAvatar] = useState<File | null>(null);
@@ -61,6 +65,8 @@ export default function RegistrationForm() {
         if (data && data.id) {
           setIsEditing(true);
           setForm({
+            email: data.email || "",
+            password: "",
             displayName: data.displayName || "",
             country: data.country || "",
             region: data.region || "",
@@ -69,6 +75,7 @@ export default function RegistrationForm() {
             longitude: data.longitude != null ? String(data.longitude) : "",
             contactInfo: data.contactInfo || "",
             bio: data.bio || "",
+            markerColor: data.markerColor || "#ff4500",
             firstPostContent: "",
           });
           setExistingAvatarUrl(data.avatarUrl || null);
@@ -109,7 +116,11 @@ export default function RegistrationForm() {
   };
 
   const canProceed = () => {
-    if (step === 0) return form.displayName.trim() && form.country;
+    if (step === 0) {
+      const base = form.displayName.trim() && form.country;
+      if (isEditing) return base;
+      return base && form.email.trim() && form.password.length >= 6;
+    }
     if (!isEditing && step === 3) return form.firstPostContent.trim();
     return true;
   };
@@ -167,19 +178,21 @@ export default function RegistrationForm() {
     setSuccess("");
 
     try {
+      const fd = new FormData();
+      fd.append("displayName", form.displayName);
+      fd.append("country", form.country);
+      fd.append("region", form.region);
+      fd.append("city", form.city);
+      fd.append("latitude", form.latitude);
+      fd.append("longitude", form.longitude);
+      fd.append("contactInfo", form.contactInfo);
+      fd.append("bio", form.bio);
+      fd.append("markerColor", form.markerColor);
+      if (avatar) fd.append("avatar", avatar);
+
       const res = await fetch("/api/profile", {
         method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          displayName: form.displayName,
-          country: form.country,
-          region: form.region,
-          city: form.city,
-          latitude: form.latitude,
-          longitude: form.longitude,
-          contactInfo: form.contactInfo,
-          bio: form.bio,
-        }),
+        body: fd,
       });
 
       if (!res.ok) {
@@ -287,8 +300,33 @@ export default function RegistrationForm() {
               <p className="text-white/90 text-sm leading-relaxed">
                 {isEditing
                   ? "Update your identity and location details below."
-                  : "We only ask four things of you. We don\u0027t particularly need or want your actual legal name or physical address. If you want to give that, fine. But we\u0027re not asking for it."}
+                  : "We (my offworld friends and I), all welcome you to the massive ascension platform of Syncro-Link."}
               </p>
+              {isEditing ? (
+                form.email && (
+                  <div className="space-y-1.5">
+                    <label className="block text-sm font-semibold">Email</label>
+                    <div className="gold-input px-4 py-3 text-white/50">{form.email}</div>
+                  </div>
+                )
+              ) : (
+                <>
+                  <GlowInput
+                    label="Email *"
+                    placeholder="your@email.com"
+                    type="email"
+                    value={form.email}
+                    onChange={(e) => update("email", e.target.value)}
+                  />
+                  <GlowInput
+                    label="Password *"
+                    placeholder="Choose a password (min 6 characters)"
+                    type="password"
+                    value={form.password}
+                    onChange={(e) => update("password", e.target.value)}
+                  />
+                </>
+              )}
               <GlowInput
                 label="What would you like others to know you by? *"
                 placeholder="Your Syncro-Link name"
@@ -352,8 +390,21 @@ export default function RegistrationForm() {
 
           {step === 1 && (
             <>
+              <div className="space-y-2">
+                <label className="block text-sm font-semibold text-white/90">
+                  Your Syncro-Link Network Name
+                </label>
+                <div className="gold-input px-4 py-3 text-amber-300 font-mono font-semibold">
+                  {form.displayName.trim() || "YourName"}@Syncro-Link
+                </div>
+                <p className="text-xs text-white/50">
+                  You can direct message any member of the collective index by
+                  locating them on the World Grid and using their Syncro-Link
+                  network name.
+                </p>
+              </div>
               <GlowTextarea
-                label="Contact Me — share however you'd like others to reach you"
+                label="Additional Contact Info (optional)"
                 placeholder="Email, Telegram, Signal, or however you'd like to connect..."
                 value={form.contactInfo}
                 onChange={(e) => update("contactInfo", e.target.value)}
@@ -377,9 +428,56 @@ export default function RegistrationForm() {
             <>
               <p className="text-white/90 text-sm">
                 {isEditing
-                  ? "Update your profile image."
-                  : "Upload a profile image that represents your light. This is optional but helps others connect with you."}
+                  ? "Update your profile image and map marker color."
+                  : "Choose the color of your light on the World Grid map. Please put a face on your bio and post a pic, or whatever sigil, symbol or style represents your light."}
               </p>
+
+              {/* Map marker color picker */}
+              <div className="space-y-3">
+                <label className="block text-sm font-semibold text-white/90">
+                  Your Light Color
+                </label>
+                <div className="flex flex-col sm:flex-row items-start gap-4">
+                  <div className="color-picker-wrapper rounded-xl overflow-hidden border border-white/10">
+                    <HexColorPicker
+                      color={form.markerColor}
+                      onChange={(color) => update("markerColor", color)}
+                    />
+                  </div>
+                  <div className="flex items-center gap-3 sm:flex-col sm:items-start sm:gap-4">
+                    <div
+                      className="w-12 h-12 rounded-full shrink-0"
+                      style={{
+                        background: `radial-gradient(circle, ${form.markerColor}, ${form.markerColor}cc, ${form.markerColor}40, transparent)`,
+                        boxShadow: `0 0 12px 4px ${form.markerColor}99, 0 0 25px 8px ${form.markerColor}4d`,
+                      }}
+                    />
+                    <span className="text-white/50 text-sm">
+                      This is how your point of light will glow on the map
+                    </span>
+                  </div>
+                </div>
+                <div className="flex flex-wrap gap-2 mt-2">
+                  {[
+                    "#ff4500", "#ff0080", "#ff00ff", "#8b00ff",
+                    "#0088ff", "#00ccff", "#00ff88", "#88ff00",
+                    "#ffcc00", "#ff8800", "#ffffff", "#ff3366",
+                  ].map((color) => (
+                    <button
+                      key={color}
+                      type="button"
+                      onClick={() => update("markerColor", color)}
+                      className={`w-8 h-8 rounded-full border-2 transition-transform hover:scale-110 ${
+                        form.markerColor === color
+                          ? "border-white scale-110"
+                          : "border-white/20"
+                      }`}
+                      style={{ backgroundColor: color }}
+                    />
+                  ))}
+                </div>
+              </div>
+
               <div className="flex flex-col items-center gap-6">
                 {(avatarPreview || existingAvatarUrl) ? (
                   <div className="relative">

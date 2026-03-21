@@ -51,11 +51,10 @@ export default function ProfilePage() {
   useEffect(() => {
     fetch("/api/profile")
       .then(async (res) => {
-        if (res.status === 401) {
-          router.push("/registry");
+        if (!res.ok) {
+          router.push(res.status === 401 ? "/login" : "/registry");
           return;
         }
-        if (!res.ok) throw new Error("Failed to load profile");
         const data = await res.json();
         setProfile(data);
         setForm({
@@ -283,8 +282,21 @@ export default function ProfilePage() {
               />
             </div>
 
+            <div className="space-y-2">
+              <label className="block text-sm font-semibold text-white/90">
+                Syncro-Link Network Name
+              </label>
+              <div className="gold-input px-4 py-3 text-amber-300 font-mono font-semibold">
+                {form.displayName.trim() || "YourName"}@Syncro-Link
+              </div>
+              <p className="text-xs text-white/50">
+                Members can reach you using this network name via the Chat
+                system or by finding you on the World Grid.
+              </p>
+            </div>
+
             <GlowTextarea
-              label="Contact Info"
+              label="Additional Contact Info"
               placeholder="Email, Telegram, Signal, or however you'd like to connect..."
               value={form.contactInfo}
               onChange={(e) => update("contactInfo", e.target.value)}

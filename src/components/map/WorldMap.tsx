@@ -5,10 +5,17 @@ import { MapContainer, TileLayer, Marker, Popup, ZoomControl } from "react-leafl
 import L from "leaflet";
 import type { MapPoint } from "@/types";
 
-function createGlowIcon() {
+function createGlowIcon(color: string = "#ff4500") {
   return L.divIcon({
     className: "light-marker",
-    html: `<div class="light-marker-inner"></div>`,
+    html: `<div style="
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: radial-gradient(circle, ${color}, ${color}cc, ${color}40, transparent);
+      box-shadow: 0 0 12px 4px ${color}99, 0 0 25px 8px ${color}4d;
+      animation: pulse-glow 3s ease-in-out infinite;
+    "></div>`,
     iconSize: [18, 18],
     iconAnchor: [9, 9],
   });
@@ -163,7 +170,7 @@ export default function WorldMap() {
           <Marker
             key={point.id}
             position={[point.latitude, point.longitude]}
-            icon={createGlowIcon()}
+            icon={createGlowIcon(point.markerColor || "#ff4500")}
           >
             <Popup className="dark-popup" maxWidth={320}>
               <PointPopup point={point} />

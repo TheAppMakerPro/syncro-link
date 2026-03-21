@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { getSession } from "@/lib/auth";
+import { saveUploadedFile } from "@/lib/upload";
 
 export async function GET() {
   const userId = await getSession();
@@ -35,7 +36,25 @@ export async function PUT(request: NextRequest) {
     return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
   }
 
-  const body = await request.json();
+  const contentType = request.headers.get("content-type") || "";
+  const isFormData = contentType.includes("multipart/form-data");
+
+  let body: Record<string, unknown>;
+  let avatarFile: File | null = null;
+
+  if (isFormData) {
+    const formData = await request.formData();
+    body = {};
+    for (const [key, value] of formData.entries()) {
+      if (key === "avatar" && value instanceof File) {
+        avatarFile = value;
+      } else {
+        body[key] = value;
+      }
+    }
+  } else {
+    body = await request.json();
+  }
 
   const allowedFields = [
     "displayName",
@@ -46,18 +65,28 @@ export async function PUT(request: NextRequest) {
     "longitude",
     "contactInfo",
     "bio",
+    "markerColor",
   ];
 
   const data: Record<string, unknown> = {};
   for (const field of allowedFields) {
     if (field in body) {
       if (field === "latitude" || field === "longitude") {
-        data[field] = body[field] !== "" && body[field] !== null
-          ? parseFloat(body[field])
+        const parsed = body[field] !== "" && body[field] !== null
+          ? parseFloat(String(body[field]))
           : null;
+        data[field] = parsed !== null && !isNaN(parsed) ? parsed : null;
       } else {
         data[field] = body[field];
       }
+    }
+  }
+
+  // Handle avatar upload
+  if (avatarFile && avatarFile.size > 0) {
+    const result = await saveUploadedFile(avatarFile, "avatars");
+    if (result) {
+      data.avatarUrl = result.url;
     }
   }
 

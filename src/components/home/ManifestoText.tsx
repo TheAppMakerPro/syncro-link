@@ -30,11 +30,16 @@ export default function ManifestoText() {
           Message to All
         </p>
         <p className="text-lg leading-relaxed">
-          This is a tiny little website. But it has a purpose and in order to
-          understand that purpose I ask all of you to actually read what little
-          content I have provided for it — essential to the task at hand. This content
-          is not for entertainment purposes.{" "}
-          <strong>It is the instruction set.</strong> And so we begin...
+          This is a tiny little app that may even grow up to be a website one
+          day. But as simple as it appears, it has a purpose. And in order to
+          understand that purpose I ask all of you to read the following. It
+          takes two minutes.
+        </p>
+        <p className="text-lg leading-relaxed mt-4">
+          It is essential reading. This app is not here for entertainment.{" "}
+          <strong>
+            It is the instruction set and platform for mass ascension.
+          </strong>
         </p>
       </RevealSection>
 
@@ -47,8 +52,8 @@ export default function ManifestoText() {
           Quantum Minds, New Earthers, 5th Density Shift Participants, Galactic
           Federation Ground Crew, the 144,000 Human Nodes of the Crystalline
           Earth Grid, Nature Lovers, Animal Whisperers, Shamans, Teachers,
-          Healers, and all the good people of Earth who feel they are here for
-          a greater purpose — may we all find each other right now.
+          Healers, and all the Systems Busting Renegades of the New Age who
+          feel they are here for a greater purpose — may we all find each other right now.
         </p>
         <p className="text-2xl sm:text-3xl text-center mt-6 font-bold tracking-wide">
           Let us all unite and enlight.
@@ -86,13 +91,11 @@ export default function ManifestoText() {
       <StarDivider />
 
       <RevealSection>
-        <p className="text-lg leading-relaxed">
+        <p className="text-lg leading-relaxed font-bold" style={{ color: "#ffd700" }}>
           The ultimate goal of Syncro-Link is that one day we all stand up
-          together and{" "}
-          <strong>
-            weave a tapestry of light all around the planet as one unified voice in real time.
-          </strong>{" "}
-          As the index grows that unified intent will present itself.
+          together and weave a tapestry of light all around the planet as one
+          unified voice in real time. As the index grows that unified intent
+          will present itself.
         </p>
       </RevealSection>
 
@@ -225,6 +228,17 @@ export default function ManifestoText() {
           Syncro-Link is a network, an organisation, not a business. So
           you&apos;ll have to make your own t-shirt, we don&apos;t sell them here.
         </p>
+        <p className="text-xs text-white/40 leading-relaxed text-center mt-3">
+          However, if you want to organize a Syncro-Link gathering that does not
+          center upon, or spill over into commercialism and violate the number
+          one rule, then by all means use the brand of Syncro-Link all
+          you&apos;d like.
+        </p>
+        <p className="text-xs text-white/40 leading-relaxed text-center mt-3">
+          And always remember, anybody trying to sell you something or spread
+          fear while cloaked in a Syncro-Link banner is a bad actor. Dismiss
+          them at once.
+        </p>
       </RevealSection>
 
       <StarDivider />
@@ -264,7 +278,7 @@ export default function ManifestoText() {
           href="/registry"
           className="inline-flex items-center justify-center px-10 py-4 rounded-full font-bold text-white bg-gradient-to-r from-purple-700 via-indigo-600 to-emerald-600 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 text-lg"
         >
-          Register Now — Join the Grid
+          Register Now — Become the Grid
         </a>
       </motion.div>
     </div>

@@ -9,6 +9,8 @@ datasource db {
 
 model User {
   id          String   @id @default(cuid())
+  email       String?  @unique
+  password    String?
   displayName String
   country     String
   region      String   @default("")
@@ -18,12 +20,16 @@ model User {
   contactInfo String   @default("")
   bio         String   @default("")
   avatarUrl   String?
+  markerColor String   @default("#ff4500")
   isVisible   Boolean  @default(false)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
-  posts Post[]
-  media Media[]
+  posts        Post[]
+  media        Media[]
+  createdRooms ChatRoom[]   @relation("createdRooms")
+  chatMembers  ChatMember[]
+  messages     Message[]
 
   @@map("users")
 }
@@ -74,4 +80,45 @@ model Media {
   post Post? @relation(fields: [postId], references: [id], onDelete: Cascade)
 
   @@map("media")
+}
+
+model ChatRoom {
+  id        String   @id @default(cuid())
+  name      String
+  code      String   @unique
+  createdBy String
+  createdAt DateTime @default(now())
+
+  creator  User         @relation("createdRooms", fields: [createdBy], references: [id], onDelete: Cascade)
+  members  ChatMember[]
+  messages Message[]
+
+  @@map("chat_rooms")
+}
+
+model ChatMember {
+  userId     String
+  chatRoomId String
+  joinedAt   DateTime @default(now())
+  lastReadAt DateTime @default(now())
+
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  chatRoom ChatRoom @relation(fields: [chatRoomId], references: [id], onDelete: Cascade)
+
+  @@id([userId, chatRoomId])
+  @@map("chat_members")
+}
+
+model Message {
+  id         String   @id @default(cuid())
+  content    String
+  chatRoomId String
+  senderId   String
+  createdAt  DateTime @default(now())
+
+  chatRoom ChatRoom @relation(fields: [chatRoomId], references: [id], onDelete: Cascade)
+  sender   User     @relation(fields: [senderId], references: [id], onDelete: Cascade)
+
+  @@index([chatRoomId, createdAt])
+  @@map("messages")
 }

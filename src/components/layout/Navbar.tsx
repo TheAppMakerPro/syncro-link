@@ -1,21 +1,42 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Sparkles } from "lucide-react";
+import ChatNotificationBadge from "@/components/chat/ChatNotificationBadge";
 
-const links = [
+const publicLinks = [
   { href: "/", label: "Home" },
   { href: "/registry", label: "Registry" },
   { href: "/world-grid", label: "World Grid" },
   { href: "/right-light", label: "The Right Light" },
 ];
 
+const authLinks = [
+  { href: "/", label: "Home" },
+  { href: "/world-grid", label: "World Grid" },
+  { href: "/right-light", label: "The Right Light" },
+  { href: "/chat", label: "Chat" },
+  { href: "/dashboard", label: "Dashboard" },
+];
+
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [authed, setAuthed] = useState(false);
   const pathname = usePathname();
+
+  useEffect(() => {
+    fetch("/api/profile")
+      .then((r) => setAuthed(r.ok))
+      .catch(() => setAuthed(false));
+  }, [pathname]);
+
+  const links = authed ? authLinks : publicLinks;
+  const authAction = authed
+    ? null
+    : { href: "/login", label: "Sign In" };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 glass-nav">
@@ -41,7 +62,10 @@ export default function Navbar() {
                     : "text-white/70 hover:text-white font-medium"
                 }`}
               >
-                {link.label}
+                <span className="relative">
+                  {link.label}
+                  {link.href === "/chat" && <ChatNotificationBadge />}
+                </span>
                 {active && (
                   <motion.div
                     layoutId="nav-underline"
@@ -52,6 +76,14 @@ export default function Navbar() {
               </Link>
             );
           })}
+          {authAction && (
+            <Link
+              href={authAction.href}
+              className="ml-2 px-5 py-1.5 rounded-full bg-purple-600 text-white text-sm font-semibold hover:bg-purple-500 transition-colors"
+            >
+              {authAction.label}
+            </Link>
+          )}
         </div>
 
         <button
@@ -87,10 +119,22 @@ export default function Navbar() {
                         : "text-white/70 hover:bg-white/5 hover:text-white font-medium"
                     }`}
                   >
-                    {link.label}
+                    <span className="relative">
+                      {link.label}
+                      {link.href === "/chat" && <ChatNotificationBadge />}
+                    </span>
                   </Link>
                 );
               })}
+              {authAction && (
+                <Link
+                  href={authAction.href}
+                  onClick={() => setOpen(false)}
+                  className="px-4 py-3 rounded-lg text-sm text-purple-300 hover:bg-white/5 font-semibold"
+                >
+                  {authAction.label}
+                </Link>
+              )}
             </div>
           </motion.div>
         )}

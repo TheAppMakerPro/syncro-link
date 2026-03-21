@@ -3,6 +3,7 @@ import { prisma } from "@/lib/db";
 import { extractHashtags } from "@/lib/hashtags";
 import { saveUploadedFile } from "@/lib/upload";
 import { createSessionToken, setSessionCookie } from "@/lib/auth";
+import bcrypt from "bcryptjs";
 
 export async function POST(request: NextRequest) {
   try {
@@ -16,6 +17,9 @@ export async function POST(request: NextRequest) {
     const lngStr = formData.get("longitude") as string;
     const contactInfo = (formData.get("contactInfo") as string) || "";
     const bio = (formData.get("bio") as string) || "";
+    const markerColor = (formData.get("markerColor") as string) || "#ff4500";
+    const email = (formData.get("email") as string)?.trim().toLowerCase() || null;
+    const rawPassword = (formData.get("password") as string) || null;
     const firstPostContent = formData.get("firstPostContent") as string;
     const avatar = formData.get("avatar") as File | null;
 
@@ -29,6 +33,24 @@ export async function POST(request: NextRequest) {
     const latitude = latStr ? parseFloat(latStr) : null;
     const longitude = lngStr ? parseFloat(lngStr) : null;
 
+    // Discard NaN coordinates
+    const validLat = latitude !== null && !isNaN(latitude) ? latitude : null;
+    const validLng = longitude !== null && !isNaN(longitude) ? longitude : null;
+
+    // Check email uniqueness
+    if (email) {
+      const existing = await prisma.user.findUnique({ where: { email } });
+      if (existing) {
+        return NextResponse.json(
+          { error: "An account with this email already exists" },
+          { status: 400 }
+        );
+      }
+    }
+
+    // Hash password if provided
+    const password = rawPassword ? await bcrypt.hash(rawPassword, 10) : null;
+
     let avatarUrl: string | null = null;
     if (avatar && avatar.size > 0) {
       const result = await saveUploadedFile(avatar, "avatars");
@@ -38,14 +60,17 @@ export async function POST(request: NextRequest) {
     // Create user
     const user = await prisma.user.create({
       data: {
+        email,
+        password,
         displayName,
         country,
         region,
         city,
-        latitude,
-        longitude,
+        latitude: validLat,
+        longitude: validLng,
         contactInfo,
         bio,
+        markerColor,
         avatarUrl,
         isVisible: true,
       },
