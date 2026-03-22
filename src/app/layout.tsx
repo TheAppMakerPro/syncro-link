@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import CosmicBackground from "@/components/layout/CosmicBackground";
 import Footer from "@/components/layout/Footer";
+// Translation is handled directly in the Navbar component
 
 const inter = Inter({
   subsets: ["latin"],
@@ -21,8 +22,13 @@ export const metadata: Metadata = {
     "The world wide index for people of the light to unite, collaborate and anchor the gamma frequencies of the new earth energy en masse.",
   manifest: "/manifest.json",
   icons: {
-    icon: "/icons/icon-192.svg",
-    apple: "/icons/icon-192.svg",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icons/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: "/icons/apple-touch-icon.png",
   },
 };
 

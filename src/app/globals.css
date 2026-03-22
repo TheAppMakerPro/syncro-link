@@ -92,8 +92,8 @@ label {
 
 /* Inputs — clean and defined */
 .gold-input {
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 80, 40, 0.5);
+  border: 1px solid rgba(0, 180, 90, 0.3);
   border-radius: 0.75rem;
   color: #f0f0ff;
   font-weight: 400;
@@ -101,15 +101,15 @@ label {
 }
 
 .gold-input::placeholder {
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.45);
   font-weight: 400;
 }
 
 .gold-input:focus {
   outline: none;
-  border-color: rgba(168, 130, 255, 0.5);
-  box-shadow: 0 0 0 3px rgba(168, 130, 255, 0.15);
-  background: rgba(255, 255, 255, 0.75);
+  border-color: rgba(0, 200, 100, 0.6);
+  box-shadow: 0 0 0 3px rgba(0, 200, 100, 0.15);
+  background: rgba(0, 90, 45, 0.6);
 }
 
 /* Glass navbar */

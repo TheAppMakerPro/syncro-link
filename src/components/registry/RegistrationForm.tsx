@@ -474,9 +474,15 @@ export default function RegistrationForm() {
             <>
               <div className="text-white/80 text-sm leading-relaxed space-y-3">
                 <p>
-                  Pick your color according to the frequency of your conscious
-                  heart centered breathing sessions. A typical anchoring session
-                  need not be more than six conscious heart coherent breaths.
+                  The color of light you choose below will correspond to how
+                  many times you consciously anchor frequency over the course
+                  of each day. Mouse over each color to see how many anchors
+                  each represents.
+                </p>
+                <p>
+                  This choice shows up on the world wide grid. Other members
+                  can click or hover on your light there and see your bio and
+                  network name to direct message you for local connection.
                 </p>
                 <p className="text-white/60">
                   There is no monitoring system. It&apos;s not a contest. Just
@@ -590,7 +596,7 @@ export default function RegistrationForm() {
                     <div className="w-20 h-20 rounded-full bg-purple-100 flex items-center justify-center">
                       <Sparkles className="w-8 h-8 text-white/90" />
                     </div>
-                    <span className="text-white/90 text-sm">Click to upload image</span>
+                    <span className="text-white/90 text-sm">Upload your bio pic here</span>
                     <span className="text-white/90 text-xs">JPG, PNG, WebP, GIF — up to 10MB</span>
                     <input
                       type="file"

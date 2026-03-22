@@ -90,7 +90,7 @@ function PointPanel({
       : point.bio.slice(0, BIO_PREVIEW_LENGTH) + "...";
 
   return (
-    <div className="absolute top-4 right-4 z-[1000] w-80 bg-black/80 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl text-white p-5 animate-fade-in">
+    <div className="absolute top-4 right-4 z-[1000] w-96 bg-black/80 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl text-white p-5 animate-fade-in">
       <button
         onClick={onClose}
         className="absolute top-3 right-3 text-white/40 hover:text-white text-lg leading-none"
@@ -102,10 +102,10 @@ function PointPanel({
           <img
             src={point.avatarUrl}
             alt={point.displayName}
-            className="w-12 h-12 rounded-full object-cover border border-white/20"
+            className="w-16 h-16 rounded-full object-cover border border-white/20"
           />
         ) : (
-          <div className="w-12 h-12 rounded-full bg-purple-500/30 flex items-center justify-center text-purple-300 font-bold text-lg">
+          <div className="w-16 h-16 rounded-full bg-purple-500/30 flex items-center justify-center text-purple-300 font-bold text-lg">
             {point.displayName[0]?.toUpperCase()}
           </div>
         )}
@@ -189,8 +189,8 @@ export default function WorldMap() {
       controls.autoRotate = true;
       controls.autoRotateSpeed = 0.4;
       controls.enableZoom = true;
-      controls.minDistance = 150;
-      controls.maxDistance = 600;
+      controls.minDistance = 80;
+      controls.maxDistance = 800;
     }
   }, [loading]);
 
@@ -278,18 +278,21 @@ export default function WorldMap() {
   const pointLabel = useCallback(
     (d: object) => {
       const p = d as MapPoint;
+      const bio = p.bio ? (p.bio.length > 100 ? p.bio.slice(0, 100) + '...' : p.bio) : '';
       return `<div style="
-        background: rgba(0,0,0,0.8);
+        background: rgba(0,0,0,0.85);
         backdrop-filter: blur(12px);
         color: white;
-        padding: 6px 12px;
-        border-radius: 10px;
+        padding: 8px 14px;
+        border-radius: 12px;
         font-size: 13px;
-        border: 1px solid rgba(255,255,255,0.1);
+        border: 1px solid rgba(255,255,255,0.15);
         pointer-events: none;
+        max-width: 280px;
       ">
         <b>${p.displayName}</b>
         <div style="color: rgba(255,255,255,0.5); font-size: 11px;">${[p.city, p.country].filter(Boolean).join(", ")}</div>
+        ${bio ? `<div style="color: rgba(255,255,255,0.7); font-size: 11px; margin-top: 4px; line-height: 1.4;">${bio}</div>` : ''}
       </div>`;
     },
     []
