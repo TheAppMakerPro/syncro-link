@@ -72,47 +72,65 @@ I am love, the infinite presence of perfect mathematical harmony, clarity and al
 
 Or something like that.`;
 
+// Split text into chunks at paragraph breaks to avoid Android Chrome cutoff bug
+function chunkText(text: string): string[] {
+  return text
+    .split(/\n\n+/)
+    .map((s) => s.trim())
+    .filter(Boolean);
+}
+
 export default function VoiceOverButton() {
   const [playing, setPlaying] = useState(false);
-  const [supported, setSupported] = useState(true);
-  const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
+  const [supported, setSupported] = useState(false);
+  const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
+  const chunksRef = useRef<string[]>([]);
+  const currentChunkRef = useRef(0);
+  const cancelledRef = useRef(false);
 
+  // Wait for voices to load (async on Android/Chrome)
   useEffect(() => {
-    if (typeof window === "undefined" || !window.speechSynthesis) {
-      setSupported(false);
-    }
+    if (typeof window === "undefined" || !window.speechSynthesis) return;
+    setSupported(true);
+
+    const loadVoices = () => {
+      const v = window.speechSynthesis.getVoices();
+      if (v.length > 0) setVoices(v);
+    };
+
+    loadVoices();
+    window.speechSynthesis.addEventListener("voiceschanged", loadVoices);
     return () => {
-      window.speechSynthesis?.cancel();
+      window.speechSynthesis.removeEventListener("voiceschanged", loadVoices);
+      window.speechSynthesis.cancel();
     };
   }, []);
 
   const pickVoice = useCallback((): SpeechSynthesisVoice | null => {
-    const voices = window.speechSynthesis.getVoices();
-    // Prefer smooth male voices
     const preferred = [
       "Daniel", "Aaron", "Google UK English Male", "Microsoft David",
       "Google US English", "Rishi", "Fred", "Alex",
     ];
     for (const name of preferred) {
-      const v = voices.find((v) => v.name.includes(name));
+      const v = voices.find((voice) => voice.name.includes(name));
       if (v) return v;
     }
-    // Fallback to first English voice
     const english = voices.find((v) => v.lang.startsWith("en"));
     return english || voices[0] || null;
-  }, []);
+  }, [voices]);
 
-  const handleToggle = useCallback(() => {
-    const synth = window.speechSynthesis;
-    if (!synth) return;
+  const speakNextChunk = useCallback(() => {
+    if (cancelledRef.current) return;
+    const chunks = chunksRef.current;
+    const idx = currentChunkRef.current;
 
-    if (playing) {
-      synth.cancel();
+    if (idx >= chunks.length) {
       setPlaying(false);
       return;
     }
 
-    const utterance = new SpeechSynthesisUtterance(VOICEOVER_TEXT);
+    const synth = window.speechSynthesis;
+    const utterance = new SpeechSynthesisUtterance(chunks[idx]);
     utterance.rate = 0.85;
     utterance.pitch = 0.95;
     utterance.volume = 1;
@@ -120,13 +138,34 @@ export default function VoiceOverButton() {
     const voice = pickVoice();
     if (voice) utterance.voice = voice;
 
-    utterance.onend = () => setPlaying(false);
-    utterance.onerror = () => setPlaying(false);
+    utterance.onend = () => {
+      currentChunkRef.current = idx + 1;
+      speakNextChunk();
+    };
+    utterance.onerror = () => {
+      setPlaying(false);
+    };
 
-    utteranceRef.current = utterance;
     synth.speak(utterance);
+  }, [pickVoice]);
+
+  const handleToggle = useCallback(() => {
+    const synth = window.speechSynthesis;
+    if (!synth) return;
+
+    if (playing) {
+      cancelledRef.current = true;
+      synth.cancel();
+      setPlaying(false);
+      return;
+    }
+
+    cancelledRef.current = false;
+    chunksRef.current = chunkText(VOICEOVER_TEXT);
+    currentChunkRef.current = 0;
     setPlaying(true);
-  }, [playing, pickVoice]);
+    speakNextChunk();
+  }, [playing, speakNextChunk]);
 
   if (!supported) return null;
 

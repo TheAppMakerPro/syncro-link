@@ -59,12 +59,13 @@ export default function ShiftMechanicsPage() {
           </p>
 
           {/* Hand placement video */}
-          <div className="rounded-xl border border-white/10 bg-white/[0.03] overflow-hidden w-[35%] mx-auto">
+          <div className="rounded-xl border border-white/10 bg-white/[0.03] overflow-hidden w-full sm:w-[35%] mx-auto">
             <video
               controls
               playsInline
-              preload="metadata"
+              preload="auto"
               className="w-full rounded-xl"
+              style={{ maxHeight: "70vh" }}
             >
               <source src="/heart-breath.mp4" type="video/mp4" />
               Your browser does not support the video element.
