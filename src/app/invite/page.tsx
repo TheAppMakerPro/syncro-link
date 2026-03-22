@@ -32,7 +32,7 @@ export default function InvitePage() {
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-4">
       <div className="text-center max-w-md">
-        <Link href="/registry">
+        <Link href="/">
           <img
             src="/icons/app-icon.png"
             alt="Syncro-Link Index"
@@ -53,7 +53,7 @@ export default function InvitePage() {
         </p>
 
         <Link
-          href="/registry"
+          href="/"
           className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-purple-600 text-white font-bold text-sm hover:bg-purple-500 transition-colors shadow-[0_0_20px_rgba(168,85,247,0.3)]"
         >
           Become a Point of Light
