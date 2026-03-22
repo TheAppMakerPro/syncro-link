@@ -221,12 +221,23 @@ export default function WorldMap() {
   }, [handleInteraction]);
 
   const pointColor = useCallback(
-    (d: object) => (d as MapPoint).markerColor || "#ff4500",
+    (d: object) => (d as MapPoint).markerColor || "#e8e8ff",
     []
   );
 
-  const pointAltitude = useCallback(() => 0.01, []);
-  const pointRadius = useCallback(() => 0.35, []);
+  const pointAltitude = useCallback(() => 0.015, []);
+  // Scale point radius inversely with count so the globe always sparkles
+  const pointRadius = useCallback(
+    () => {
+      const count = points.length;
+      if (count <= 10) return 0.45;
+      if (count <= 50) return 0.35;
+      if (count <= 200) return 0.28;
+      if (count <= 1000) return 0.2;
+      return 0.14;
+    },
+    [points.length]
+  );
   const pointLat = useCallback((d: object) => (d as MapPoint).latitude, []);
   const pointLng = useCallback((d: object) => (d as MapPoint).longitude, []);
 
@@ -371,8 +382,8 @@ export default function WorldMap() {
                 <div
                   className="w-3 h-3 rounded-full shrink-0 shadow-[0_0_8px_2px]"
                   style={{
-                    backgroundColor: point.markerColor || "#ff4500",
-                    boxShadow: `0 0 8px 2px ${point.markerColor || "#ff4500"}66`,
+                    backgroundColor: point.markerColor || "#e8e8ff",
+                    boxShadow: `0 0 8px 2px ${point.markerColor || "#e8e8ff"}66`,
                   }}
                 />
                 {point.avatarUrl ? (

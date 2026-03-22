@@ -136,31 +136,17 @@ label {
   animation: fade-in 0.2s ease-out;
 }
 
+/* Frequency sphere pulse */
+@keyframes sphere-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.08); opacity: 1; }
+}
+
 /* Star divider */
 .star-divider-line {
   height: 1px;
   flex: 1;
   background: linear-gradient(to var(--dir, right), transparent, rgba(0,0,0,0.15));
-}
-
-/* Color picker */
-.color-picker-wrapper .react-colorful {
-  width: 200px !important;
-  height: 160px !important;
-}
-
-.color-picker-wrapper .react-colorful__saturation {
-  border-radius: 8px 8px 0 0 !important;
-}
-
-.color-picker-wrapper .react-colorful__hue {
-  height: 14px !important;
-  border-radius: 0 0 8px 8px !important;
-}
-
-.color-picker-wrapper .react-colorful__pointer {
-  width: 18px !important;
-  height: 18px !important;
 }
 
 /* Spinner */

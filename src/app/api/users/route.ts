@@ -17,7 +17,7 @@ export async function POST(request: NextRequest) {
     const lngStr = formData.get("longitude") as string;
     const contactInfo = (formData.get("contactInfo") as string) || "";
     const bio = (formData.get("bio") as string) || "";
-    const markerColor = (formData.get("markerColor") as string) || "#ff4500";
+    const markerColor = (formData.get("markerColor") as string) || "#e8e8ff";
     const email = (formData.get("email") as string)?.trim().toLowerCase() || null;
     const rawPassword = (formData.get("password") as string) || null;
     const firstPostContent = formData.get("firstPostContent") as string;

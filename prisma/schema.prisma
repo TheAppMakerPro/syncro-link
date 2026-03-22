@@ -20,7 +20,7 @@ model User {
   contactInfo String   @default("")
   bio         String   @default("")
   avatarUrl   String?
-  markerColor String   @default("#ff4500")
+  markerColor String   @default("#e8e8ff")
   isVisible   Boolean  @default(false)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt

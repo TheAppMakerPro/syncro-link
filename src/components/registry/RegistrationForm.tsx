@@ -7,7 +7,53 @@ import { ChevronLeft, ChevronRight, Sparkles, MapPin, Pencil, Trash2 } from "luc
 import GlowInput, { GlowTextarea } from "@/components/ui/GlowInput";
 import GlowSelect from "@/components/ui/GlowSelect";
 import GlowButton from "@/components/ui/GlowButton";
-import { HexColorPicker } from "react-colorful";
+const FREQUENCY_TIERS = [
+  {
+    color: "#e8e8ff",
+    name: "The White Star",
+    label: "Base Color",
+    description: "You anchor light through the breath at 33-99hz gamma range at least three times a day with sincerity, reverence, gratitude and silence.",
+    frequency: "3x/day \u00b7 9 minutes",
+    gradient: "radial-gradient(circle, #ffffff, #e8e8ff, #c8c8ff60, transparent)",
+    glow: "0 0 18px 6px rgba(255,255,255,0.7), 0 0 40px 14px rgba(200,200,255,0.3)",
+  },
+  {
+    color: "#00cc66",
+    name: "The Emerald Heart Crystal",
+    label: "First Grounding",
+    description: "You anchor 33-99hz gamma light frequency at least nine times a day with sincerity, reverence, gratitude and silence.",
+    frequency: "9x/day \u00b7 27 minutes",
+    gradient: "radial-gradient(circle, #66ffaa, #00cc66, #00884440, transparent)",
+    glow: "0 0 18px 6px rgba(0,204,102,0.6), 0 0 40px 14px rgba(0,136,68,0.25)",
+  },
+  {
+    color: "#4488cc",
+    name: "The Blue Sapphire Plasma",
+    label: "Second Grounding",
+    description: "You anchor frequency at least eighteen times a day with sincerity, reverence, gratitude and silence.",
+    frequency: "18x/day \u00b7 54 minutes",
+    gradient: "radial-gradient(circle, #99ccff, #4488cc, #2255aa50, transparent)",
+    glow: "0 0 18px 6px rgba(68,136,204,0.6), 0 0 40px 14px rgba(34,85,170,0.3)",
+  },
+  {
+    color: "#9933cc",
+    name: "The Violet Resurrection Flame",
+    label: "Third Grounding",
+    description: "You anchor the new earth gamma frequency at least twenty-seven times a day with sincerity, reverence, gratitude and silence.",
+    frequency: "27x/day \u00b7 81 minutes",
+    gradient: "radial-gradient(circle, #cc66ff, #9933cc, #6600994d, transparent)",
+    glow: "0 0 18px 6px rgba(153,51,204,0.6), 0 0 40px 14px rgba(102,0,153,0.3)",
+  },
+  {
+    color: "#daa520",
+    name: "Golden Ground",
+    label: "Golden Ground",
+    description: "You spend your entire day in deep connection to the planet. Not pristine silence sitting upon a lotus deep connection. Just aware and present as a general base. You anchor whenever you feel like it, which seems like always.",
+    frequency: "All day presence",
+    gradient: "radial-gradient(circle, #ffe066, #daa520, #b8860b50, transparent)",
+    glow: "0 0 18px 6px rgba(218,165,32,0.7), 0 0 40px 14px rgba(184,134,11,0.3)",
+  },
+];
 import { COUNTRIES } from "@/lib/constants";
 
 const registerSteps = [
@@ -44,7 +90,7 @@ export default function RegistrationForm() {
     longitude: "",
     contactInfo: "",
     bio: "",
-    markerColor: "#ff4500",
+    markerColor: "#ffffff",
     firstPostContent: "",
   });
   const [avatar, setAvatar] = useState<File | null>(null);
@@ -75,7 +121,7 @@ export default function RegistrationForm() {
             longitude: data.longitude != null ? String(data.longitude) : "",
             contactInfo: data.contactInfo || "",
             bio: data.bio || "",
-            markerColor: data.markerColor || "#ff4500",
+            markerColor: data.markerColor || "#ffffff",
             firstPostContent: "",
           });
           setExistingAvatarUrl(data.avatarUrl || null);
@@ -426,56 +472,98 @@ export default function RegistrationForm() {
 
           {step === 2 && (
             <>
-              <p className="text-white/90 text-sm">
-                {isEditing
-                  ? "Update your profile image and map marker color."
-                  : "Choose the color of your light on the World Grid map. Please put a face on your bio and post a pic, or whatever sigil, symbol or style represents your light."}
-              </p>
+              <div className="text-white/80 text-sm leading-relaxed space-y-3">
+                <p>
+                  Pick your color according to the frequency of your conscious
+                  heart centered breathing sessions. A typical anchoring session
+                  need not be more than six conscious heart coherent breaths.
+                </p>
+                <p className="text-white/60">
+                  There is no monitoring system. It&apos;s not a contest. Just
+                  be honest. More is not necessarily better if you don&apos;t
+                  take the time to center, relax and breathe with sincerity and
+                  pure intent.
+                </p>
+                <p className="text-white/60">
+                  These are just markers. Gold is obviously for somebody who has
+                  freed up a lot of their time so it is practical. If you work,
+                  have a family don&apos;t push yourself. Remember it&apos;s not
+                  a contest. It&apos;s just data.
+                </p>
+                <p className="text-white/60">
+                  So choose your light based on your current availability and
+                  change it whenever your frequency quickens or adjusts. We do
+                  have an algorithm attached to the overall count for each day
+                  and as information accumulates we will establish the
+                  Syncro-Link Index graph showing the overall heart centered
+                  breaths Gaia is receiving daily.
+                </p>
+                <p className="text-white/60">
+                  And once again. Take it easy. It&apos;s not a contest. There
+                  is no competition at hand. It&apos;s just data. So we can all
+                  see how incredible we are.
+                </p>
+              </div>
 
-              {/* Map marker color picker */}
-              <div className="space-y-3">
+              {/* Frequency tier spheres */}
+              <div className="space-y-4">
                 <label className="block text-sm font-semibold text-white/90">
-                  Your Light Color
+                  Choose Your Light
                 </label>
-                <div className="flex flex-col sm:flex-row items-start gap-4">
-                  <div className="color-picker-wrapper rounded-xl overflow-hidden border border-white/10">
-                    <HexColorPicker
-                      color={form.markerColor}
-                      onChange={(color) => update("markerColor", color)}
-                    />
-                  </div>
-                  <div className="flex items-center gap-3 sm:flex-col sm:items-start sm:gap-4">
-                    <div
-                      className="w-12 h-12 rounded-full shrink-0"
-                      style={{
-                        background: `radial-gradient(circle, ${form.markerColor}, ${form.markerColor}cc, ${form.markerColor}40, transparent)`,
-                        boxShadow: `0 0 12px 4px ${form.markerColor}99, 0 0 25px 8px ${form.markerColor}4d`,
-                      }}
-                    />
-                    <span className="text-white/50 text-sm">
-                      This is how your point of light will glow on the map
-                    </span>
-                  </div>
-                </div>
-                <div className="flex flex-wrap gap-2 mt-2">
-                  {[
-                    "#ff4500", "#ff0080", "#ff00ff", "#8b00ff",
-                    "#0088ff", "#00ccff", "#00ff88", "#88ff00",
-                    "#ffcc00", "#ff8800", "#ffffff", "#ff3366",
-                  ].map((color) => (
+                <div className="flex justify-center gap-5 sm:gap-7 py-4">
+                  {FREQUENCY_TIERS.map((tier, i) => (
                     <button
-                      key={color}
+                      key={tier.color}
                       type="button"
-                      onClick={() => update("markerColor", color)}
-                      className={`w-8 h-8 rounded-full border-2 transition-transform hover:scale-110 ${
-                        form.markerColor === color
-                          ? "border-white scale-110"
-                          : "border-white/20"
-                      }`}
-                      style={{ backgroundColor: color }}
-                    />
+                      onClick={() => update("markerColor", tier.color)}
+                      className="group relative flex flex-col items-center gap-2"
+                    >
+                      <div
+                        className={`w-12 h-12 sm:w-14 sm:h-14 rounded-full transition-transform duration-200 ${
+                          form.markerColor === tier.color
+                            ? "scale-125 ring-2 ring-white/40 ring-offset-2 ring-offset-transparent"
+                            : "hover:scale-110"
+                        }`}
+                        style={{
+                          background: tier.gradient,
+                          boxShadow: tier.glow,
+                          animation: `sphere-pulse ${2.5 + i * 0.3}s ease-in-out infinite`,
+                        }}
+                      />
+                    </button>
                   ))}
                 </div>
+
+                {/* Selected tier info */}
+                {(() => {
+                  const selected = FREQUENCY_TIERS.find(
+                    (t) => t.color === form.markerColor
+                  );
+                  if (!selected) return null;
+                  return (
+                    <div className="text-center space-y-1 animate-fade-in">
+                      <p className="text-white/50 text-xs uppercase tracking-wider">
+                        {selected.label}
+                      </p>
+                      <p className="text-white font-bold text-sm">
+                        {selected.name}
+                      </p>
+                      <p className="text-white/50 text-xs">
+                        {selected.frequency}
+                      </p>
+                      <p className="text-white/60 text-xs max-w-md mx-auto leading-relaxed">
+                        {selected.description}
+                      </p>
+                    </div>
+                  );
+                })()}
+
+                {/* Fallback if current color doesn't match any tier */}
+                {!FREQUENCY_TIERS.find((t) => t.color === form.markerColor) && (
+                  <p className="text-center text-white/40 text-xs">
+                    Select one of the five frequencies above
+                  </p>
+                )}
               </div>
 
               <div className="flex flex-col items-center gap-6">
