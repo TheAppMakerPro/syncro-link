@@ -13,6 +13,19 @@ export default function HeroSection() {
       <GlowOrb color="#10b981" size={180} x="80%" y="70%" delay={9} />
 
       <div className="relative z-10 text-center max-w-3xl">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="mb-8"
+        >
+          <img
+            src="/icons/app-icon.png"
+            alt="Syncro-Link"
+            className="w-28 h-28 sm:w-36 sm:h-36 mx-auto rounded-2xl shadow-[0_0_40px_rgba(168,85,247,0.3)]"
+          />
+        </motion.div>
+
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
