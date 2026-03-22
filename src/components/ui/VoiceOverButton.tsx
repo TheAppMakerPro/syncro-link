@@ -131,8 +131,8 @@ export default function VoiceOverButton() {
 
     const synth = window.speechSynthesis;
     const utterance = new SpeechSynthesisUtterance(chunks[idx]);
-    utterance.rate = 0.85;
-    utterance.pitch = 0.95;
+    utterance.rate = 0.55;
+    utterance.pitch = 0.8;
     utterance.volume = 1;
 
     const voice = pickVoice();

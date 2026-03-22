@@ -37,6 +37,12 @@ export default function PostCard({ post }: { post: PostWithUser }) {
         )}
         <div>
           <p className="font-semibold text-sm">{post.user.displayName}</p>
+          <a
+            href="/chat"
+            className="text-xs text-purple-400 hover:text-purple-300 font-semibold"
+          >
+            {post.user.displayName}@Syncro-Link
+          </a>
           <p className="text-xs text-white/40">{timeAgo(post.createdAt)}</p>
         </div>
       </div>

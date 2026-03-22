@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import { motion } from "framer-motion";
 import PostCard from "@/components/feed/PostCard";
 import PostComposer from "@/components/feed/PostComposer";
@@ -57,10 +57,26 @@ export default function RightLightPage() {
   }, [search, fetchPosts]);
 
   const loadMore = () => {
+    if (loading || page >= totalPages) return;
     const next = page + 1;
     setPage(next);
     fetchPosts(search, next);
   };
+
+  // Infinite scroll observer
+  const sentinelRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = sentinelRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) loadMore();
+      },
+      { rootMargin: "200px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  });
 
   return (
     <div className="px-4 sm:px-6 py-8">
@@ -103,17 +119,13 @@ export default function RightLightPage() {
                   {posts.map((post) => (
                     <PostCard key={post.id} post={post} />
                   ))}
-                  {page < totalPages && (
-                    <motion.div className="text-center pt-2">
-                      <button
-                        onClick={loadMore}
-                        disabled={loading}
-                        className="px-6 py-2.5 rounded-full bg-purple-700 text-white font-semibold text-sm hover:bg-purple-600 transition-colors disabled:opacity-40"
-                      >
-                        {loading ? "Loading..." : "Load More Light"}
-                      </button>
-                    </motion.div>
-                  )}
+                  {/* Infinite scroll sentinel */}
+                  <div ref={sentinelRef} className="py-4 text-center">
+                    {loading && <p className="text-white/40 text-sm animate-pulse">Loading more light...</p>}
+                    {page >= totalPages && posts.length > 0 && (
+                      <p className="text-white/30 text-xs">You&apos;ve seen all the light</p>
+                    )}
+                  </div>
                 </>
               )}
             </div>

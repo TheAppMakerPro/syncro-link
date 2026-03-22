@@ -62,6 +62,9 @@ export default function ShiftMechanicsPage() {
           <div className="rounded-xl border border-white/10 bg-white/[0.03] overflow-hidden w-full sm:w-[35%] mx-auto">
             <video
               controls
+              autoPlay
+              muted
+              loop
               playsInline
               preload="auto"
               className="w-full rounded-xl"
