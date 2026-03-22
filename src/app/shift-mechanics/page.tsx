@@ -1,3 +1,5 @@
+import VoiceOverButton from "@/components/ui/VoiceOverButton";
+
 export const metadata = {
   title: "Shift Mechanics — Heart Centered Anchor Breath",
 };
@@ -57,7 +59,7 @@ export default function ShiftMechanicsPage() {
           </p>
 
           {/* Hand placement video */}
-          <div className="rounded-xl border border-white/10 bg-white/[0.03] overflow-hidden">
+          <div className="rounded-xl border border-white/10 bg-white/[0.03] overflow-hidden w-[35%] mx-auto">
             <video
               controls
               playsInline
@@ -69,20 +71,8 @@ export default function ShiftMechanicsPage() {
             </video>
           </div>
 
-          {/* Voice over audio player */}
-          <div className="rounded-xl border border-white/10 bg-white/[0.03] p-5">
-            <p className="text-white/50 text-xs uppercase tracking-wider mb-3 font-semibold">
-              Voice Over
-            </p>
-            <audio
-              controls
-              className="w-full"
-              preload="metadata"
-            >
-              <source src="/voiceover.mp3" type="audio/mpeg" />
-              Your browser does not support the audio element.
-            </audio>
-          </div>
+          {/* Voice over — browser text-to-speech */}
+          <VoiceOverButton />
 
           <p>
             The thumbs, representative of fire, are cross connected and rest

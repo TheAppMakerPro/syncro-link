@@ -133,8 +133,7 @@ export default function ManifestoText() {
       <RevealSection>
         <p className="text-xl leading-relaxed text-center font-medium">
           So register yourself. Write a little paragraph introducing yourself.
-          Post whatever art, pics or information you want to share. But
-          remember, the registration section is not a coronation biography, or
+          But remember, the registration section is not a coronation biography, or
           the construction of a shopping cart. It is about finding all the
           locals in your area and all over the world who are ready to combine
           energies and blend with Gaia as one unified field of consciousness.

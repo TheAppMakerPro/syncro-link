@@ -88,7 +88,7 @@ export default function RightLightPage() {
               <SearchBar
                 value={search}
                 onChange={setSearch}
-                placeholder="Search by Syncro-Link username..."
+                placeholder="Syncro-Link Network Name"
               />
 
               {loading && posts.length === 0 ? (

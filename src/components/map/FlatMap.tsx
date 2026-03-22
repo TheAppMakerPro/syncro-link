@@ -5,8 +5,6 @@ import { MapContainer, TileLayer, CircleMarker, Popup, ZoomControl } from "react
 import "leaflet/dist/leaflet.css";
 import type { MapPoint } from "@/types";
 
-const BIO_PREVIEW_LENGTH = 150;
-
 function linkifyText(text: string): string {
   return text.replace(
     /(https?:\/\/[^\s]+)|([a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,})|(\+?1?[\s.-]?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4})/g,
@@ -49,9 +47,7 @@ export default function FlatMap({ points }: { points: MapPoint[] }) {
         />
         {points.map((point) => {
           const color = point.markerColor || "#e8e8ff";
-          const bioPreview = point.bio.length > BIO_PREVIEW_LENGTH
-            ? point.bio.slice(0, BIO_PREVIEW_LENGTH) + "..."
-            : point.bio;
+          const networkName = `${point.displayName}@Syncro-Link`;
 
           return (
             <CircleMarker
@@ -66,7 +62,7 @@ export default function FlatMap({ points }: { points: MapPoint[] }) {
                 opacity: 0.6,
               }}
             >
-              <Popup maxWidth={300}>
+              <Popup maxWidth={320}>
                 <div style={{ color: "#1a1a2e", fontFamily: "Inter, system-ui, sans-serif" }}>
                   <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "8px" }}>
                     {point.avatarUrl ? (
@@ -89,12 +85,18 @@ export default function FlatMap({ points }: { points: MapPoint[] }) {
                       <div style={{ fontSize: 11, color: "#666" }}>
                         {[point.city, point.country].filter(Boolean).join(", ")}
                       </div>
+                      <a
+                        href="/chat"
+                        style={{ fontSize: 11, color: "#a78bfa", textDecoration: "none", fontWeight: 600 }}
+                      >
+                        {networkName}
+                      </a>
                     </div>
                   </div>
                   {point.bio && (
                     <div
-                      style={{ fontSize: 13, lineHeight: 1.5, marginBottom: 6 }}
-                      dangerouslySetInnerHTML={{ __html: linkifyText(bioPreview) }}
+                      style={{ fontSize: 13, lineHeight: 1.5, marginBottom: 6, maxHeight: 200, overflowY: "auto" }}
+                      dangerouslySetInnerHTML={{ __html: linkifyText(point.bio) }}
                     />
                   )}
                   {point.contactInfo && (

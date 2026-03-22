@@ -90,7 +90,7 @@ function PointPanel({
       : point.bio.slice(0, BIO_PREVIEW_LENGTH) + "...";
 
   return (
-    <div className="absolute top-4 right-4 z-[1000] w-96 bg-black/80 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl text-white p-5 animate-fade-in">
+    <div className="absolute inset-x-2 bottom-2 sm:inset-auto sm:top-4 sm:right-4 z-[1000] w-auto sm:w-96 max-h-[70vh] overflow-y-auto bg-black/80 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl text-white p-5 animate-fade-in">
       <button
         onClick={onClose}
         className="absolute top-3 right-3 text-white/40 hover:text-white text-lg leading-none"
@@ -114,6 +114,12 @@ function PointPanel({
           <p className="text-xs text-white/50">
             {[point.city, point.country].filter(Boolean).join(", ")}
           </p>
+          <a
+            href="/chat"
+            className="text-xs text-purple-400 hover:text-purple-300 font-semibold"
+          >
+            {point.displayName}@Syncro-Link
+          </a>
         </div>
       </div>
       {point.bio && (
