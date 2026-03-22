@@ -30,6 +30,27 @@ export const metadata: Metadata = {
     ],
     apple: "/icons/apple-touch-icon.png",
   },
+  openGraph: {
+    title: "Syncro-Link — Unite and Enlight",
+    description:
+      "The world wide index for people of the light to unite, collaborate and anchor the gamma frequencies of the new earth energy en masse.",
+    images: [
+      {
+        url: "/icons/app-icon.png",
+        width: 1248,
+        height: 1248,
+        alt: "Syncro-Link Index",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Syncro-Link — Unite and Enlight",
+    description:
+      "The world wide index for people of the light to unite and anchor the new earth frequency.",
+    images: ["/icons/app-icon.png"],
+  },
 };
 
 export const viewport: Viewport = {

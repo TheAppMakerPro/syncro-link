@@ -1,7 +1,31 @@
+import type { Metadata } from "next";
 import RegistrationForm from "@/components/registry/RegistrationForm";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Register — Syncro-Link Index Registry",
+  description:
+    "Register yourself as a point of light on the world grid. Join the 144,000 node light grid and anchor the new earth frequency.",
+  openGraph: {
+    title: "Join Syncro-Link — Become a Point of Light",
+    description:
+      "Register yourself on the world grid. Unite with lightworkers worldwide and anchor the gamma frequencies of the new earth energy.",
+    images: [
+      {
+        url: "/icons/app-icon.png",
+        width: 1248,
+        height: 1248,
+        alt: "Syncro-Link Index",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Join Syncro-Link — Become a Point of Light",
+    description:
+      "Register yourself on the world grid. Unite with lightworkers worldwide.",
+    images: ["/icons/app-icon.png"],
+  },
 };
 
 export default function RegistryPage() {
