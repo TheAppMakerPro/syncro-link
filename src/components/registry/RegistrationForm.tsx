@@ -242,8 +242,14 @@ export default function RegistrationForm() {
       });
 
       if (!res.ok) {
-        const data = await res.json();
-        throw new Error(data.error || "Update failed");
+        let msg = "Update failed";
+        try {
+          const data = await res.json();
+          msg = data.error || msg;
+        } catch {
+          msg = `Server error (${res.status})`;
+        }
+        throw new Error(msg);
       }
 
       setSuccess("Your profile has been updated!");
