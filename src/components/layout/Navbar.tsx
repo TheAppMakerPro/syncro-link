@@ -31,7 +31,7 @@ const TOP_LANGUAGES = [
 ];
 
 const publicLinks = [
-  { href: "/", label: "Home" },
+  { href: "/home", label: "Home" },
   { href: "/registry", label: "Registry" },
   { href: "/world-grid", label: "World Grid" },
   { href: "/meditation", label: "Meditation" },
@@ -39,7 +39,7 @@ const publicLinks = [
 ];
 
 const authLinks = [
-  { href: "/", label: "Home" },
+  { href: "/home", label: "Home" },
   { href: "/world-grid", label: "World Grid" },
   { href: "/meditation", label: "Meditation" },
   { href: "/anchorhythm", label: "Anchorhythm" },
