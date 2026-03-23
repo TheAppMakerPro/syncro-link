@@ -81,17 +81,15 @@ export default function ShiftMechanicsPage() {
           <p>
             The thumbs, representative of fire, are cross connected and rest
             upon the high heart, which is the crossing point between the 4th
-            and 5th density. The high heart is both your central exchange point
-            and your bridge upwards. The 5th density rests upon the high heart.
+            and 5th density.
           </p>
 
           <p>
-            Your fingers are spread out to lace the energy constantly erupting
-            from your finger tips into the brachial nerve plexus which cycles
-            it back into the arms at the shoulders and then down into the hands
-            to form a continual figure eight current. Your palm chakras resting
-            at each side of the high heart center, create a dynamic balance and
-            slight gyroscopic effect.
+            Your fingers are spread out to merge the energy from your finger
+            tips into the brachial nerve plexus. This cycles your energy down
+            into the arms and out the hands to form a continual figure eight
+            current. Your palm chakras resting at each side of the high heart
+            center, create a dynamic balance and slight gyroscopic effect.
           </p>
 
           <p className="text-white font-semibold">
@@ -105,7 +103,7 @@ export default function ShiftMechanicsPage() {
             body of its air, feel any stagnant energy leave your cells and exit
             through all of your skin and out of your mouth. Then, allow your
             attention to drift softly down to surround and enter your heart
-            center. Hold your attention there like a field of silent
+            center. Hold your attention there as a field of silent
             intelligence. Settle yourself and take another full clearing
             breath, seeing the stagnant energy leave your system for the second
             time. Settle and drop your focus again into your heart center.
@@ -115,7 +113,7 @@ export default function ShiftMechanicsPage() {
             As you slowly inhale for a count of six imagine a golden thread
             about the width of your pinky finger. This thread extends from the
             central sun of the entire cosmos all the way to and then through
-            our local sun and directly into the crown of your head.
+            your local sun and directly into the crown of your head.
           </p>
 
           <p>
@@ -132,50 +130,14 @@ export default function ShiftMechanicsPage() {
 
           <p>
             Feel the blue gold plasma energy enter your heart Chakra which is a
-            deep emerald green crystal sphere encased within an octahedral
-            crystal of powdery gold. This octahedral crystal has its upper
-            point at the base of your throat and its lower point behind your
-            navel. Its base is oriented with points at the center of the
-            sternum and the fifth thoracic.
-          </p>
-
-          <p>
-            We use this geometry of the octahedral shape to create a pattern
-            that can be nested within. It is also the geometrical element of
-            air, which is the nature of anahata, the heart chakra. The smaller
-            octahedral of your heart nested in the center of Gaia&apos;s
-            octahedral crystal is like an ancient key in the field of infinity.
-          </p>
-
-          <p>
-            As well, when the toroidal field of your light body is perfectly
-            synchronized and nested in harmony with the toroidal field of Gaia,
-            which is emitted from Her north and south pole openings,
-            extraordinary alignment and power is made available for
-            calibration.
-          </p>
-
-          <p>
-            Feel the heart chakra begin to pulse with the same crystal
-            configuration that floats within the fifth density hollow center of
-            earth. This geometry at the hollow core of 5d earth is the
-            identical holographic octahedral geometry around your heart. Feel
-            your own heart crystal merge with Gaia&apos;s.
-          </p>
-
-          <p className="text-white/60 italic">
-            This is what you make happen in the six count inhalation. All of
-            this visualization and working awareness becomes fluid with
-            repetition.
+            deep emerald green crystal sphere.
           </p>
 
           <p>
             As you now hold the breath for a count of six, visualize the gold,
-            silvery cobalt sapphire blue and emerald green frequencies
-            spreading from your heart through the blood to all the cells in
-            your body. Feel it spreading through every atom of your organs,
-            glands, nerve fiber, fascia, bone marrow, muscles and tendons.
-            Feel it turning you into pure faultless crystal.
+            silvery cobalt sapphire blue and emerald green frequencies merging
+            with every cell of your being. Feel it turning you into pure
+            faultless crystal.
           </p>
 
           <p>
@@ -193,17 +155,16 @@ export default function ShiftMechanicsPage() {
 
           <p>
             Now exhale for a count of six and imagine the toroidal field around
-            you humming with precision as all the 33-99hz gamma frequency you
-            just brought forth from the central sun flows out of your heart
-            crystal, down through your body and out through your feet as a root
-            system which grows deep into the mantle of the earth.
+            you humming with precision. Feel the blue gold plasma move gently
+            from your heart center and down through your body and out through
+            your feet as a root system which grows deep into the mantle of the
+            earth.
           </p>
 
           <p>
-            Simultaneously, visualize this light shooting down the central
-            channel of your spine as the direct line of your golden thread.
-            Send this golden thread out from your perineum directly into the
-            core crystal of 5d earth.
+            Simultaneously, visualize your golden thread running down the
+            central channel of your spine and directly into the core crystal of
+            5d earth.
           </p>
 
           <p>
@@ -237,9 +198,7 @@ export default function ShiftMechanicsPage() {
           </p>
 
           <p>
-            One breath takes 21-22 seconds. Centering, lowering your attention
-            to your heart and breathing this way for six breaths takes about
-            three minutes.
+            One breath takes 21-22 seconds. One session is six breaths.
           </p>
 
           <p>
@@ -252,53 +211,29 @@ export default function ShiftMechanicsPage() {
           <p>
             At the end of any three minute session, you may feel the urge to
             vocalize something at this point. This is a great time to invoke
-            your I am presence.
-          </p>
-
-          <blockquote className="border-l-2 border-white/20 pl-4 text-white/70 italic my-6">
-            &ldquo;I am the Sovereign Heart Presence illuminating the new 5th
-            density earth. All time lines converge through me. I am the
-            balance point. I am the crystal clear prism,&rdquo; ...or
-            something like that. Whatever you are moved to command and create.
-          </blockquote>
-
-          <p>
-            Then, with your heart on fire and your eyes streaming with tears of
-            joy, say thank you to Gaia, the Universe, all aspects of your self
-            through time and your offworld brothers and sisters ...or something
-            like that.
+            your I am presence.. make an I am statement, or several.
           </p>
 
           <p>
             Also, after an energy centric coherence breathing session it is
-            good to stretch, take a short walk, bend over and touch your toes,
-            lift your knees up to your chest one at a time as you stand, any
-            type of conscious purposeful movement to settle the frequency
-            further into your physical body. And drink some water you have
-            blessed and thanked. It is the liquid crystal assisting
-            magnificently in your DNA activations.
+            good to stretch, take a short walk, any type of conscious purposeful
+            movement to settle the frequency further into your physical body.
+            Drink some water you have blessed and thanked. It is the liquid
+            crystal assisting magnificently in your DNA activations.
           </p>
 
           <p>
             Bring steady, slow even consistency to your practice. Take it easy.
             Your ability to rest in unhurried silence is paramount to the
-            process. But it takes time to develop a natural skill at this. So
-            don&apos;t be hard on yourself. Don&apos;t rush. Work on one part
-            of the visualization at a time. Hold gratitude in your heart. Be
-            patient. The 5th density is a much nicer frequency to exist in,
-            but you must approach softly with sincere reverence and gratitude.
-            And remain there in silent allowance.
+            process. It takes time to develop a natural skill at this, so be
+            easy with yourself. Don&apos;t rush. Work on one part of the
+            visualization at a time. Hold gratitude in your heart. Say thank
+            you to the universe.
           </p>
 
-          <blockquote className="border-l-2 border-white/20 pl-4 text-white/70 italic my-6">
-            I surrender. I trust. I allow. I receive.
-            <br />
-            <br />
-            I am love, the infinite presence of perfect mathematical harmony,
-            clarity and allowance.
-          </blockquote>
+          <p className="text-white font-semibold">Smile to yourself. You are the shift.</p>
 
-          <p className="text-white/60">...or something like that.</p>
+          <p>And remain there in silent allowance.</p>
 
           <div className="h-8" />
 
