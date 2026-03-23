@@ -70,7 +70,7 @@ export default function MeditationPage() {
               className="w-full rounded-xl"
               style={{ maxHeight: "70vh" }}
             >
-              <source src="/heart-breath.mp4" type="video/mp4" />
+              <source src="/meditation2.mp4" type="video/mp4" />
               Your browser does not support the video element.
             </video>
           </div>
