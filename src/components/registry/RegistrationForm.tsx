@@ -56,14 +56,7 @@ const FREQUENCY_TIERS = [
 ];
 import { COUNTRIES } from "@/lib/constants";
 
-const registerSteps = [
-  "Identity & Location",
-  "Contact & Bio",
-  "Your Light",
-  "First Right Light Post",
-];
-
-const editSteps = [
+const STEPS = [
   "Identity & Location",
   "Contact & Bio",
   "Your Light",
@@ -91,14 +84,13 @@ export default function RegistrationForm() {
     contactInfo: "",
     bio: "",
     markerColor: "#e8e8ff",
-    firstPostContent: "",
   });
   const [avatar, setAvatar] = useState<File | null>(null);
   const [avatarPreview, setAvatarPreview] = useState<string | null>(null);
   const [locating, setLocating] = useState(false);
   const [confirmDelete, setConfirmDelete] = useState(false);
 
-  const steps = isEditing ? editSteps : registerSteps;
+  const steps = STEPS;
 
   // Check if user is already registered
   useEffect(() => {
@@ -122,7 +114,6 @@ export default function RegistrationForm() {
             contactInfo: data.contactInfo || "",
             bio: data.bio || "",
             markerColor: data.markerColor || "#ffffff",
-            firstPostContent: "",
           });
           setExistingAvatarUrl(data.avatarUrl || null);
         }
@@ -167,7 +158,6 @@ export default function RegistrationForm() {
       if (isEditing) return base;
       return base && form.email.trim() && form.password.length >= 6;
     }
-    if (!isEditing && step === 3) return form.firstPostContent.trim();
     return true;
   };
 
@@ -180,7 +170,7 @@ export default function RegistrationForm() {
   };
 
   const handleRegister = async () => {
-    if (!form.displayName.trim() || !form.country || !form.firstPostContent.trim()) {
+    if (!form.displayName.trim() || !form.country) {
       setError("Please fill in all required fields");
       return;
     }
@@ -620,31 +610,10 @@ export default function RegistrationForm() {
                   </label>
                 )}
               </div>
+
             </>
           )}
 
-          {!isEditing && step === 3 && (
-            <>
-              <div className="rounded-xl border border-purple-200 bg-purple-50/50 p-4 mb-4">
-                <p className="text-white/90 text-sm leading-relaxed">
-                  You must make at least one positive post to the RIGHT LIGHT in
-                  order to show up on the Syncro-Link index world grid map. NO
-                  MATTER HOW SIMPLE OR ELABORATE.
-                </p>
-              </div>
-              <GlowTextarea
-                label="Your First Right Light Post *"
-                placeholder="Share something positive that has happened to you, somebody else, or the planet. Let there be light..."
-                value={form.firstPostContent}
-                onChange={(e) => update("firstPostContent", e.target.value)}
-                className="min-h-[200px]"
-              />
-              <p className="text-xs text-white/60">
-                Use #hashtags so others can find your post by topic. Keep it light
-                filled and joyful!
-              </p>
-            </>
-          )}
         </motion.div>
       </AnimatePresence>
 
