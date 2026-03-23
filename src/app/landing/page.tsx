@@ -117,27 +117,6 @@ export default function LandingPage() {
           anchor the gamma frequencies of the new earth energy en masse.
         </motion.p>
 
-        {/* Pulsing Enter the Grid */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-        >
-          <Link
-            href="/home"
-            className="group relative inline-flex items-center justify-center"
-          >
-            {/* Outer pulse ring */}
-            <span className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-600 via-indigo-500 to-emerald-500 opacity-40 blur-lg animate-[pulse_2s_ease-in-out_infinite]" />
-            {/* Inner pulse ring */}
-            <span className="absolute inset-[-4px] rounded-full bg-gradient-to-r from-purple-500 via-indigo-500 to-emerald-500 opacity-20 blur-md animate-[pulse_2.5s_ease-in-out_infinite_0.5s]" />
-            {/* Button */}
-            <span className="relative px-12 sm:px-16 py-5 sm:py-6 rounded-full font-bold text-xl sm:text-2xl tracking-wider text-white bg-gradient-to-r from-purple-700 via-indigo-600 to-emerald-600 shadow-[0_0_30px_rgba(99,102,241,0.4)] hover:shadow-[0_0_50px_rgba(99,102,241,0.6)] transition-all duration-500 hover:scale-105">
-              Enter the Grid
-            </span>
-          </Link>
-        </motion.div>
-
         {/* Scroll indicator */}
         <motion.div
           className="absolute bottom-8 left-1/2 -translate-x-1/2"
@@ -251,8 +230,12 @@ export default function LandingPage() {
           href="/home"
           className="group relative inline-flex items-center justify-center"
         >
-          <span className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-600 via-indigo-500 to-emerald-500 opacity-30 blur-lg animate-[pulse_2s_ease-in-out_infinite]" />
-          <span className="relative px-10 py-4 rounded-full font-bold text-lg tracking-wider text-white bg-gradient-to-r from-purple-700 via-indigo-600 to-emerald-600 shadow-[0_0_30px_rgba(99,102,241,0.3)] hover:shadow-[0_0_50px_rgba(99,102,241,0.5)] transition-all duration-500 hover:scale-105">
+          {/* Outer pulse ring */}
+          <span className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-600 via-indigo-500 to-emerald-500 opacity-40 blur-lg animate-[pulse_2s_ease-in-out_infinite]" />
+          {/* Inner pulse ring */}
+          <span className="absolute inset-[-4px] rounded-full bg-gradient-to-r from-purple-500 via-indigo-500 to-emerald-500 opacity-20 blur-md animate-[pulse_2.5s_ease-in-out_infinite_0.5s]" />
+          {/* Button */}
+          <span className="relative px-12 sm:px-16 py-5 sm:py-6 rounded-full font-bold text-xl sm:text-2xl tracking-wider text-white bg-gradient-to-r from-purple-700 via-indigo-600 to-emerald-600 shadow-[0_0_30px_rgba(99,102,241,0.4)] hover:shadow-[0_0_50px_rgba(99,102,241,0.6)] transition-all duration-500 hover:scale-105">
             Enter the Grid
           </span>
         </Link>
