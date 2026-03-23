@@ -33,30 +33,9 @@ export default function MeditationPage() {
             numbers of lightworkers are up.
           </p>
 
-          <p>
-            And here is precisely how you take a heart centered breath for
-            this platform.
-          </p>
-
-          <p className="text-white/60">
-            One thing to consider though. If you read through this and
-            don&apos;t really feel it, do whatever makes you feel best. This
-            version of an energy centric, heart centered breath is merely a
-            suggestion.
-          </p>
-
           <div className="text-center text-white/30 tracking-[0.5em] text-xs my-4">
             &#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;&#9734;
           </div>
-
-          <p>
-            Here is the instruction of how to position your hands upon your
-            chest for the energy centric heart centered anchor breath.
-          </p>
-
-          <p>
-            You place both hands on your chest like this:
-          </p>
 
           {/* Hand placement video */}
           <div className="rounded-xl border border-white/10 bg-white/[0.03] overflow-hidden w-full sm:w-[35%] mx-auto">
