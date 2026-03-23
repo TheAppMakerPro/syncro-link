@@ -27,8 +27,8 @@ export default function MeditationPage() {
           <p>
             You pick your daily light color on the third page of the
             registry section where you load your bio pic. This determines
-            for the index how many anchors you plan on dropping on a daily
-            basis. We keep track of this data. It can be found on the
+            for the index how many frequency anchors you intend to set on a
+            daily basis. We keep track of this data. It can be found on the
             Anchorhythm page.
           </p>
 
@@ -49,12 +49,8 @@ export default function MeditationPage() {
           </div>
 
           <p>
-            Here is the instruction of how to position your hands upon your
-            chest for the energy centric heart centered anchor breath.
-          </p>
-
-          <p>
-            You place both hands on your chest like this:
+            This is the hand position and instruction set for the Syncro-Link
+            version of a heart centered breath.
           </p>
 
           {/* Hand placement photo */}

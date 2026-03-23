@@ -175,8 +175,9 @@ export default function ManifestoText() {
               Not even the faintest glimmer of monetizing spirituality or anything
               else. No selling, no pitching, no scheduling, no hocking of thyne
               wares in any form. Any advice, product, or idea you have to share
-              with the Syncro-Link community, is free and you can share it in
-              the RIGHT LIGHT section with no strings attached.
+              with the Syncro-Link community, is FREE and you can set up a room
+              in the chat and share it by inviting whom ever you wish to share
+              it with.
             </p>
           </div>
           <div className="rounded-xl border border-indigo-400/30 bg-indigo-500/15 p-5">

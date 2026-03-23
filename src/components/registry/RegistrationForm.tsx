@@ -12,7 +12,7 @@ const FREQUENCY_TIERS = [
     color: "#e8e8ff",
     name: "The White Star",
     label: "Base Color",
-    description: "You anchor light through the breath at 33-99hz gamma range at least three times a day with sincerity, reverence, gratitude and silence.",
+    description: "You do 3 sessions of six heart coherent breaths throughout each day. This takes 9 minutes and equals 18 frequency anchors set per day.",
     frequency: "3x/day \u00b7 9 minutes",
     gradient: "radial-gradient(circle, #ffffff, #e8e8ff, #c8c8ff60, transparent)",
     glow: "0 0 18px 6px rgba(255,255,255,0.7), 0 0 40px 14px rgba(200,200,255,0.3)",
@@ -21,7 +21,7 @@ const FREQUENCY_TIERS = [
     color: "#00cc66",
     name: "The Emerald Heart Crystal",
     label: "First Grounding",
-    description: "You anchor 33-99hz gamma light frequency at least nine times a day with sincerity, reverence, gratitude and silence.",
+    description: "You do 9 sessions of six heart coherent breaths throughout each day. This takes 27 minutes and equals 54 frequency anchors set per day.",
     frequency: "9x/day \u00b7 27 minutes",
     gradient: "radial-gradient(circle, #66ffaa, #00cc66, #00884440, transparent)",
     glow: "0 0 18px 6px rgba(0,204,102,0.6), 0 0 40px 14px rgba(0,136,68,0.25)",
@@ -30,7 +30,7 @@ const FREQUENCY_TIERS = [
     color: "#4488cc",
     name: "The Blue Sapphire Plasma",
     label: "Second Grounding",
-    description: "You anchor frequency at least eighteen times a day with sincerity, reverence, gratitude and silence.",
+    description: "You do 18 sessions of six heart coherent breaths throughout each day. This takes 54 minutes and equals 108 frequency anchors set per day.",
     frequency: "18x/day \u00b7 54 minutes",
     gradient: "radial-gradient(circle, #99ccff, #4488cc, #2255aa50, transparent)",
     glow: "0 0 18px 6px rgba(68,136,204,0.6), 0 0 40px 14px rgba(34,85,170,0.3)",
@@ -39,7 +39,7 @@ const FREQUENCY_TIERS = [
     color: "#9933cc",
     name: "The Violet Resurrection Flame",
     label: "Third Grounding",
-    description: "You anchor the new earth gamma frequency at least twenty-seven times a day with sincerity, reverence, gratitude and silence.",
+    description: "You do 27 sessions of six heart coherent breaths throughout each day. This takes 81 minutes and equals 162 frequency anchors set per day.",
     frequency: "27x/day \u00b7 81 minutes",
     gradient: "radial-gradient(circle, #cc66ff, #9933cc, #6600994d, transparent)",
     glow: "0 0 18px 6px rgba(153,51,204,0.6), 0 0 40px 14px rgba(102,0,153,0.3)",
@@ -380,7 +380,7 @@ export default function RegistrationForm() {
                 </>
               )}
               <GlowInput
-                label="What would you like others to know you by? *"
+                label="Choose your Syncro-Link Network Name"
                 placeholder="Your Syncro-Link name"
                 value={form.displayName}
                 onChange={(e) => update("displayName", e.target.value)}
@@ -451,8 +451,8 @@ export default function RegistrationForm() {
                 </div>
                 <p className="text-xs text-white/50">
                   You can direct message any member of the collective index by
-                  locating them on the World Grid and using their Syncro-Link
-                  network name.
+                  locating them on the World Grid, then creating a chat room
+                  and inviting them in by their Syncro-Link network name.
                 </p>
               </div>
               <GlowTextarea
@@ -482,8 +482,8 @@ export default function RegistrationForm() {
                 <p>
                   The color of light you choose below will correspond to how
                   many times you consciously anchor frequency over the course
-                  of each day. Mouse over each color to see how many anchors
-                  each represents.
+                  of each day. Tap or click on any color to see how many
+                  conscious heart coherent breaths each represents.
                 </p>
                 <p>
                   This choice shows up on the world wide grid. Other members
@@ -492,9 +492,9 @@ export default function RegistrationForm() {
                 </p>
                 <p className="text-white/60">
                   There is no monitoring system. It&apos;s not a contest. Just
-                  be honest. More is not necessarily better if you don&apos;t
-                  take the time to center, relax and breathe with sincerity and
-                  pure intent.
+                  be honest. Setting more frequency anchors is not necessarily
+                  better if you don&apos;t take the time to center, relax and
+                  breathe with sincerity and pure intent.
                 </p>
                 <p className="text-white/60">
                   These are just markers. Gold is obviously for somebody who has
@@ -504,11 +504,10 @@ export default function RegistrationForm() {
                 </p>
                 <p className="text-white/60">
                   So choose your light based on your current availability and
-                  change it whenever your frequency quickens or adjusts. We do
-                  have an algorithm attached to the overall count for each day
-                  and as information accumulates we will establish the
-                  Syncro-Link Index graph showing the overall heart centered
-                  breaths Gaia is receiving daily.
+                  change it whenever the frequency of your practice quickens or
+                  adjusts. We do have an algorithm attached to the overall count
+                  of world wide frequency anchors set for each day and you can
+                  find it on the Anchorhythm page.
                 </p>
                 <p className="text-white/60">
                   And once again. Take it easy. It&apos;s not a contest. There
@@ -519,9 +518,17 @@ export default function RegistrationForm() {
 
               {/* Frequency tier spheres */}
               <div className="space-y-4">
-                <label className="block text-sm font-semibold text-white/90">
+                <label className="block text-sm font-semibold text-white/90 text-center">
                   Choose Your Light
                 </label>
+                <p className="text-white/60 text-xs leading-relaxed text-center max-w-md mx-auto">
+                  Syncro-Link is about the frequency of 5th Density light, which
+                  is clarity, wisdom, stability and silent heart centered
+                  presence. In the 5th density love is an actual force of
+                  existence and manifests as multi dimensional formulas emitted
+                  from your heart center that always provide for perfect
+                  allowance.
+                </p>
                 <div className="flex justify-center gap-5 sm:gap-7 py-4">
                   {FREQUENCY_TIERS.map((tier, i) => (
                     <button
