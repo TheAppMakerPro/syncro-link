@@ -276,11 +276,27 @@ export default function MeditationPage() {
             </h2>
             <div className="rounded-xl border border-white/10 bg-white/[0.03] overflow-hidden">
               <img
-                src="/human-toroidal-field.jpeg"
+                src="/human-toroidal-field.jpg"
                 alt="The Human Toroidal Field"
                 className="w-full max-w-lg rounded-xl"
               />
             </div>
+          </div>
+
+          {/* Meditation video */}
+          <div className="mt-10 rounded-xl border border-white/10 bg-white/[0.03] overflow-hidden">
+            <video
+              controls
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              className="w-full rounded-xl"
+            >
+              <source src="/meditation2.mp4" type="video/mp4" />
+              Your browser does not support the video element.
+            </video>
           </div>
         </div>
       </div>
