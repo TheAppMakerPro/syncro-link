@@ -1,10 +1,10 @@
 import VoiceOverButton from "@/components/ui/VoiceOverButton";
 
 export const metadata = {
-  title: "Shift Mechanics — Heart Centered Anchor Breath",
+  title: "Meditation — Heart Centered Anchor Breath",
 };
 
-export default function ShiftMechanicsPage() {
+export default function MeditationPage() {
   return (
     <div className="px-4 sm:px-6 py-8">
       <div className="content-panel max-w-4xl mx-auto">
@@ -13,7 +13,7 @@ export default function ShiftMechanicsPage() {
             className="text-4xl sm:text-5xl font-bold tracking-wider mb-3"
             style={{ fontFamily: "var(--font-space)" }}
           >
-            Shift Mechanics
+            Meditation
           </h1>
           <p
             className="text-2xl sm:text-3xl font-bold tracking-wider text-white/70"
@@ -265,6 +265,17 @@ export default function ShiftMechanicsPage() {
             Love, light, peace and thanks to you all. I can&apos;t say it
             enough.
           </p>
+
+          {/* Instagram Reel */}
+          <div className="mt-10 rounded-xl border border-white/10 bg-white/[0.03] overflow-hidden">
+            <iframe
+              src="https://www.instagram.com/reel/DTJsnu9CoL6/embed"
+              className="w-full"
+              style={{ minHeight: "680px", border: "none" }}
+              allowFullScreen
+              scrolling="no"
+            />
+          </div>
         </div>
       </div>
     </div>
