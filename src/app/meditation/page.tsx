@@ -70,7 +70,7 @@ export default function MeditationPage() {
               className="w-full rounded-xl"
               style={{ maxHeight: "70vh" }}
             >
-              <source src="/meditation2.mp4" type="video/mp4" />
+              <source src="/heart-breath.mp4" type="video/mp4" />
               Your browser does not support the video element.
             </video>
           </div>
@@ -266,15 +266,20 @@ export default function MeditationPage() {
             enough.
           </p>
 
-          {/* Instagram Reel */}
+          {/* Meditation video */}
           <div className="mt-10 rounded-xl border border-white/10 bg-white/[0.03] overflow-hidden">
-            <iframe
-              src="https://www.instagram.com/reel/DTJsnu9CoL6/embed"
-              className="w-full"
-              style={{ minHeight: "680px", border: "none" }}
-              allowFullScreen
-              scrolling="no"
-            />
+            <video
+              controls
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              className="w-full rounded-xl"
+            >
+              <source src="/meditation2.mp4" type="video/mp4" />
+              Your browser does not support the video element.
+            </video>
           </div>
         </div>
       </div>
