@@ -57,21 +57,13 @@ export default function MeditationPage() {
             You place both hands on your chest like this:
           </p>
 
-          {/* Hand placement video */}
+          {/* Hand placement photo */}
           <div className="rounded-xl border border-white/10 bg-white/[0.03] overflow-hidden w-full sm:w-[35%] mx-auto">
-            <video
-              controls
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
+            <img
+              src="/heart-breath.jpg"
+              alt="Hands placed on chest for heart centered anchor breath"
               className="w-full rounded-xl"
-              style={{ maxHeight: "70vh" }}
-            >
-              <source src="/heart-breath.mp4" type="video/mp4" />
-              Your browser does not support the video element.
-            </video>
+            />
           </div>
 
           {/* Voice over — browser text-to-speech */}

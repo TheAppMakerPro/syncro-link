@@ -80,7 +80,7 @@ export default function PostComposer({ onPostCreated }: PostComposerProps) {
         <p className="text-red-600 text-sm font-medium mb-3">{error}</p>
       )}
       <GlowTextarea
-        placeholder="Post something positive to the RIGHT LIGHT... use #hashtags to categorize."
+        placeholder="Post something positive to the Right Light."
         value={content}
         onChange={(e) => setContent(e.target.value)}
         className="min-h-[100px]"

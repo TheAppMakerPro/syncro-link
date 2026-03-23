@@ -19,6 +19,8 @@ export async function GET() {
       contactInfo: true,
       markerColor: true,
     },
+    orderBy: { createdAt: "desc" },
+    take: 5,
   });
 
   const points = users

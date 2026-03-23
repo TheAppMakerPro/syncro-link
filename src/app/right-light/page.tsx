@@ -1,10 +1,8 @@
 "use client";
 
-import { useEffect, useState, useCallback, useRef } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useState, useCallback } from "react";
 import PostCard from "@/components/feed/PostCard";
 import PostComposer from "@/components/feed/PostComposer";
-import HashtagDirectory from "@/components/feed/HashtagDirectory";
 import SearchBar from "@/components/feed/SearchBar";
 import LoadingSpinner from "@/components/ui/LoadingSpinner";
 import type { PostWithUser } from "@/types";
@@ -13,27 +11,20 @@ export default function RightLightPage() {
   const [posts, setPosts] = useState<PostWithUser[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
-  const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
   const [hasSession, setHasSession] = useState(false);
 
-  const fetchPosts = useCallback(async (searchTerm = "", pageNum = 1) => {
+  const fetchPosts = useCallback(async (searchTerm = "") => {
     setLoading(true);
     const params = new URLSearchParams({
-      page: pageNum.toString(),
-      limit: "20",
+      page: "1",
+      limit: "5",
     });
     if (searchTerm) params.set("search", searchTerm);
 
     try {
       const res = await fetch(`/api/posts?${params}`);
       const data = await res.json();
-      if (pageNum === 1) {
-        setPosts(data.posts);
-      } else {
-        setPosts((prev) => [...prev, ...data.posts]);
-      }
-      setTotalPages(data.totalPages);
+      setPosts(data.posts);
     } catch {
       // silently fail
     } finally {
@@ -50,33 +41,10 @@ export default function RightLightPage() {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setPage(1);
-      fetchPosts(search, 1);
+      fetchPosts(search);
     }, 300);
     return () => clearTimeout(timer);
   }, [search, fetchPosts]);
-
-  const loadMore = () => {
-    if (loading || page >= totalPages) return;
-    const next = page + 1;
-    setPage(next);
-    fetchPosts(search, next);
-  };
-
-  // Infinite scroll observer
-  const sentinelRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const el = sentinelRef.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) loadMore();
-      },
-      { rootMargin: "200px" }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  });
 
   return (
     <div className="px-4 sm:px-6 py-8">
@@ -89,60 +57,46 @@ export default function RightLightPage() {
             The Right Light
           </h1>
           <p className="text-white/60 max-w-xl mx-auto">
-            All posts set in the right light — scroll for variety, search by
-            username, or browse by hashtag.
+            All posts set in the right light — scroll for variety, or search by
+            username.
           </p>
         </div>
 
         <div className="space-y-6">
           {hasSession && (
-            <PostComposer onPostCreated={() => fetchPosts("", 1)} />
+            <PostComposer onPostCreated={() => fetchPosts("")} />
           )}
 
-          <div className="grid md:grid-cols-[1fr_260px] gap-6">
-            <div className="space-y-5">
-              <SearchBar
-                value={search}
-                onChange={setSearch}
-                placeholder="Syncro-Link Network Name"
-              />
+          <div className="max-w-2xl mx-auto space-y-5">
+            <SearchBar
+              value={search}
+              onChange={setSearch}
+              placeholder="Syncro-Link Network Name"
+            />
 
-              {loading && posts.length === 0 ? (
-                <LoadingSpinner />
-              ) : posts.length === 0 ? (
-                <div className="text-center py-12 text-white/40">
-                  <p className="text-lg font-medium mb-1">No posts yet</p>
-                  <p className="text-sm">Be the first to share your light!</p>
-                </div>
-              ) : (
-                <>
-                  {posts.map((post) => (
-                    <PostCard key={post.id} post={post} />
-                  ))}
-                  {/* Infinite scroll sentinel */}
-                  <div ref={sentinelRef} className="py-4 text-center">
-                    {loading && <p className="text-white/40 text-sm animate-pulse">Loading more light...</p>}
-                    {page >= totalPages && posts.length > 0 && (
-                      <p className="text-white/30 text-xs">You&apos;ve seen all the light</p>
-                    )}
-                  </div>
-                </>
-              )}
-            </div>
-
-            <div className="hidden md:block">
-              <div className="sticky top-24 space-y-4">
-                <HashtagDirectory />
-
-                <div className="gold-card p-5">
-                  <h3 className="font-bold text-sm mb-2">The 3 Rules</h3>
-                  <ul className="space-y-1.5 text-xs text-white/60">
-                    <li>1. No capitalism whatsoever</li>
-                    <li>2. Be nice — no bad actors</li>
-                    <li>3. Unite and enlight — no doom and gloom</li>
-                  </ul>
-                </div>
+            {loading && posts.length === 0 ? (
+              <LoadingSpinner />
+            ) : posts.length === 0 ? (
+              <div className="text-center py-12 text-white/40">
+                <p className="text-lg font-medium mb-1">No posts yet</p>
+                <p className="text-sm">Be the first to share your light!</p>
               </div>
+            ) : (
+              posts.map((post) => (
+                <PostCard key={post.id} post={post} />
+              ))
+            )}
+          </div>
+
+          {/* The 3 Rules */}
+          <div className="max-w-2xl mx-auto">
+            <div className="gold-card p-5">
+              <h3 className="font-bold text-sm mb-2">The 3 Rules</h3>
+              <ul className="space-y-1.5 text-xs text-white/60">
+                <li>1. No capitalism whatsoever</li>
+                <li>2. Be nice — no bad actors</li>
+                <li>3. Unite and enlight — no doom and gloom</li>
+              </ul>
             </div>
           </div>
         </div>

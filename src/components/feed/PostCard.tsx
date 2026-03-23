@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
 import type { PostWithUser } from "@/types";
 
 function timeAgo(dateStr: string) {
@@ -76,13 +75,12 @@ export default function PostCard({ post }: { post: PostWithUser }) {
       {post.hashtags.length > 0 && (
         <div className="flex flex-wrap gap-2 pt-1">
           {post.hashtags.map(({ hashtag }) => (
-            <Link
+            <span
               key={hashtag.id}
-              href={`/right-light/${encodeURIComponent(hashtag.name)}`}
-              className="text-xs px-3 py-1 rounded-full bg-purple-100 text-purple-700 font-medium hover:bg-purple-200 transition-colors"
+              className="text-xs px-3 py-1 rounded-full bg-purple-100 text-purple-700 font-medium"
             >
               #{hashtag.name}
-            </Link>
+            </span>
           ))}
         </div>
       )}
