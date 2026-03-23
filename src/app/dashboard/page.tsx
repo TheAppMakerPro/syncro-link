@@ -7,7 +7,6 @@ import {
   MessageSquare,
   User,
   Globe,
-  Sun,
   LogOut,
 } from "lucide-react";
 import LoadingSpinner from "@/components/ui/LoadingSpinner";
@@ -157,12 +156,6 @@ export default function DashboardPage() {
             icon={Globe}
             label="World Grid"
             description="See all points of light"
-          />
-          <QuickLink
-            href="/right-light"
-            icon={Sun}
-            label="The Right Light"
-            description="Posts and community feed"
           />
         </div>
 

@@ -34,7 +34,6 @@ const publicLinks = [
   { href: "/", label: "Home" },
   { href: "/registry", label: "Registry" },
   { href: "/world-grid", label: "World Grid" },
-  { href: "/right-light", label: "The Right Light" },
   { href: "/meditation", label: "Meditation" },
   { href: "/anchorhythm", label: "Anchorhythm" },
 ];
@@ -42,7 +41,6 @@ const publicLinks = [
 const authLinks = [
   { href: "/", label: "Home" },
   { href: "/world-grid", label: "World Grid" },
-  { href: "/right-light", label: "The Right Light" },
   { href: "/meditation", label: "Meditation" },
   { href: "/anchorhythm", label: "Anchorhythm" },
   { href: "/chat", label: "Chat" },

@@ -163,35 +163,6 @@ export default function ManifestoText() {
 
       <StarDivider />
 
-      {/* The Right Light intro */}
-      <RevealSection>
-        <h2 className="text-3xl font-bold text-center tracking-wider mb-6">
-          THE RIGHT LIGHT
-        </h2>
-        <p className="text-lg leading-relaxed">
-          To all of you creators out there — We know all of you have experienced
-          wonderful visions about how energy works and what is happening right
-          now during this great transition.
-        </p>
-        <p className="text-lg leading-relaxed mt-4">
-          Please share whatever you feel relevant with the entire network in the
-          RIGHT LIGHT section.
-        </p>
-        <p className="text-lg leading-relaxed mt-4">
-          The RIGHT LIGHT is about posting any miraculous heartwarming
-          sentiment, any reports of Earthlings doing the RIGHT thing for the
-          collective whole, plus any new forms of real transparency, healing,
-          outpourings of love and all points in between. Just good stuff. No
-          negative conspiracy news.{" "}
-          <strong>
-            Only authentic high vibration news concerning the creation of 5D earth.
-          </strong>{" "}
-          All set in the right light.
-        </p>
-      </RevealSection>
-
-      <StarDivider />
-
       {/* The 3 Rules */}
       <RevealSection>
         <h2 className="text-2xl font-bold text-center tracking-wider mb-8">
