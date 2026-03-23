@@ -30,8 +30,7 @@ export default function ManifestoText() {
           Message to All
         </p>
         <p className="text-lg leading-relaxed">
-          This is a tiny little app that may even grow up to be a website one
-          day. But as simple as it appears, it has a purpose. And in order to
+          This is a tiny little app. But as simple as it appears, it has a purpose. And in order to
           understand that purpose I ask all of you to read the following. It
           takes two minutes.
         </p>
