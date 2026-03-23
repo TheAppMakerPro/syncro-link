@@ -111,7 +111,7 @@ export default function LandingPage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.4 }}
-          className="text-white/70 text-base sm:text-lg max-w-xl mx-auto text-center leading-relaxed mb-16"
+          className="text-white/70 text-base sm:text-lg max-w-xl mx-auto text-center leading-relaxed mb-6"
         >
           The World Wide Index for people of the light to unite, collaborate and
           anchor the gamma frequencies of the new earth energy en masse.
