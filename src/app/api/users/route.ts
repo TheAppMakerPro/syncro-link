@@ -110,15 +110,15 @@ export async function POST(request: NextRequest) {
       }
     }
 
+    const { password: _pw, email: _em, ...safeUser } = user;
     const token = await createSessionToken(user.id);
-    const response = NextResponse.json({ user, post }, { status: 201 });
+    const response = NextResponse.json({ user: safeUser, post }, { status: 201 });
     setSessionCookie(response, token);
     return response;
   } catch (error) {
     console.error("Registration error:", error);
-    const message = error instanceof Error ? error.message : "Unknown error";
     return NextResponse.json(
-      { error: `Registration failed: ${message}` },
+      { error: "Registration failed" },
       { status: 500 }
     );
   }

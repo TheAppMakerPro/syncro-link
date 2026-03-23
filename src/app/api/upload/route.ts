@@ -1,7 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { saveUploadedFile } from "@/lib/upload";
+import { getSession } from "@/lib/auth";
 
 export async function POST(request: NextRequest) {
+  const userId = await getSession();
+  if (!userId) {
+    return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
+  }
+
   try {
     const formData = await request.formData();
     const file = formData.get("file") as File;

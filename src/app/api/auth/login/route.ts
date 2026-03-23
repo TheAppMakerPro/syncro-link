@@ -18,15 +18,12 @@ export async function POST(request: NextRequest) {
 
     const user = await prisma.user.findUnique({ where: { email } });
 
-    if (!user || !user.password) {
-      return NextResponse.json(
-        { error: "Invalid email or password" },
-        { status: 401 }
-      );
-    }
+    // Always run bcrypt compare to prevent timing attacks that reveal
+    // whether an email exists in the database
+    const dummyHash = "$2a$10$abcdefghijklmnopqrstuuABCDEFGHIJKLMNOPQRSTUVWX.YZ";
+    const valid = await bcrypt.compare(password, user?.password || dummyHash);
 
-    const valid = await bcrypt.compare(password, user.password);
-    if (!valid) {
+    if (!user || !user.password || !valid) {
       return NextResponse.json(
         { error: "Invalid email or password" },
         { status: 401 }

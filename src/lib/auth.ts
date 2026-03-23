@@ -2,14 +2,18 @@ import { SignJWT, jwtVerify } from "jose";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
+const jwtSecret = process.env.JWT_SECRET;
+if (!jwtSecret && process.env.NODE_ENV === "production") {
+  throw new Error("JWT_SECRET environment variable is required in production");
+}
 const SECRET = new TextEncoder().encode(
-  process.env.JWT_SECRET || "syncro-link-secret-key-change-in-production"
+  jwtSecret || "syncro-link-dev-only-secret-key"
 );
 
 export async function createSessionToken(userId: string) {
   return new SignJWT({ userId })
     .setProtectedHeader({ alg: "HS256" })
-    .setExpirationTime("365d")
+    .setExpirationTime("7d")
     .sign(SECRET);
 }
 
@@ -18,7 +22,7 @@ export function setSessionCookie(response: NextResponse, token: string) {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
     sameSite: "lax",
-    maxAge: 365 * 24 * 60 * 60,
+    maxAge: 7 * 24 * 60 * 60,
     path: "/",
   });
   return response;

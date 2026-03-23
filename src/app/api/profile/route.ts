@@ -27,7 +27,8 @@ export async function GET() {
     return NextResponse.json({ error: "User not found" }, { status: 404 });
   }
 
-  return NextResponse.json(user);
+  const { password, ...safeUser } = user;
+  return NextResponse.json(safeUser);
 }
 
 export async function PUT(request: NextRequest) {
@@ -105,7 +106,8 @@ export async function PUT(request: NextRequest) {
     },
   });
 
-  return NextResponse.json(user);
+  const { password: _pw, ...safeUpdatedUser } = user;
+  return NextResponse.json(safeUpdatedUser);
 }
 
 export async function DELETE() {
