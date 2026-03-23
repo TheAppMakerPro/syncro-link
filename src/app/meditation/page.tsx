@@ -28,9 +28,8 @@ export default function MeditationPage() {
             You pick your daily light color on the third page of the
             registry section where you load your bio pic. This determines
             for the index how many anchors you plan on dropping on a daily
-            basis. We keep track of this data. We are going to build a
-            graph out of it to show worldwide participation once the
-            numbers of lightworkers are up.
+            basis. We keep track of this data. It can be found on the
+            Anchorhythm page.
           </p>
 
           <p>
