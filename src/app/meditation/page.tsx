@@ -266,20 +266,21 @@ export default function MeditationPage() {
             enough.
           </p>
 
-          {/* Meditation video */}
-          <div className="mt-10 rounded-xl border border-white/10 bg-white/[0.03] overflow-hidden">
-            <video
-              controls
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              className="w-full rounded-xl"
+          {/* The Human Toroidal Field */}
+          <div className="mt-10 flex flex-col items-center">
+            <h2
+              className="text-xl sm:text-2xl font-bold tracking-wider text-white/80 mb-4"
+              style={{ fontFamily: "var(--font-space)" }}
             >
-              <source src="/meditation2.mp4" type="video/mp4" />
-              Your browser does not support the video element.
-            </video>
+              The Human Toroidal Field
+            </h2>
+            <div className="rounded-xl border border-white/10 bg-white/[0.03] overflow-hidden">
+              <img
+                src="/human-toroidal-field.jpeg"
+                alt="The Human Toroidal Field"
+                className="w-full max-w-lg rounded-xl"
+              />
+            </div>
           </div>
         </div>
       </div>
