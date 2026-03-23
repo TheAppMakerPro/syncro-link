@@ -90,7 +90,7 @@ export default function RegistrationForm() {
     longitude: "",
     contactInfo: "",
     bio: "",
-    markerColor: "#ffffff",
+    markerColor: "#e8e8ff",
     firstPostContent: "",
   });
   const [avatar, setAvatar] = useState<File | null>(null);
