@@ -23,14 +23,15 @@ export async function GET() {
   }, 0);
 
   const weeklyAnchors = users.reduce((sum, user) => {
-    const daysActive = Math.max(1, Math.floor((now - user.createdAt.getTime()) / msPerDay));
+    const daysActive = Math.floor((now - user.createdAt.getTime()) / msPerDay) + 1;
     const activeDaysThisWeek = Math.min(daysActive, 7);
     return sum + (BREATH_COUNTS[user.markerColor] || 18) * activeDaysThisWeek;
   }, 0);
 
   // Total anchors: each user contributes their daily rate × days since they joined
+  // +1 to count both the join day and today
   const totalToDate = users.reduce((sum, user) => {
-    const daysActive = Math.max(1, Math.floor((now - user.createdAt.getTime()) / msPerDay));
+    const daysActive = Math.floor((now - user.createdAt.getTime()) / msPerDay) + 1;
     return sum + (BREATH_COUNTS[user.markerColor] || 18) * daysActive;
   }, 0);
 

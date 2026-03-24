@@ -111,7 +111,17 @@ export async function POST(request: NextRequest) {
       data: { isVisible: true },
     });
 
-    return NextResponse.json(post, { status: 201 });
+    // Re-fetch post to include media that was added after creation
+    const fullPost = await prisma.post.findUnique({
+      where: { id: post.id },
+      include: {
+        user: { select: { id: true, displayName: true, avatarUrl: true } },
+        hashtags: { include: { hashtag: true } },
+        media: true,
+      },
+    });
+
+    return NextResponse.json(fullPost, { status: 201 });
   } catch (error) {
     console.error("Create post error:", error);
     return NextResponse.json({ error: "Failed to create post" }, { status: 500 });

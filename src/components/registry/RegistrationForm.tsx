@@ -113,7 +113,7 @@ export default function RegistrationForm() {
             longitude: data.longitude != null ? String(data.longitude) : "",
             contactInfo: data.contactInfo || "",
             bio: data.bio || "",
-            markerColor: data.markerColor || "#ffffff",
+            markerColor: data.markerColor || "#e8e8ff",
           });
           setExistingAvatarUrl(data.avatarUrl || null);
         }
