@@ -47,7 +47,7 @@ export default function ManifestoText() {
       <RevealSection>
         <p className="text-xl sm:text-2xl leading-relaxed text-center">
           Welcome one and all to the Syncro-Link index. All of us: Starseeds,
-          Lightworkers, Earth Mothers, Indigos, Yogis, Priestesses, Volunteers,
+          Lightworkers, Earth Mothers, Channelers, Indigos, Yogis, Priestesses, Volunteers,
           Quantum Minds, New Earthers, 5th Density Shift Participants, Galactic
           Federation Ground Crew, the 144,000 Human Nodes of the Crystalline
           Earth Grid, Nature Lovers, Animal Whisperers, Shamans, Teachers,
