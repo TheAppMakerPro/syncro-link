@@ -23,9 +23,9 @@ export async function POST(request: NextRequest) {
     const firstPostContent = formData.get("firstPostContent") as string;
     const avatar = formData.get("avatar") as File | null;
 
-    if (!displayName || !country || !firstPostContent) {
+    if (!displayName || !country) {
       return NextResponse.json(
-        { error: "Display name, country, and first Right Light post are required" },
+        { error: "Display name and country are required" },
         { status: 400 }
       );
     }
@@ -76,36 +76,39 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    // Create first post with hashtags
-    const hashtags = extractHashtags(firstPostContent);
-    const post = await prisma.post.create({
-      data: {
-        content: firstPostContent,
-        userId: user.id,
-        hashtags: {
-          create: await Promise.all(
-            hashtags.map(async (name) => {
-              const hashtag = await prisma.hashtag.upsert({
-                where: { name },
-                update: {},
-                create: { name },
-              });
-              return { hashtagId: hashtag.id };
-            })
-          ),
+    // Create first post with hashtags (if provided)
+    let post = null;
+    if (firstPostContent) {
+      const hashtags = extractHashtags(firstPostContent);
+      post = await prisma.post.create({
+        data: {
+          content: firstPostContent,
+          userId: user.id,
+          hashtags: {
+            create: await Promise.all(
+              hashtags.map(async (name) => {
+                const hashtag = await prisma.hashtag.upsert({
+                  where: { name },
+                  update: {},
+                  create: { name },
+                });
+                return { hashtagId: hashtag.id };
+              })
+            ),
+          },
         },
-      },
-    });
+      });
 
-    // Handle post media
-    const mediaFiles = formData.getAll("media") as File[];
-    for (const file of mediaFiles) {
-      if (file.size > 0) {
-        const result = await saveUploadedFile(file, "posts");
-        if (result) {
-          await prisma.media.create({
-            data: { url: result.url, type: result.type, postId: post.id, userId: user.id },
-          });
+      // Handle post media
+      const mediaFiles = formData.getAll("media") as File[];
+      for (const file of mediaFiles) {
+        if (file.size > 0) {
+          const result = await saveUploadedFile(file, "posts");
+          if (result) {
+            await prisma.media.create({
+              data: { url: result.url, type: result.type, postId: post.id, userId: user.id },
+            });
+          }
         }
       }
     }
