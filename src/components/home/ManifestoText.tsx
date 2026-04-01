@@ -149,14 +149,15 @@ export default function ManifestoText() {
 
       <RevealSection>
         <p className="text-2xl text-center font-bold tracking-wide">
-          That&apos;s it. Register. Check your spot on the Global map. And Unite!
+          That&apos;s it.  Register.  Anchor your light upon the World.  And Unite!
         </p>
       </RevealSection>
 
       <RevealSection>
         <p className="text-lg leading-relaxed text-center">
-          Let&apos;s cover the world in the light of the new earth gamma frequency,
-          one conscious heart centered breath at a time.
+          So, now that we have all woken up in our own miraculous ways, let us
+          show the world the power of heart centered group coherence and
+          unified mass intent.
         </p>
       </RevealSection>
 
@@ -191,6 +192,12 @@ export default function ManifestoText() {
       </RevealSection>
 
       <RevealSection>
+        <p className="text-lg font-bold text-center tracking-wide">
+          Attention!  Read the small print.
+        </p>
+      </RevealSection>
+
+      <RevealSection>
         <p className="text-xs text-white/40 leading-relaxed text-center">
           * Any offer using the name or branding of &apos;Syncro-Link&apos; is
           explicitly NOT condoned by the network. The incessant scarcity driven
@@ -211,29 +218,10 @@ export default function ManifestoText() {
         </p>
       </RevealSection>
 
-      <StarDivider />
-
-      {/* Closing */}
       <RevealSection>
-        <div className="text-center space-y-5">
-          <p className="text-lg leading-relaxed">
-            Bless you all! You are the light of the new world. Literally. I
-            thank all of you from the very center of my heart on this most
-            wonderful and glorious day. Syncro-Link has been a dream of mine
-            since 1996. I have just been waiting for the appropriate thresholds
-            of consciousness to emerge... thresholds we are all flying past
-            right now at this very moment. Congratulations to all of you.
-          </p>
-          <p className="text-lg leading-relaxed">
-            So, now that we have all woken up in our own miraculous ways, let us
-            show the world the power of heart centered group coherence and
-            unified mass intent.
-          </p>
-          <p className="text-xl font-medium italic">
-            Love, light, peace and ringing ears for All! Let &apos;em ring!
-          </p>
-          <p className="text-white/40 text-sm">— Chris</p>
-        </div>
+        <p className="text-xl text-center italic" style={{ fontFamily: "'Georgia', 'Times New Roman', cursive" }}>
+          Love, Light, Peace and Thanks to All.
+        </p>
       </RevealSection>
 
       {/* Final CTA */}
